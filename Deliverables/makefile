@@ -1,35 +1,43 @@
+
 BIN = c-
 CC = g++
+CFLAGS = -std=c++17 -Wall
 
-SRCS = $(BIN).y $(BIN).l
-HDRS = scanType.h
-OBJS = lex.yy.o $(BIN).tab.o
+SRCS = $(BIN).y $(BIN).l tree.c
+HDRS = scanType.h tree.h globals.h
+OBJS = lex.yy.o $(BIN).tab.o tree.o
 
 
-
-
+# Default target
 $(BIN): $(OBJS)
-	$(CC) $(OBJS) -o $(BIN)
+	$(CC) $(CFLAGS) $(OBJS) -o $(BIN)
 
-
+# Flex generates lex.yy.c (depends on Bison header)
 lex.yy.c: $(BIN).l $(BIN).tab.h $(HDRS)
 	flex $(BIN).l
 
-
-$(BIN).tab.h $(BIN).tab.c: $(BIN).y
+# Bison generates parser source and header
+$(BIN).tab.c $(BIN).tab.h: $(BIN).y $(HDRS)
 	bison -v -t -d $(BIN).y
 
 
-lex.yy.o: lex.yy.c
-	$(CC) -c lex.yy.c
+# Compile Flex output
+lex.yy.o: lex.yy.c $(HDRS)
+	$(CC) $(CFLAGS) -c lex.yy.c
+
+# Compile Bison output
+$(BIN).tab.o: $(BIN).tab.c $(HDRS)
+	$(CC) $(CFLAGS) -c $(BIN).tab.c
+
+# Compile tree.c
+tree.o: tree.c tree.h
+	$(CC) $(CFLAGS) -c tree.c
 
 
-$(BIN).tab.o: $(BIN).tab.c
-	$(CC) -c $(BIN).tab.c
-
-
+# Clean generated files
 clean:
 	rm -f *~ $(OBJS) $(BIN) lex.yy.c $(BIN).tab.h $(BIN).tab.c $(BIN).output
 
-tar : $(HDR) $(SRCS) makefile
+# Tarball
+tar: $(HDRS) $(SRCS) makefile
 	tar -cvf $(BIN).tar $(HDRS) $(SRCS) makefile

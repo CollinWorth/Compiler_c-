@@ -46,7 +46,40 @@
      BOOLCONST = 262,
      SYMBOL = 263,
      KEYWORD = 264,
-     ERROR = 265
+     ERROR = 265,
+     BOOL = 266,
+     CHAR = 267,
+     INT = 268,
+     STATIC = 269,
+     IF = 270,
+     THEN = 271,
+     ELSE = 272,
+     WHILE = 273,
+     DO = 274,
+     FOR = 275,
+     RETURN = 276,
+     BREAK = 277,
+     TRUE = 278,
+     FALSE = 279,
+     OR = 280,
+     AND = 281,
+     NOT = 282,
+     ASSIGN = 283,
+     ADDASS = 284,
+     SUBASS = 285,
+     MULASS = 286,
+     DIVASS = 287,
+     EQ = 288,
+     NE = 289,
+     LT = 290,
+     LE = 291,
+     GT = 292,
+     GE = 293,
+     NEQ = 294,
+     INC = 295,
+     DEC = 296,
+     TO = 297,
+     BY = 298
    };
 #endif
 /* Tokens.  */
@@ -58,18 +91,53 @@
 #define SYMBOL 263
 #define KEYWORD 264
 #define ERROR 265
+#define BOOL 266
+#define CHAR 267
+#define INT 268
+#define STATIC 269
+#define IF 270
+#define THEN 271
+#define ELSE 272
+#define WHILE 273
+#define DO 274
+#define FOR 275
+#define RETURN 276
+#define BREAK 277
+#define TRUE 278
+#define FALSE 279
+#define OR 280
+#define AND 281
+#define NOT 282
+#define ASSIGN 283
+#define ADDASS 284
+#define SUBASS 285
+#define MULASS 286
+#define DIVASS 287
+#define EQ 288
+#define NE 289
+#define LT 290
+#define LE 291
+#define GT 292
+#define GE 293
+#define NEQ 294
+#define INC 295
+#define DEC 296
+#define TO 297
+#define BY 298
 
 
 
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 37 "c-.y"
+#line 42 "c-.y"
 {
-    TokenData *tokenData;
+    TreeNode* tree;
+    TokenData* tokenData;
+    ExpType type;
 }
 /* Line 1529 of yacc.c.  */
-#line 73 "c-.tab.h"
+#line 141 "c-.tab.h"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
