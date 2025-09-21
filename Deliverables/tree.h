@@ -2,11 +2,16 @@
 #define TREE_H
 
 #include <stdbool.h>
+#include <stdio.h>
 
 #define MAXCHILDREN 3
 
+// A special value for the 'chsign' (change sign) unary operator.
+// Using a value outside the normal ASCII range for characters is safer.
+#define OP_CHSIGN 300
+
 typedef enum {DeclK, StmtK, ExpK} NodeKind;
-typedef enum {VarK, FuncK, ParamK, ProgramK} DeclKind;   // added ProgramK
+typedef enum {VarK, FuncK, ParamK} DeclKind;   // added ProgramK
 typedef enum {NullK, IfK, WhileK, ForK, CompoundK, ReturnK, BreakK, RangeK} StmtKind;
 typedef enum {OpK, ConstantK, IdK, AssignK, InitK, CallK} ExpKind;
 typedef enum {Void, Integer, Boolean, Char, CharInt, Equal, UndefinedType} ExpType;
@@ -27,6 +32,6 @@ TreeNode *addSibling(TreeNode *t, TreeNode *s);
 TreeNode *newDeclNode(DeclKind kind, int lineno, TreeNode* c0, TreeNode* c1, TreeNode* c2);
 TreeNode *newStmtNode(StmtKind kind, int lineno, TreeNode* c0, TreeNode* c1, TreeNode* c2);
 TreeNode *newExpNode(ExpKind kind, int lineno, TreeNode* c0, TreeNode* c1, TreeNode* c2);
-void printTree(TreeNode *tree);
+void printTree(FILE *out, TreeNode *tree);
 
 #endif

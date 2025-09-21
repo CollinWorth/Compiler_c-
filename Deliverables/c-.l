@@ -11,6 +11,13 @@ int numErrors = 0;
 // Print every token before returning
 //#define YY_USER_ACTION printf("Line %d: matched '%s'\n", line, yytext);
 
+static int setSimpleToken(int token) {
+    yylval.tokenData = new TokenData;
+    yylval.tokenData->linenum = line;
+    yylval.tokenData->tokenstr = NULL; // No string value needed
+    return token;
+}
+
 static int setValue(int linenum, int tokenClass, const char *svalue)
 {
     //printf("Line %d: token %d, text: %s\n", linenum, tokenClass, svalue);
@@ -79,6 +86,7 @@ static int setValue(int linenum, int tokenClass, const char *svalue)
     return tokenClass;
 }
 %}
+%option yylineno
 
 digit       [0-9]
 letter      [a-zA-Z]
@@ -88,8 +96,8 @@ identifier  {letter}({letter}|[0-9])*
 
 "//".*               { /* ignore comments */ }
 
-"true"               { return TRUE; }
-"false"              { return FALSE; }
+"true"               { return setValue(line, BOOLCONST, yytext); }
+"false"              { return setValue(line, BOOLCONST, yytext); }
 
 "if"                 { return IF; }
 "int"                { return INT; }
@@ -119,7 +127,6 @@ identifier  {letter}({letter}|[0-9])*
 "--"                 { return DEC; }
 "++"                 { return INC; }
 "><"                 { return NEQ; }
-"=="                 { return EQ; }
 "="                 { return EQ; }
 "<"                  { return LT; }
 ">"                  { return GT; }
@@ -143,12 +150,12 @@ identifier  {letter}({letter}|[0-9])*
 
 [()[\]{}:;?,%]  { 
     //printf("Lexer: matched symbol '%c' (ASCII %d)\n", *yytext, *yytext);
-    return *yytext; 
+    return setSimpleToken(*yytext); 
 }
 
 [+\-*/=]        { 
     //printf("Lexer: matched operator '%c' (ASCII %d)\n", *yytext, *yytext);
-    return *yytext; 
+    return setSimpleToken(*yytext); 
 }
 
 .                    { 
