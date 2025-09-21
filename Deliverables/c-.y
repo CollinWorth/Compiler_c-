@@ -48,14 +48,17 @@ static TreeNode * savedTree;
 }
 
 %token <tokenData> ID NUMCONST CHARCONST STRINGCONST ERROR BOOLCONST
-%token BOOL CHAR INT VOID
-%token STATIC
-%token IF THEN ELSE WHILE DO FOR RETURN BREAK
-%token OR AND NOT
-%token ASSIGN ADDASS SUBASS MULASS DIVASS  
-%token EQ NE LT LE GT GE NEQ               
-%token INC DEC 
-%token TO BY
+%token <tokenData> BOOL CHAR INT VOID
+%token <tokenData> STATIC
+%token <tokenData> IF THEN ELSE WHILE DO FOR RETURN BREAK
+%token <tokenData> OR AND NOT
+%token <tokenData> ASSIGN ADDASS SUBASS MULASS DIVASS  
+%token <tokenData> EQ NE LT LE GT GE NEQ               
+%token <tokenData> INC DEC 
+%token <tokenData> TO BY
+// Add tokenData type to punctuation/operators used for line numbers
+%token <tokenData> '{' '}' '(' ')' '[' ']'
+%token <tokenData> '+' '-' '*' '/' '%'
 
 %type <tree> program declList decl varDecl scopedVarDecl varDeclList varDeclInit varDeclId funDecl parms parmList parmTypeList parmIdList parmId stmt expStmt compoundStmt localDecls stmtList selectStmt iterStmt iterRange returnStmt breakStmt exp simpleExp andExp unaryRelExp relExp sumExp mulExp unaryExp factor mutable immutable call args argList constant
 %type <op> assignop relop sumop mulop unaryop
@@ -198,14 +201,14 @@ typeSpec        : BOOL              { $$ = Boolean; }
 funDecl         : typeSpec ID '(' parms ')' compoundStmt
                 {
                     // Correctly assign parms to child[0] and body to child[1]
-                    $$ = newDeclNode(FuncK, @2.first_line, $4, $6, NULL);
+                    $$ = newDeclNode(FuncK, $2->linenum, $4, $6, NULL);
                     $$->attr.name = strdup($2->tokenstr);
                     $$->expType = $1; // Capture type from typeSpec. $1 is now an ExpType.
                 }
                 | ID '(' parms ')' compoundStmt
                 {
                     // Correctly assign parms to child[0] and body to child[1]
-                    $$ = newDeclNode(FuncK, @1.first_line, $3, $5, NULL);
+                    $$ = newDeclNode(FuncK, $1->linenum, $3, $5, NULL);
                     $$->attr.name = strdup($1->tokenstr);
                     $$->expType = Void; // Default type
                 }
@@ -313,7 +316,7 @@ expStmt         : exp ';'
 
 compoundStmt    : '{' localDecls stmtList '}'
                 {
-                    $$ = newStmtNode(CompoundK, yylineno, $2, $3, NULL);
+                    $$ = newStmtNode(CompoundK, $1->linenum, $2, $3, NULL);
                 }
                 ;
 
@@ -339,65 +342,65 @@ stmtList        : stmtList stmt
 
 selectStmt      : IF simpleExp THEN stmt
                 {
-                    $$ = newStmtNode(IfK, yylineno, $2, $4, NULL);
+                    $$ = newStmtNode(IfK, $1->linenum, $2, $4, NULL);
                 }
                 | IF simpleExp THEN stmt ELSE stmt
                 {
-                    $$ = newStmtNode(IfK, yylineno, $2, $4, $6);
+                    $$ = newStmtNode(IfK, $1->linenum, $2, $4, $6);
                 }
                 ;
 
 iterStmt        : WHILE simpleExp DO stmt
                 {
-                    $$ = newStmtNode(WhileK, yylineno, $2, $4, NULL);
+                    $$ = newStmtNode(WhileK, $1->linenum, $2, $4, NULL);
                 }
                 | FOR ID ASSIGN iterRange DO stmt
                 {
-                    TreeNode *idNode = newExpNode(IdK, @2.first_line, NULL, NULL, NULL);
+                    TreeNode *idNode = newExpNode(IdK, $2->linenum, NULL, NULL, NULL);
                     idNode->attr.name = strdup($2->tokenstr);
-                    $$ = newStmtNode(ForK, yylineno, idNode, $4, $6);
+                    $$ = newStmtNode(ForK, $1->linenum, idNode, $4, $6);
                 }
                 ;
 
 iterRange       : simpleExp TO simpleExp
                 {
-                    $$ = newStmtNode(RangeK, yylineno, $1, $3, NULL);
+                    $$ = newStmtNode(RangeK, $2->linenum, $1, $3, NULL);
                 }
                 | simpleExp TO simpleExp BY simpleExp
                 {
-                    $$ = newStmtNode(RangeK, yylineno, $1, $3, $5);
+                    $$ = newStmtNode(RangeK, $2->linenum, $1, $3, $5);
                 }
                 ;
 
 returnStmt      : RETURN ';'
                 {
-                    $$ = newStmtNode(ReturnK, yylineno, NULL, NULL, NULL);
+                    $$ = newStmtNode(ReturnK, $1->linenum, NULL, NULL, NULL);
                 }
                 | RETURN exp ';'
                 {
-                    $$ = newStmtNode(ReturnK, yylineno, $2, NULL, NULL);
+                    $$ = newStmtNode(ReturnK, $1->linenum, $2, NULL, NULL);
                 }
                 ;
 
 breakStmt       : BREAK ';'
                 {
-                    $$ = newStmtNode(BreakK, yylineno, NULL, NULL, NULL);
+                    $$ = newStmtNode(BreakK, $1->linenum, NULL, NULL, NULL);
                 }
                 ;
 
 exp             : mutable assignop exp
                 {
-                    $$ = newExpNode(AssignK, yylineno, $1, $3, NULL);
+                    $$ = newExpNode(AssignK, $1->lineno, $1, $3, NULL); // Use lineno of the mutable
                     $$->attr.op = $2;
                 }
                 | mutable INC
                 {
-                    $$ = newExpNode(AssignK, yylineno, $1, NULL, NULL);
+                    $$ = newExpNode(AssignK, $2->linenum, $1, NULL, NULL);
                     $$->attr.op = INC;
                 }
                 | mutable DEC
                 {
-                    $$ = newExpNode(AssignK, yylineno, $1, NULL, NULL);
+                    $$ = newExpNode(AssignK, $2->linenum, $1, NULL, NULL);
                     $$->attr.op = DEC;
                 }
                 | simpleExp
@@ -415,7 +418,7 @@ assignop        : ASSIGN                { $$ = ASSIGN; }
 
 simpleExp       : simpleExp OR andExp
                 {
-                    $$ = newExpNode(OpK, @2.first_line, $1, $3, NULL);
+                    $$ = newExpNode(OpK, $2->linenum, $1, $3, NULL);
                     $$->attr.op = OR;
                 }
                 | andExp
@@ -426,7 +429,7 @@ simpleExp       : simpleExp OR andExp
 
 andExp          : andExp AND unaryRelExp
                 {
-                    $$ = newExpNode(OpK, @2.first_line, $1, $3, NULL);
+                    $$ = newExpNode(OpK, $2->linenum, $1, $3, NULL);
                     $$->attr.op = AND;
                 }
                 | unaryRelExp
@@ -437,7 +440,7 @@ andExp          : andExp AND unaryRelExp
 
 unaryRelExp     : NOT unaryRelExp
                 {
-                    $$ = newExpNode(OpK, yylineno, $2, NULL, NULL);
+                    $$ = newExpNode(OpK, $1->linenum, $2, NULL, NULL);
                     $$->attr.op = NOT;
                 }
                 | relExp
@@ -448,7 +451,7 @@ unaryRelExp     : NOT unaryRelExp
 
 relExp          : sumExp relop sumExp
                 {
-                    $$ = newExpNode(OpK, @2.first_line, $1, $3, NULL);
+                    $$ = newExpNode(OpK, $1->lineno, $1, $3, NULL); // Use lineno of first expression
                     $$->attr.op = $2;
                 }
                 | sumExp
@@ -467,7 +470,7 @@ relop           : LT                    { $$ = LT; }
 
 sumExp          : sumExp sumop mulExp
                 {
-                    $$ = newExpNode(OpK, @2.first_line, $1, $3, NULL);
+                    $$ = newExpNode(OpK, $1->lineno, $1, $3, NULL); // Use lineno of first expression
                     $$->attr.op = $2;
                 }
                 | mulExp
@@ -482,7 +485,7 @@ sumop           : '+'                   { $$ = '+'; }
 
 mulExp          : mulExp mulop unaryExp
                 {
-                    $$ = newExpNode(OpK, @2.first_line, $1, $3, NULL);
+                    $$ = newExpNode(OpK, $1->lineno, $1, $3, NULL); // Use lineno of first expression
                     $$->attr.op = $2;
                 }
                 | unaryExp
@@ -498,7 +501,7 @@ mulop           : '*'               { $$ = '*'; }
 
 unaryExp        : unaryop unaryExp
                 {
-                    $$ = newExpNode(OpK, yylineno, NULL, NULL, NULL);
+                    $$ = newExpNode(OpK, $2->lineno, NULL, NULL, NULL); // Use lineno of expression
                     $$->attr.op = $1;
                     $$->child[0] = $2;
                 }
@@ -525,15 +528,15 @@ factor          : mutable
 
 mutable         : ID
                 {
-                    $$ = newExpNode(IdK, yylineno, NULL, NULL, NULL);
+                    $$ = newExpNode(IdK, $1->linenum, NULL, NULL, NULL);
                     $$->attr.name = strdup($1->tokenstr);
                 }
                 | ID '[' exp ']'
                 {
                     // Create an OpK node for array subscripting.
-                    TreeNode *idNode = newExpNode(IdK, @1.first_line, NULL, NULL, NULL);
+                    TreeNode *idNode = newExpNode(IdK, $1->linenum, NULL, NULL, NULL);
                     idNode->attr.name = strdup($1->tokenstr);
-                    $$ = newExpNode(OpK, @2.first_line, idNode, $3, NULL);
+                    $$ = newExpNode(OpK, $2->linenum, idNode, $3, NULL);
                     $$->attr.op = '[';
                 }
                 ;
@@ -554,7 +557,7 @@ immutable       : '(' exp ')'
 
 call            : ID '(' args ')'
                 {
-                    $$ = newExpNode(CallK, yylineno, $3, NULL, NULL);
+                    $$ = newExpNode(CallK, $1->linenum, $3, NULL, NULL);
                     $$->attr.name = strdup($1->tokenstr);
                 }
                 ;
@@ -622,22 +625,38 @@ int yyerror(const char *s) {
     return 0;
 }
 
-int main(int argc, char ** argv) {
+int main(int argc, char **argv) {
     if(argc > 1){
-        yyin = (fopen(argv[1], "r"));
-        if(!yyin){
-            perror("fopen");
-            return 1;
+        if(strcmp(argv[1], "-p") == 0){
+            // parse from file if provided as third argument
+            if(argc == 3){
+                yyin = fopen(argv[2], "r");
+                if(!yyin){
+                    perror("fopen");
+                    return 1;
+                }
+            } else {
+                yyin = stdin;
+            }
+        } else {
+            yyin = fopen(argv[1], "r");
+            if(!yyin){
+                perror("fopen");
+                return 1;
+            }
         }
-    }else{
-        yyin = stdin; // This is fallback 
-    }   
+    } else {
+        yyin = stdin;
+    }
+
     yydebug = 0;
-    if (yyparse() == 0) { // A return value of 0 indicates success
-        if (savedTree != NULL) {
+
+    if(yyparse() == 0){
+        if(argc > 1 && strcmp(argv[1], "-p") == 0){
             printTree(stdout, savedTree);
         }
     }
+
     return 0;
 }
 

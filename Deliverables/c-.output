@@ -455,8 +455,8 @@ state 14
    14          | ID . '[' NUMCONST ']'
    18 funDecl: typeSpec ID . '(' parms ')' compoundStmt
 
-    '['  shift, and go to state 22
-    '('  shift, and go to state 23
+    '('  shift, and go to state 22
+    '['  shift, and go to state 23
 
     $default  reduce using rule 13 (varDeclId)
 
@@ -523,13 +523,6 @@ state 21
 
 state 22
 
-   14 varDeclId: ID '[' . NUMCONST ']'
-
-    NUMCONST  shift, and go to state 32
-
-
-state 23
-
    18 funDecl: typeSpec ID '(' . parms ')' compoundStmt
 
     BOOL  shift, and go to state 2
@@ -539,9 +532,16 @@ state 23
     $default  reduce using rule 21 (parms)
 
     typeSpec      go to state 18
-    parms         go to state 33
+    parms         go to state 32
     parmList      go to state 20
     parmTypeList  go to state 21
+
+
+state 23
+
+   14 varDeclId: ID '[' . NUMCONST ']'
+
+    NUMCONST  shift, and go to state 33
 
 
 state 24
@@ -641,16 +641,16 @@ state 31
 
 state 32
 
-   14 varDeclId: ID '[' NUMCONST . ']'
+   18 funDecl: typeSpec ID '(' parms . ')' compoundStmt
 
-    ']'  shift, and go to state 64
+    ')'  shift, and go to state 64
 
 
 state 33
 
-   18 funDecl: typeSpec ID '(' parms . ')' compoundStmt
+   14 varDeclId: ID '[' NUMCONST . ']'
 
-    ')'  shift, and go to state 65
+    ']'  shift, and go to state 65
 
 
 state 34
@@ -658,7 +658,7 @@ state 34
    13 varDeclId: ID .
    14          | ID . '[' NUMCONST ']'
 
-    '['  shift, and go to state 22
+    '['  shift, and go to state 23
 
     $default  reduce using rule 13 (varDeclId)
 
@@ -676,8 +676,8 @@ state 36
    91        | ID . '[' exp ']'
    95 call: ID . '(' args ')'
 
-    '['  shift, and go to state 66
-    '('  shift, and go to state 67
+    '('  shift, and go to state 66
+    '['  shift, and go to state 67
 
     $default  reduce using rule 90 (mutable)
 
@@ -965,13 +965,6 @@ state 63
 
 state 64
 
-   14 varDeclId: ID '[' NUMCONST ']' .
-
-    $default  reduce using rule 14 (varDeclId)
-
-
-state 65
-
    18 funDecl: typeSpec ID '(' parms ')' . compoundStmt
 
     '{'  shift, and go to state 61
@@ -979,38 +972,14 @@ state 65
     compoundStmt  go to state 92
 
 
+state 65
+
+   14 varDeclId: ID '[' NUMCONST ']' .
+
+    $default  reduce using rule 14 (varDeclId)
+
+
 state 66
-
-   91 mutable: ID '[' . exp ']'
-
-    ID           shift, and go to state 36
-    NUMCONST     shift, and go to state 37
-    CHARCONST    shift, and go to state 38
-    STRINGCONST  shift, and go to state 39
-    BOOLCONST    shift, and go to state 40
-    NOT          shift, and go to state 41
-    '('          shift, and go to state 42
-    '-'          shift, and go to state 43
-    '*'          shift, and go to state 44
-    '?'          shift, and go to state 45
-
-    exp          go to state 93
-    simpleExp    go to state 70
-    andExp       go to state 47
-    unaryRelExp  go to state 48
-    relExp       go to state 49
-    sumExp       go to state 50
-    mulExp       go to state 51
-    unaryExp     go to state 52
-    unaryop      go to state 53
-    factor       go to state 54
-    mutable      go to state 71
-    immutable    go to state 56
-    call         go to state 57
-    constant     go to state 58
-
-
-state 67
 
    95 call: ID '(' . args ')'
 
@@ -1027,7 +996,7 @@ state 67
 
     $default  reduce using rule 97 (args)
 
-    exp          go to state 94
+    exp          go to state 93
     simpleExp    go to state 70
     andExp       go to state 47
     unaryRelExp  go to state 48
@@ -1040,8 +1009,39 @@ state 67
     mutable      go to state 71
     immutable    go to state 56
     call         go to state 57
-    args         go to state 95
-    argList      go to state 96
+    args         go to state 94
+    argList      go to state 95
+    constant     go to state 58
+
+
+state 67
+
+   91 mutable: ID '[' . exp ']'
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    BOOLCONST    shift, and go to state 40
+    NOT          shift, and go to state 41
+    '('          shift, and go to state 42
+    '-'          shift, and go to state 43
+    '*'          shift, and go to state 44
+    '?'          shift, and go to state 45
+
+    exp          go to state 96
+    simpleExp    go to state 70
+    andExp       go to state 47
+    unaryRelExp  go to state 48
+    relExp       go to state 49
+    sumExp       go to state 50
+    mulExp       go to state 51
+    unaryExp     go to state 52
+    unaryop      go to state 53
+    factor       go to state 54
+    mutable      go to state 71
+    immutable    go to state 56
+    call         go to state 57
     constant     go to state 58
 
 
@@ -1342,33 +1342,33 @@ state 92
 
 state 93
 
-   91 mutable: ID '[' exp . ']'
-
-    ']'  shift, and go to state 115
-
-
-state 94
-
    99 argList: exp .
 
     $default  reduce using rule 99 (argList)
 
 
-state 95
+state 94
 
    95 call: ID '(' args . ')'
 
-    ')'  shift, and go to state 116
+    ')'  shift, and go to state 115
 
 
-state 96
+state 95
 
    96 args: argList .
    98 argList: argList . ',' exp
 
-    ','  shift, and go to state 117
+    ','  shift, and go to state 116
 
     $default  reduce using rule 96 (args)
+
+
+state 96
+
+   91 mutable: ID '[' exp . ']'
+
+    ']'  shift, and go to state 117
 
 
 state 97
@@ -1554,12 +1554,12 @@ state 114
     RETURN       shift, and go to state 124
     BREAK        shift, and go to state 125
     NOT          shift, and go to state 41
-    ';'          shift, and go to state 126
-    '('          shift, and go to state 42
     '{'          shift, and go to state 61
-    '}'          shift, and go to state 127
+    '}'          shift, and go to state 126
+    '('          shift, and go to state 42
     '-'          shift, and go to state 43
     '*'          shift, and go to state 44
+    ';'          shift, and go to state 127
     '?'          shift, and go to state 45
 
     stmt          go to state 128
@@ -1587,19 +1587,12 @@ state 114
 
 state 115
 
-   91 mutable: ID '[' exp ']' .
-
-    $default  reduce using rule 91 (mutable)
-
-
-state 116
-
    95 call: ID '(' args ')' .
 
     $default  reduce using rule 95 (call)
 
 
-state 117
+state 116
 
    98 argList: argList ',' . exp
 
@@ -1628,6 +1621,13 @@ state 117
     immutable    go to state 56
     call         go to state 57
     constant     go to state 58
+
+
+state 117
+
+   91 mutable: ID '[' exp ']' .
+
+    $default  reduce using rule 91 (mutable)
 
 
 state 118
@@ -1736,10 +1736,10 @@ state 124
     STRINGCONST  shift, and go to state 39
     BOOLCONST    shift, and go to state 40
     NOT          shift, and go to state 41
-    ';'          shift, and go to state 142
     '('          shift, and go to state 42
     '-'          shift, and go to state 43
     '*'          shift, and go to state 44
+    ';'          shift, and go to state 142
     '?'          shift, and go to state 45
 
     exp          go to state 143
@@ -1767,16 +1767,16 @@ state 125
 
 state 126
 
-   36 expStmt: ';' .
+   37 compoundStmt: '{' localDecls stmtList '}' .
 
-    $default  reduce using rule 36 (expStmt)
+    $default  reduce using rule 37 (compoundStmt)
 
 
 state 127
 
-   37 compoundStmt: '{' localDecls stmtList '}' .
+   36 expStmt: ';' .
 
-    $default  reduce using rule 37 (compoundStmt)
+    $default  reduce using rule 36 (expStmt)
 
 
 state 128
@@ -1935,11 +1935,11 @@ state 147
     RETURN       shift, and go to state 124
     BREAK        shift, and go to state 125
     NOT          shift, and go to state 41
-    ';'          shift, and go to state 126
-    '('          shift, and go to state 42
     '{'          shift, and go to state 61
+    '('          shift, and go to state 42
     '-'          shift, and go to state 43
     '*'          shift, and go to state 44
+    ';'          shift, and go to state 127
     '?'          shift, and go to state 45
 
     stmt          go to state 151
@@ -1980,11 +1980,11 @@ state 148
     RETURN       shift, and go to state 124
     BREAK        shift, and go to state 125
     NOT          shift, and go to state 41
-    ';'          shift, and go to state 126
-    '('          shift, and go to state 42
     '{'          shift, and go to state 61
+    '('          shift, and go to state 42
     '-'          shift, and go to state 43
     '*'          shift, and go to state 44
+    ';'          shift, and go to state 127
     '?'          shift, and go to state 45
 
     stmt          go to state 152
@@ -2098,11 +2098,11 @@ state 155
     RETURN       shift, and go to state 124
     BREAK        shift, and go to state 125
     NOT          shift, and go to state 41
-    ';'          shift, and go to state 126
-    '('          shift, and go to state 42
     '{'          shift, and go to state 61
+    '('          shift, and go to state 42
     '-'          shift, and go to state 43
     '*'          shift, and go to state 44
+    ';'          shift, and go to state 127
     '?'          shift, and go to state 45
 
     stmt          go to state 158
@@ -2143,11 +2143,11 @@ state 156
     RETURN       shift, and go to state 124
     BREAK        shift, and go to state 125
     NOT          shift, and go to state 41
-    ';'          shift, and go to state 126
-    '('          shift, and go to state 42
     '{'          shift, and go to state 61
+    '('          shift, and go to state 42
     '-'          shift, and go to state 43
     '*'          shift, and go to state 44
+    ';'          shift, and go to state 127
     '?'          shift, and go to state 45
 
     stmt          go to state 159

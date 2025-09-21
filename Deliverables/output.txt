@@ -1,68 +1,499 @@
-Func: main  [line: 1]						Func: main  [line: 1]
-.   Child: 1  Compound  [line: 12]			      |	.   Child: 1  Compound [line: 2]
-.   .   Child: 0  Var: x   [line: 3]			      |	.   .   Child: 0  Var: x  [line: 3]
-.   .   Sibling: 1  Var: array   [line: 4]		      |	.   .   Sibling: 1  Var: array  [line: 4]
-.   .   Child: 1  Compound  [line: 10]			      |	.   .   Child: 1  Compound [line: 6]
-.   .   .   Child: 1  Op: or  [line: 1]			      |	.   .   .   Child: 1  Op: or [line: 7]
-.   .   .   .   Child: 0  Const false  [line: 7]	      |	.   .   .   .   Child: 0  Const false [line: 7]
-.   .   .   .   Child: 1  Op: and  [line: 1]		      |	.   .   .   .   Child: 1  Op: and [line: 7]
-.   .   .   .   .   Child: 0  Const true  [line: 7]	      |	.   .   .   .   .   Child: 0  Const true [line: 7]
-.   .   .   .   .   Child: 1  Op: <  [line: 1]		      |	.   .   .   .   .   Child: 1  Op: < [line: 7]
-.   .   .   .   .   .   Child: 0  Const 111  [line: 7]	      |	.   .   .   .   .   .   Child: 0  Const 111 [line: 7]
-.   .   .   .   .   .   Child: 1  Op: +  [line: 1]	      |	.   .   .   .   .   .   Child: 1  Op: + [line: 7]
-.   .   .   .   .   .   .   Child: 0  Const 222  [line: 7]    |	.   .   .   .   .   .   .   Child: 0  Const 222 [line: 7]
-.   .   .   .   .   .   .   Child: 1  Op: *  [line: 1]	      |	.   .   .   .   .   .   .   Child: 1  Op: * [line: 7]
-.   .   .   .   .   .   .   .   Child: 0  Const 333  [line: 7 |	.   .   .   .   .   .   .   .   Child: 0  Const 333 [line: 7]
-.   .   .   .   .   .   .   .   Child: 1  Const 444  [line: 7 |	.   .   .   .   .   .   .   .   Child: 1  Const 444 [line: 7]
-.   .   .   Sibling: 2  Op: or  [line: 1]		      |	.   .   .   Sibling: 1  Op: or [line: 8]
-.   .   .   .   Child: 0  Op: and  [line: 1]		      |	.   .   .   .   Child: 0  Op: and [line: 8]
-.   .   .   .   .   Child: 0  Op: >  [line: 1]		      |	.   .   .   .   .   Child: 0  Op: > [line: 8]
-.   .   .   .   .   .   Child: 0  Op: +  [line: 1]	      |	.   .   .   .   .   .   Child: 0  Op: + [line: 8]
-.   .   .   .   .   .   .   Child: 0  Op: *  [line: 1]	      |	.   .   .   .   .   .   .   Child: 0  Op: * [line: 8]
-.   .   .   .   .   .   .   .   Child: 0  Const 444  [line: 8 |	.   .   .   .   .   .   .   .   Child: 0  Const 444 [line: 8]
-.   .   .   .   .   .   .   .   Child: 1  Const 333  [line: 8 |	.   .   .   .   .   .   .   .   Child: 1  Const 333 [line: 8]
-.   .   .   .   .   .   .   Child: 1  Const 222  [line: 8]    |	.   .   .   .   .   .   .   Child: 1  Const 222 [line: 8]
-.   .   .   .   .   .   Child: 1  Const 111  [line: 8]	      |	.   .   .   .   .   .   Child: 1  Const 111 [line: 8]
-.   .   .   .   .   Child: 1  Const true  [line: 8]	      |	.   .   .   .   .   Child: 1  Const true [line: 8]
-.   .   .   .   Child: 1  Const false  [line: 8]	      |	.   .   .   .   Child: 1  Const false [line: 8]
-.   .   .   Sibling: 3  Op: and  [line: 1]		      |	.   .   .   Sibling: 2  Op: and [line: 9]
-.   .   .   .   Child: 0  Op: >  [line: 1]		      |	.   .   .   .   Child: 0  Op: > [line: 9]
-.   .   .   .   .   Child: 0  Op: *  [line: 1]		      |	.   .   .   .   .   Child: 0  Op: * [line: 9]
-.   .   .   .   .   .   Child: 0  Const 444  [line: 9]	      |	.   .   .   .   .   .   Child: 0  Const 444 [line: 9]
-.   .   .   .   .   .   Child: 1  Op: +  [line: 1]	      |	.   .   .   .   .   .   Child: 1  Op: + [line: 9]
-.   .   .   .   .   .   .   Child: 0  Const 333  [line: 9]    |	.   .   .   .   .   .   .   Child: 0  Const 333 [line: 9]
-.   .   .   .   .   .   .   Child: 1  Const 222  [line: 9]    |	.   .   .   .   .   .   .   Child: 1  Const 222 [line: 9]
-.   .   .   .   .   Child: 1  Const 111  [line: 9]	      |	.   .   .   .   .   Child: 1  Const 111 [line: 9]
-.   .   .   .   Child: 1  Op: or  [line: 1]		      |	.   .   .   .   Child: 1  Op: or [line: 9]
-.   .   .   .   .   Child: 0  Const true  [line: 9]	      |	.   .   .   .   .   Child: 0  Const true [line: 9]
-.   .   .   .   .   Child: 1  Const false  [line: 9]	      |	.   .   .   .   .   Child: 1  Const false [line: 9]
-.   .   Sibling: 2  Assign: :=  [line: 11]		      |	.   .   Sibling: 1  Assign: := [line: 11]
-.   .   .   Child: 0  Id: x  [line: 11]			      |	.   .   .   Child: 0  Id: x [line: 11]
-.   .   .   Child: 1  Op: or  [line: 1]			      |	.   .   .   Child: 1  Op: or [line: 11]
-.   .   .   .   Child: 0  Const true  [line: 11]	      |	.   .   .   .   Child: 0  Const true [line: 11]
-.   .   .   .   Child: 1  Op: and  [line: 1]		      |	.   .   .   .   Child: 1  Op: and [line: 11]
-.   .   .   .   .   Child: 0  Op: not  [line: 11]	      |	.   .   .   .   .   Child: 0  Op: not [line: 11]
-.   .   .   .   .   .   Child: 0  Op: =  [line: 1]	      |	.   .   .   .   .   .   Child: 0  Op: = [line: 11]
-.   .   .   .   .   .   .   Child: 0  Op: -  [line: 1]	      |	.   .   .   .   .   .   .   Child: 0  Op: - [line: 11]
-.   .   .   .   .   .   .   .   Child: 0  Op: +  [line: 1]    |	.   .   .   .   .   .   .   .   Child: 0  Op: + [line: 11]
-.   .   .   .   .   .   .   .   .   Child: 0  Op: -  [line: 1 |	.   .   .   .   .   .   .   .   .   Child: 0  Op: - [line: 11
-.   .   .   .   .   .   .   .   .   .   Child: 0  Op: chsign  |	.   .   .   .   .   .   .   .   .   .   Child: 0  Op: chsign 
-.   .   .   .   .   .   .   .   .   .   .   Child: 0  Op: ?   |	.   .   .   .   .   .   .   .   .   .   .   Child: 0  Op: ? [
-.   .   .   .   .   .   .   .   .   .   .   .   Child: 0  Op: |	.   .   .   .   .   .   .   .   .   .   .   .   Child: 0  Op:
+Var: cups   [line: 100]					      |	Var: cups  [line: 100]
+Var: sumPlayerT   [line: 101]				      |	Sibling: 1  Var: sumPlayerT  [line: 101]
+Var: sumPlayerF   [line: 102]				      |	Sibling: 2  Var: sumPlayerF  [line: 102]
+Var: winnerPlayerT   [line: 103]			      |	Sibling: 3  Var: winnerPlayerT  [line: 103]
+Var: winnerPlayerF   [line: 104]			      |	Sibling: 4  Var: winnerPlayerF  [line: 104]
+Var: winner   [line: 105]				      |	Sibling: 5  Var: winner  [line: 105]
+Var: turn   [line: 106]					      |	Sibling: 6  Var: turn  [line: 106]
+Func: debug  [line: 108]				      |	Sibling: 7  Func: debug  [line: 108]
+.   Child: 0  Param: type  [line: 108]			      |	.   Child: 0  Parm: type  [line: 108]
+.   Child: 1  Compound  [line: 108]			      |	.   Child: 1  Compound [line: 108]
+.   .   Child: 0  Var: count   [line: 109]		      |	.   .   Child: 0  Var: count  [line: 109]
+.   .   Child: 1  Assign: :=  [line: 110]		      |	.   .   Child: 1  Assign: := [line: 110]
+.   .   .   Child: 0  Id: count  [line: 110]		      |	.   .   .   Child: 0  Id: count [line: 110]
+.   .   .   Child: 1  Const 10  [line: 110]		      |	.   .   .   Child: 1  Const 10 [line: 110]
+.   .   Sibling: 1  Stmt  [line: 110]			      |	.   .   Sibling: 1  While [line: 111]
+.   .   .   Child: 0  Op: >  [line: 111]		      |	.   .   .   Child: 0  Op: > [line: 111]
+.   .   .   .   Child: 0  Id: count  [line: 111]	      |	.   .   .   .   Child: 0  Id: count [line: 111]
+.   .   .   .   Child: 1  Const 0  [line: 111]		      |	.   .   .   .   Child: 1  Const 0 [line: 111]
+.   .   .   Child: 1  Compound  [line: 111]		      |	.   .   .   Child: 1  Compound [line: 111]
+.   .   .   .   Child: 1  Call: outputb  [line: 112]	      |	.   .   .   .   Child: 1  Call: outputb [line: 112]
+.   .   .   .   .   Child: 0  Id: type  [line: 112]	      |	.   .   .   .   .   Child: 0  Id: type [line: 112]
+.   .   .   .   Sibling: 1  Assign: %  [line: 113]	      |	.   .   .   .   Sibling: 1  Assign: -- [line: 113]
+.   .   .   .   .   Child: 0  Id: count  [line: 113]	      |	.   .   .   .   .   Child: 0  Id: count [line: 113]
+.   .   .   .   Sibling: 2  If  [line: 113]		      |	.   .   .   .   Sibling: 2  If [line: 114]
+.   .   .   .   .   Child: 0  Op: =  [line: 114]	      |	.   .   .   .   .   Child: 0  Op: = [line: 114]
+.   .   .   .   .   .   Child: 0  Id: count  [line: 114]      |	.   .   .   .   .   .   Child: 0  Id: count [line: 114]
+.   .   .   .   .   .   Child: 1  Const 0  [line: 114]	      |	.   .   .   .   .   .   Child: 1  Const 0 [line: 114]
+.   .   .   .   .   Child: 1  Call: outnl  [line: 114]	      |	.   .   .   .   .   Child: 1  Call: outnl [line: 114]
+Func: initGame  [line: 118]				      |	Sibling: 8  Func: initGame  [line: 118]
+.   Child: 1  Compound  [line: 118]			      |	.   Child: 1  Compound [line: 118]
+.   .   Child: 0  Var: index   [line: 119]		      |	.   .   Child: 0  Var: index  [line: 119]
+.   .   Child: 1  Assign: :=  [line: 120]		      |	.   .   Child: 1  Assign: := [line: 120]
+.   .   .   Child: 0  Id: index  [line: 120]		      |	.   .   .   Child: 0  Id: index [line: 120]
+.   .   .   Child: 1  Const 0  [line: 120]		      |	.   .   .   Child: 1  Const 0 [line: 120]
+.   .   Sibling: 1  Stmt  [line: 120]			      |	.   .   Sibling: 1  While [line: 123]
+.   .   .   Child: 0  Op: <  [line: 123]		      |	.   .   .   Child: 0  Op: < [line: 123]
+.   .   .   .   Child: 0  Id: index  [line: 123]	      |	.   .   .   .   Child: 0  Id: index [line: 123]
+.   .   .   .   Child: 1  Const 12  [line: 123]		      |	.   .   .   .   Child: 1  Const 12 [line: 123]
+.   .   .   Child: 1  Compound  [line: 123]		      |	.   .   .   Child: 1  Compound [line: 123]
+.   .   .   .   Child: 1  Assign: :=  [line: 124]	      |	.   .   .   .   Child: 1  Assign: := [line: 124]
+.   .   .   .   .   Child: 0  Op: [  [line: 124]	      |	.   .   .   .   .   Child: 0  Op: [ [line: 124]
+.   .   .   .   .   .   Child: 0  Id: cups  [line: 124]	      |	.   .   .   .   .   .   Child: 0  Id: cups [line: 124]
+.   .   .   .   .   .   Child: 1  Id: index  [line: 124]      |	.   .   .   .   .   .   Child: 1  Id: index [line: 124]
+.   .   .   .   .   Child: 1  Const 4  [line: 124]	      |	.   .   .   .   .   Child: 1  Const 4 [line: 124]
+.   .   .   .   Sibling: 1  Assign: $  [line: 125]	      |	.   .   .   .   Sibling: 1  Assign: ++ [line: 125]
+.   .   .   .   .   Child: 0  Id: index  [line: 125]	      |	.   .   .   .   .   Child: 0  Id: index [line: 125]
+.   .   Sibling: 2  Stmt  [line: 126]			      |	.   .   Sibling: 2  Return [line: 127]
+Func: printBoard  [line: 130]				      |	Sibling: 9  Func: printBoard  [line: 130]
+.   Child: 1  Compound  [line: 130]			      |	.   Child: 1  Compound [line: 130]
+.   .   Child: 0  Var: index   [line: 131]		      |	.   .   Child: 0  Var: index  [line: 131]
+.   .   Child: 1  Assign: :=  [line: 132]		      |	.   .   Child: 1  Assign: := [line: 132]
+.   .   .   Child: 0  Id: index  [line: 132]		      |	.   .   .   Child: 0  Id: index [line: 132]
+.   .   .   Child: 1  Const 5  [line: 132]		      |	.   .   .   Child: 1  Const 5 [line: 132]
+.   .   Sibling: 1  Stmt  [line: 132]			      |	.   .   Sibling: 1  While [line: 134]
+.   .   .   Child: 0  Op: >=  [line: 134]		      |	.   .   .   Child: 0  Op: >= [line: 134]
+.   .   .   .   Child: 0  Id: index  [line: 134]	      |	.   .   .   .   Child: 0  Id: index [line: 134]
+.   .   .   .   Child: 1  Const 0  [line: 134]		      |	.   .   .   .   Child: 1  Const 0 [line: 134]
+.   .   .   Child: 1  Compound  [line: 134]		      |	.   .   .   Child: 1  Compound [line: 134]
+.   .   .   .   Child: 1  If  [line: 134]		      |	.   .   .   .   Child: 1  If [line: 135]
+.   .   .   .   .   Child: 0  Op: =  [line: 135]	      |	.   .   .   .   .   Child: 0  Op: = [line: 135]
+.   .   .   .   .   .   Child: 0  Id: index  [line: 135]      |	.   .   .   .   .   .   Child: 0  Id: index [line: 135]
+.   .   .   .   .   .   Child: 1  Const 5  [line: 135]	      |	.   .   .   .   .   .   Child: 1  Const 5 [line: 135]
+.   .   .   .   .   Child: 1  Compound  [line: 135]	      |	.   .   .   .   .   Child: 1  Compound [line: 135]
+.   .   .   .   .   .   Child: 1  Call: outputb  [line: 136]  |	.   .   .   .   .   .   Child: 1  Call: outputb [line: 136]
+.   .   .   .   .   .   .   Child: 0  Const true  [line: 136] |	.   .   .   .   .   .   .   Child: 0  Const true [line: 136]
+.   .   .   .   .   .   Sibling: 1  Call: output  [line: 137] |	.   .   .   .   .   .   Sibling: 1  Call: output [line: 137]
+.   .   .   .   .   .   .   Child: 0  Id: sumPlayerT  [line:  |	.   .   .   .   .   .   .   Child: 0  Id: sumPlayerT [line: 1
+.   .   .   .   .   .   Sibling: 2  Call: outputb  [line: 138 |	.   .   .   .   .   .   Sibling: 2  Call: outputb [line: 138]
+.   .   .   .   .   .   .   Child: 0  Const true  [line: 138] |	.   .   .   .   .   .   .   Child: 0  Const true [line: 138]
+.   .   .   .   Sibling: 1  Call: output  [line: 140]	      |	.   .   .   .   Sibling: 1  Call: output [line: 140]
+.   .   .   .   .   Child: 0  Op: [  [line: 140]	      |	.   .   .   .   .   Child: 0  Op: [ [line: 140]
+.   .   .   .   .   .   Child: 0  Id: cups  [line: 140]	      |	.   .   .   .   .   .   Child: 0  Id: cups [line: 140]
+.   .   .   .   .   .   Child: 1  Id: index  [line: 140]      |	.   .   .   .   .   .   Child: 1  Id: index [line: 140]
+.   .   .   .   Sibling: 2  Assign: %  [line: 141]	      |	.   .   .   .   Sibling: 2  Assign: -- [line: 141]
+.   .   .   .   .   Child: 0  Id: index  [line: 141]	      |	.   .   .   .   .   Child: 0  Id: index [line: 141]
+.   .   Sibling: 2  Call: outnl  [line: 144]		      |	.   .   Sibling: 2  Call: outnl [line: 144]
+.   .   Sibling: 3  Assign: :=  [line: 145]		      |	.   .   Sibling: 3  Assign: := [line: 145]
+.   .   .   Child: 0  Id: index  [line: 145]		      |	.   .   .   Child: 0  Id: index [line: 145]
+.   .   .   Child: 1  Const 6  [line: 145]		      |	.   .   .   Child: 1  Const 6 [line: 145]
+.   .   Sibling: 4  Stmt  [line: 145]			      |	.   .   Sibling: 4  While [line: 148]
+.   .   .   Child: 0  Op: <  [line: 148]		      |	.   .   .   Child: 0  Op: < [line: 148]
+.   .   .   .   Child: 0  Id: index  [line: 148]	      |	.   .   .   .   Child: 0  Id: index [line: 148]
+.   .   .   .   Child: 1  Const 12  [line: 148]		      |	.   .   .   .   Child: 1  Const 12 [line: 148]
+.   .   .   Child: 1  Compound  [line: 148]		      |	.   .   .   Child: 1  Compound [line: 148]
+.   .   .   .   Child: 1  If  [line: 148]		      |	.   .   .   .   Child: 1  If [line: 149]
+.   .   .   .   .   Child: 0  Op: =  [line: 149]	      |	.   .   .   .   .   Child: 0  Op: = [line: 149]
+.   .   .   .   .   .   Child: 0  Id: index  [line: 149]      |	.   .   .   .   .   .   Child: 0  Id: index [line: 149]
+.   .   .   .   .   .   Child: 1  Const 6  [line: 149]	      |	.   .   .   .   .   .   Child: 1  Const 6 [line: 149]
+.   .   .   .   .   Child: 1  Compound  [line: 149]	      |	.   .   .   .   .   Child: 1  Compound [line: 149]
+.   .   .   .   .   .   Child: 1  Call: outputb  [line: 150]  |	.   .   .   .   .   .   Child: 1  Call: outputb [line: 150]
+.   .   .   .   .   .   .   Child: 0  Const false  [line: 150 |	.   .   .   .   .   .   .   Child: 0  Const false [line: 150]
+.   .   .   .   .   .   Sibling: 1  Call: output  [line: 151] |	.   .   .   .   .   .   Sibling: 1  Call: output [line: 151]
+.   .   .   .   .   .   .   Child: 0  Id: sumPlayerF  [line:  |	.   .   .   .   .   .   .   Child: 0  Id: sumPlayerF [line: 1
+.   .   .   .   .   .   Sibling: 2  Call: outputb  [line: 152 |	.   .   .   .   .   .   Sibling: 2  Call: outputb [line: 152]
+.   .   .   .   .   .   .   Child: 0  Const false  [line: 152 |	.   .   .   .   .   .   .   Child: 0  Const false [line: 152]
+.   .   .   .   Sibling: 1  Call: output  [line: 154]	      |	.   .   .   .   Sibling: 1  Call: output [line: 154]
+.   .   .   .   .   Child: 0  Op: [  [line: 154]	      |	.   .   .   .   .   Child: 0  Op: [ [line: 154]
+.   .   .   .   .   .   Child: 0  Id: cups  [line: 154]	      |	.   .   .   .   .   .   Child: 0  Id: cups [line: 154]
+.   .   .   .   .   .   Child: 1  Id: index  [line: 154]      |	.   .   .   .   .   .   Child: 1  Id: index [line: 154]
+.   .   .   .   Sibling: 2  Assign: $  [line: 155]	      |	.   .   .   .   Sibling: 2  Assign: ++ [line: 155]
+.   .   .   .   .   Child: 0  Id: index  [line: 155]	      |	.   .   .   .   .   Child: 0  Id: index [line: 155]
+.   .   Sibling: 5  Call: outnl  [line: 157]		      |	.   .   Sibling: 5  Call: outnl [line: 157]
+.   .   Sibling: 6  Stmt  [line: 157]			      |	.   .   Sibling: 6  Return [line: 158]
+Func: tryPlayerT  [line: 161]				      |	Sibling: 10  Func: tryPlayerT  [line: 161]
+.   Child: 1  Compound  [line: 161]			      |	.   Child: 1  Compound [line: 161]
+.   .   Child: 1  If  [line: 161]			      |	.   .   Child: 1  If [line: 168]
+.   .   .   Child: 0  Op: >  [line: 168]		      |	.   .   .   Child: 0  Op: > [line: 168]
+.   .   .   .   Child: 0  Id: sumPlayerT  [line: 168]	      |	.   .   .   .   Child: 0  Id: sumPlayerT [line: 168]
+.   .   .   .   Child: 1  Const 24  [line: 168]		      |	.   .   .   .   Child: 1  Const 24 [line: 168]
+.   .   .   Child: 1  Compound  [line: 168]		      |	.   .   .   Child: 1  Compound [line: 168]
+.   .   .   .   Child: 1  Assign: :=  [line: 169]	      |	.   .   .   .   Child: 1  Assign: := [line: 169]
+.   .   .   .   .   Child: 0  Id: winnerPlayerT  [line: 169]  |	.   .   .   .   .   Child: 0  Id: winnerPlayerT [line: 169]
+.   .   .   .   .   Child: 1  Const true  [line: 169]	      |	.   .   .   .   .   Child: 1  Const true [line: 169]
+.   .   .   .   Sibling: 1  Assign: :=  [line: 170]	      |	.   .   .   .   Sibling: 1  Assign: := [line: 170]
+.   .   .   .   .   Child: 0  Id: winner  [line: 170]	      |	.   .   .   .   .   Child: 0  Id: winner [line: 170]
+.   .   .   .   .   Child: 1  Const true  [line: 170]	      |	.   .   .   .   .   Child: 1  Const true [line: 170]
+.   .   Sibling: 1  Stmt  [line: 171]			      |	.   .   Sibling: 1  Return [line: 172]
+Func: tryPlayerF  [line: 175]				      |	Sibling: 11  Func: tryPlayerF  [line: 175]
+.   Child: 1  Compound  [line: 175]			      |	.   Child: 1  Compound [line: 175]
+.   .   Child: 1  If  [line: 175]			      |	.   .   Child: 1  If [line: 182]
+.   .   .   Child: 0  Op: >  [line: 182]		      |	.   .   .   Child: 0  Op: > [line: 182]
+.   .   .   .   Child: 0  Id: sumPlayerF  [line: 182]	      |	.   .   .   .   Child: 0  Id: sumPlayerF [line: 182]
+.   .   .   .   Child: 1  Const 24  [line: 182]		      |	.   .   .   .   Child: 1  Const 24 [line: 182]
+.   .   .   Child: 1  Compound  [line: 182]		      |	.   .   .   Child: 1  Compound [line: 182]
+.   .   .   .   Child: 1  Assign: :=  [line: 183]	      |	.   .   .   .   Child: 1  Assign: := [line: 183]
+.   .   .   .   .   Child: 0  Id: winnerPlayerF  [line: 183]  |	.   .   .   .   .   Child: 0  Id: winnerPlayerF [line: 183]
+.   .   .   .   .   Child: 1  Const true  [line: 183]	      |	.   .   .   .   .   Child: 1  Const true [line: 183]
+.   .   .   .   Sibling: 1  Assign: :=  [line: 184]	      |	.   .   .   .   Sibling: 1  Assign: := [line: 184]
+.   .   .   .   .   Child: 0  Id: winner  [line: 184]	      |	.   .   .   .   .   Child: 0  Id: winner [line: 184]
+.   .   .   .   .   Child: 1  Const true  [line: 184]	      |	.   .   .   .   .   Child: 1  Const true [line: 184]
+.   .   Sibling: 1  Stmt  [line: 185]			      |	.   .   Sibling: 1  Return [line: 186]
+Func: moveSeeds  [line: 189]				      |	Sibling: 12  Func: moveSeeds  [line: 189]
+.   Child: 0  Param: cup  [line: 189]			      |	.   Child: 0  Parm: cup  [line: 189]
+.   Sibling: 1  Param: player  [line: 189]		      |	.   Sibling: 1  Parm: player  [line: 189]
+.   Child: 1  Compound  [line: 189]			      |	.   Child: 1  Compound [line: 189]
+.   .   Child: 0  Var: index   [line: 190]		      |	.   .   Child: 0  Var: index  [line: 190]
+.   .   Sibling: 1  Var: numSeeds   [line: 190]		      |	.   .   Sibling: 1  Var: numSeeds  [line: 190]
+.   .   Sibling: 2  Var: numSeeds2   [line: 190]	      |	.   .   Sibling: 2  Var: numSeeds2  [line: 190]
+.   .   Sibling: 3  Var: consecutive   [line: 191]	      |	.   .   Sibling: 3  Var: consecutive  [line: 191]
+.   .   Child: 1  Assign: :=  [line: 193]		      |	.   .   Child: 1  Assign: := [line: 193]
+.   .   .   Child: 0  Id: consecutive  [line: 193]	      |	.   .   .   Child: 0  Id: consecutive [line: 193]
+.   .   .   Child: 1  Const true  [line: 193]		      |	.   .   .   Child: 1  Const true [line: 193]
+.   .   Sibling: 1  Assign: :=  [line: 194]		      |	.   .   Sibling: 1  Assign: := [line: 194]
+.   .   .   Child: 0  Id: numSeeds  [line: 194]		      |	.   .   .   Child: 0  Id: numSeeds [line: 194]
+.   .   .   Child: 1  Assign: :=  [line: 194]		      |	.   .   .   Child: 1  Assign: := [line: 194]
+.   .   .   .   Child: 0  Id: numSeeds2  [line: 194]	      |	.   .   .   .   Child: 0  Id: numSeeds2 [line: 194]
+.   .   .   .   Child: 1  Op: [  [line: 194]		      |	.   .   .   .   Child: 1  Op: [ [line: 194]
+.   .   .   .   .   Child: 0  Id: cups  [line: 194]	      |	.   .   .   .   .   Child: 0  Id: cups [line: 194]
+.   .   .   .   .   Child: 1  Id: cup  [line: 194]	      |	.   .   .   .   .   Child: 1  Id: cup [line: 194]
+.   .   Sibling: 2  Assign: :=  [line: 195]		      |	.   .   Sibling: 2  Assign: := [line: 195]
+.   .   .   Child: 0  Op: [  [line: 195]		      |	.   .   .   Child: 0  Op: [ [line: 195]
+.   .   .   .   Child: 0  Id: cups  [line: 195]		      |	.   .   .   .   Child: 0  Id: cups [line: 195]
+.   .   .   .   Child: 1  Id: cup  [line: 195]		      |	.   .   .   .   Child: 1  Id: cup [line: 195]
+.   .   .   Child: 1  Const 0  [line: 195]		      |	.   .   .   Child: 1  Const 0 [line: 195]
+.   .   Sibling: 3  Assign: :=  [line: 196]		      |	.   .   Sibling: 3  Assign: := [line: 196]
+.   .   .   Child: 0  Id: index  [line: 196]		      |	.   .   .   Child: 0  Id: index [line: 196]
+.   .   .   Child: 1  Id: cup  [line: 196]		      |	.   .   .   Child: 1  Id: cup [line: 196]
+.   .   Sibling: 4  Stmt  [line: 196]			      |	.   .   Sibling: 4  While [line: 198]
+.   .   .   Child: 0  Op: !=  [line: 198]		      |	.   .   .   Child: 0  Op: >< [line: 198]
+.   .   .   .   Child: 0  Id: numSeeds  [line: 198]	      |	.   .   .   .   Child: 0  Id: numSeeds [line: 198]
+.   .   .   .   Child: 1  Const 0  [line: 198]		      |	.   .   .   .   Child: 1  Const 0 [line: 198]
+.   .   .   Child: 1  Compound  [line: 198]		      |	.   .   .   Child: 1  Compound [line: 198]
+.   .   .   .   Child: 1  Assign: $  [line: 199]	      |	.   .   .   .   Child: 1  Assign: ++ [line: 199]
+.   .   .   .   .   Child: 0  Id: index  [line: 199]	      |	.   .   .   .   .   Child: 0  Id: index [line: 199]
+.   .   .   .   Sibling: 1  If  [line: 199]		      |	.   .   .   .   Sibling: 1  If [line: 200]
+.   .   .   .   .   Child: 0  Op: or  [line: 200]	      |	.   .   .   .   .   Child: 0  Op: or [line: 200]
+.   .   .   .   .   .   Child: 0  Op: >  [line: 200]	      |	.   .   .   .   .   .   Child: 0  Op: > [line: 200]
+.   .   .   .   .   .   .   Child: 0  Id: index  [line: 200]  |	.   .   .   .   .   .   .   Child: 0  Id: index [line: 200]
+.   .   .   .   .   .   .   Child: 1  Const 11  [line: 200]   |	.   .   .   .   .   .   .   Child: 1  Const 11 [line: 200]
+.   .   .   .   .   .   Child: 1  Op: <  [line: 200]	      |	.   .   .   .   .   .   Child: 1  Op: < [line: 200]
+.   .   .   .   .   .   .   Child: 0  Id: index  [line: 200]  |	.   .   .   .   .   .   .   Child: 0  Id: index [line: 200]
+.   .   .   .   .   .   .   Child: 1  Const 0  [line: 200]    |	.   .   .   .   .   .   .   Child: 1  Const 0 [line: 200]
+.   .   .   .   .   Child: 1  Compound  [line: 200]	      |	.   .   .   .   .   Child: 1  Compound [line: 200]
+.   .   .   .   .   .   Child: 1  Assign: :=  [line: 201]     |	.   .   .   .   .   .   Child: 1  Assign: := [line: 201]
+.   .   .   .   .   .   .   Child: 0  Id: index  [line: 201]  |	.   .   .   .   .   .   .   Child: 0  Id: index [line: 201]
+.   .   .   .   .   .   .   Child: 1  Const 0  [line: 201]    |	.   .   .   .   .   .   .   Child: 1  Const 0 [line: 201]
+.   .   .   .   Sibling: 2  If  [line: 202]		      |	.   .   .   .   Sibling: 2  If [line: 204]
+.   .   .   .   .   Child: 0  Op: !=  [line: 204]	      |	.   .   .   .   .   Child: 0  Op: >< [line: 204]
+.   .   .   .   .   .   Child: 0  Id: index  [line: 204]      |	.   .   .   .   .   .   Child: 0  Id: index [line: 204]
+.   .   .   .   .   .   Child: 1  Id: cup  [line: 204]	      |	.   .   .   .   .   .   Child: 1  Id: cup [line: 204]
+.   .   .   .   .   Child: 1  Compound  [line: 204]	      |	.   .   .   .   .   Child: 1  Compound [line: 204]
+.   .   .   .   .   .   Child: 1  Assign: $  [line: 205]      |	.   .   .   .   .   .   Child: 1  Assign: ++ [line: 205]
+.   .   .   .   .   .   .   Child: 0  Op: [  [line: 205]      |	.   .   .   .   .   .   .   Child: 0  Op: [ [line: 205]
+.   .   .   .   .   .   .   .   Child: 0  Id: cups  [line: 20 |	.   .   .   .   .   .   .   .   Child: 0  Id: cups [line: 205
+.   .   .   .   .   .   .   .   Child: 1  Id: index  [line: 2 |	.   .   .   .   .   .   .   .   Child: 1  Id: index [line: 20
+.   .   .   .   Sibling: 3  Assign: %  [line: 208]	      |	.   .   .   .   Sibling: 3  Assign: -- [line: 208]
+.   .   .   .   .   Child: 0  Id: numSeeds  [line: 208]	      |	.   .   .   .   .   Child: 0  Id: numSeeds [line: 208]
+.   .   Sibling: 5  Stmt  [line: 209]			      |	.   .   Sibling: 5  While [line: 212]
+.   .   .   Child: 0  Op: and  [line: 212]		      |	.   .   .   Child: 0  Op: and [line: 212]
+.   .   .   .   Child: 0  Op: >  [line: 212]		      |	.   .   .   .   Child: 0  Op: > [line: 212]
+.   .   .   .   .   Child: 0  Id: numSeeds2  [line: 212]      |	.   .   .   .   .   Child: 0  Id: numSeeds2 [line: 212]
+.   .   .   .   .   Child: 1  Const 0  [line: 212]	      |	.   .   .   .   .   Child: 1  Const 0 [line: 212]
+.   .   .   .   Child: 1  Id: consecutive  [line: 212]	      |	.   .   .   .   Child: 1  Id: consecutive [line: 212]
+.   .   .   Child: 1  Compound  [line: 212]		      |	.   .   .   Child: 1  Compound [line: 212]
+.   .   .   .   Child: 1  If  [line: 212]		      |	.   .   .   .   Child: 1  If [line: 213]
+.   .   .   .   .   Child: 0  Id: turn  [line: 213]	      |	.   .   .   .   .   Child: 0  Id: turn [line: 213]
+.   .   .   .   .   Child: 1  Compound  [line: 213]	      |	.   .   .   .   .   Child: 1  Compound [line: 213]
+.   .   .   .   .   .   Child: 1  If  [line: 213]	      |	.   .   .   .   .   .   Child: 1  If [line: 214]
+.   .   .   .   .   .   .   Child: 0  Op: and  [line: 214]    |	.   .   .   .   .   .   .   Child: 0  Op: and [line: 214]
+.   .   .   .   .   .   .   .   Child: 0  Op: >=  [line: 214] |	.   .   .   .   .   .   .   .   Child: 0  Op: >= [line: 214]
+.   .   .   .   .   .   .   .   .   Child: 0  Id: index  [lin |	.   .   .   .   .   .   .   .   .   Child: 0  Id: index [line
+.   .   .   .   .   .   .   .   .   Child: 1  Const 6  [line: |	.   .   .   .   .   .   .   .   .   Child: 1  Const 6 [line: 
+.   .   .   .   .   .   .   .   Child: 1  Op: <  [line: 214]  |	.   .   .   .   .   .   .   .   Child: 1  Op: < [line: 214]
+.   .   .   .   .   .   .   .   .   Child: 0  Id: index  [lin |	.   .   .   .   .   .   .   .   .   Child: 0  Id: index [line
+.   .   .   .   .   .   .   .   .   Child: 1  Const 12  [line |	.   .   .   .   .   .   .   .   .   Child: 1  Const 12 [line:
+.   .   .   .   .   .   .   Child: 1  Compound  [line: 214]   |	.   .   .   .   .   .   .   Child: 1  Compound [line: 214]
+.   .   .   .   .   .   .   .   Child: 1  If  [line: 214]     |	.   .   .   .   .   .   .   .   Child: 1  If [line: 215]
+.   .   .   .   .   .   .   .   .   Child: 0  Op: or  [line:  |	.   .   .   .   .   .   .   .   .   Child: 0  Op: or [line: 2
+.   .   .   .   .   .   .   .   .   .   Child: 0  Op: =  [lin |	.   .   .   .   .   .   .   .   .   .   Child: 0  Op: = [line
+.   .   .   .   .   .   .   .   .   .   .   Child: 0  Op: [   |	.   .   .   .   .   .   .   .   .   .   .   Child: 0  Op: [ [
+.   .   .   .   .   .   .   .   .   .   .   .   Child: 0  Id: |	.   .   .   .   .   .   .   .   .   .   .   .   Child: 0  Id:
+.   .   .   .   .   .   .   .   .   .   .   .   Child: 1  Id: |	.   .   .   .   .   .   .   .   .   .   .   .   Child: 1  Id:
+.   .   .   .   .   .   .   .   .   .   .   Child: 1  Const 2 |	.   .   .   .   .   .   .   .   .   .   .   Child: 1  Const 2
+.   .   .   .   .   .   .   .   .   .   Child: 1  Op: =  [lin |	.   .   .   .   .   .   .   .   .   .   Child: 1  Op: = [line
+.   .   .   .   .   .   .   .   .   .   .   Child: 0  Op: [   |	.   .   .   .   .   .   .   .   .   .   .   Child: 0  Op: [ [
+.   .   .   .   .   .   .   .   .   .   .   .   Child: 0  Id: |	.   .   .   .   .   .   .   .   .   .   .   .   Child: 0  Id:
+.   .   .   .   .   .   .   .   .   .   .   .   Child: 1  Id: |	.   .   .   .   .   .   .   .   .   .   .   .   Child: 1  Id:
+.   .   .   .   .   .   .   .   .   .   .   Child: 1  Const 3 |	.   .   .   .   .   .   .   .   .   .   .   Child: 1  Const 3
+.   .   .   .   .   .   .   .   .   Child: 1  Compound  [line |	.   .   .   .   .   .   .   .   .   Child: 1  Compound [line:
+.   .   .   .   .   .   .   .   .   .   Child: 1  If  [line:  |	.   .   .   .   .   .   .   .   .   .   Child: 1  If [line: 2
+.   .   .   .   .   .   .   .   .   .   .   Child: 0  Id: con |	.   .   .   .   .   .   .   .   .   .   .   Child: 0  Id: con
+.   .   .   .   .   .   .   .   .   .   .   Child: 1  Compoun |	.   .   .   .   .   .   .   .   .   .   .   Child: 1  Compoun
+.   .   .   .   .   .   .   .   .   .   .   .   Child: 1  Ass |	.   .   .   .   .   .   .   .   .   .   .   .   Child: 1  Ass
 .   .   .   .   .   .   .   .   .   .   .   .   .   Child: 0  |	.   .   .   .   .   .   .   .   .   .   .   .   .   Child: 0 
 .   .   .   .   .   .   .   .   .   .   .   .   .   Child: 1  |	.   .   .   .   .   .   .   .   .   .   .   .   .   Child: 1 
 .   .   .   .   .   .   .   .   .   .   .   .   .   .   Child |	.   .   .   .   .   .   .   .   .   .   .   .   .   .   Child
 .   .   .   .   .   .   .   .   .   .   .   .   .   .   Child |	.   .   .   .   .   .   .   .   .   .   .   .   .   .   Child
-.   .   .   .   .   .   .   .   .   .   .   .   .   .   .   C |	.   .   .   .   .   .   .   .   .   .   .   .   .   .   .   C
-.   .   .   .   .   .   .   .   .   .   Child: 1  Op: %  [lin |	.   .   .   .   .   .   .   .   .   .   Child: 1  Op: % [line
-.   .   .   .   .   .   .   .   .   .   .   Child: 0  Op: /   |	.   .   .   .   .   .   .   .   .   .   .   Child: 0  Op: / [
-.   .   .   .   .   .   .   .   .   .   .   .   Child: 0  Op: |	.   .   .   .   .   .   .   .   .   .   .   .   Child: 0  Op:
+.   .   .   .   .   .   .   .   .   .   .   .   Sibling: 1  A |	.   .   .   .   .   .   .   .   .   .   .   .   Sibling: 1  A
 .   .   .   .   .   .   .   .   .   .   .   .   .   Child: 0  |	.   .   .   .   .   .   .   .   .   .   .   .   .   Child: 0 
-.   .   .   .   .   .   .   .   .   .   .   .   Child: 1  Con |	.   .   .   .   .   .   .   .   .   .   .   .   Child: 1  Con
-.   .   .   .   .   .   .   .   .   .   .   Child: 1  Const 5 |	.   .   .   .   .   .   .   .   .   .   .   Child: 1  Const 5
-.   .   .   .   .   .   .   .   .   Child: 1  Const 31  [line |	.   .   .   .   .   .   .   .   .   Child: 1  Const 31 [line:
-.   .   .   .   .   .   .   .   Child: 1  Const 331  [line: 1 |	.   .   .   .   .   .   .   .   Child: 1  Const 331 [line: 11
-.   .   .   .   .   .   .   Child: 1  Const 12  [line: 11]    |	.   .   .   .   .   .   .   Child: 1  Const 12 [line: 11]
-.   .   .   .   .   Child: 1  Op: <  [line: 1]		      |	.   .   .   .   .   Child: 1  Op: < [line: 11]
-.   .   .   .   .   .   Child: 0  Const 7  [line: 11]	      |	.   .   .   .   .   .   Child: 0  Const 7 [line: 11]
-.   .   .   .   .   .   Child: 1  Const 9  [line: 11]	      |	.   .   .   .   .   .   Child: 1  Const 9 [line: 11]
+.   .   .   .   .   .   .   .   .   .   .   .   .   .   Child |	.   .   .   .   .   .   .   .   .   .   .   .   .   .   Child
+.   .   .   .   .   .   .   .   .   .   .   .   .   .   Child |	.   .   .   .   .   .   .   .   .   .   .   .   .   .   Child
+.   .   .   .   .   .   .   .   .   .   .   .   .   Child: 1  |	.   .   .   .   .   .   .   .   .   .   .   .   .   Child: 1 
+.   .   .   .   .   .   .   .   .   .   .   .   Sibling: 2  A |	.   .   .   .   .   .   .   .   .   .   .   .   Sibling: 2  A
+.   .   .   .   .   .   .   .   .   .   .   .   .   Child: 0  |	.   .   .   .   .   .   .   .   .   .   .   .   .   Child: 0 
+.   .   .   .   .   .   .   .   .   .   .   .   .   Child: 1  |	.   .   .   .   .   .   .   .   .   .   .   .   .   Child: 1 
+.   .   .   .   .   .   .   .   .   Child: 2  Compound  [line |	.   .   .   .   .   .   .   .   .   Child: 2  Compound [line:
+.   .   .   .   .   .   .   .   .   .   Child: 1  Assign: :=  |	.   .   .   .   .   .   .   .   .   .   Child: 1  Assign: := 
+.   .   .   .   .   .   .   .   .   .   .   Child: 0  Id: con |	.   .   .   .   .   .   .   .   .   .   .   Child: 0  Id: con
+.   .   .   .   .   .   .   .   .   .   .   Child: 1  Const f |	.   .   .   .   .   .   .   .   .   .   .   Child: 1  Const f
+.   .   .   .   .   .   .   Child: 2  Compound  [line: 226]   |	.   .   .   .   .   .   .   Child: 2  Compound [line: 226]
+.   .   .   .   .   .   .   .   Child: 1  Assign: :=  [line:  |	.   .   .   .   .   .   .   .   Child: 1  Assign: := [line: 2
+.   .   .   .   .   .   .   .   .   Child: 0  Id: consecutive |	.   .   .   .   .   .   .   .   .   Child: 0  Id: consecutive
+.   .   .   .   .   .   .   .   .   Child: 1  Const false  [l |	.   .   .   .   .   .   .   .   .   Child: 1  Const false [li
+.   .   .   .   .   Child: 2  Compound  [line: 230]	      |	.   .   .   .   .   Child: 2  Compound [line: 230]
+.   .   .   .   .   .   Child: 1  If  [line: 230]	      |	.   .   .   .   .   .   Child: 1  If [line: 231]
+.   .   .   .   .   .   .   Child: 0  Op: and  [line: 231]    |	.   .   .   .   .   .   .   Child: 0  Op: and [line: 231]
+.   .   .   .   .   .   .   .   Child: 0  Op: >=  [line: 231] |	.   .   .   .   .   .   .   .   Child: 0  Op: >= [line: 231]
+.   .   .   .   .   .   .   .   .   Child: 0  Id: index  [lin |	.   .   .   .   .   .   .   .   .   Child: 0  Id: index [line
+.   .   .   .   .   .   .   .   .   Child: 1  Const 0  [line: |	.   .   .   .   .   .   .   .   .   Child: 1  Const 0 [line: 
+.   .   .   .   .   .   .   .   Child: 1  Op: <  [line: 231]  |	.   .   .   .   .   .   .   .   Child: 1  Op: < [line: 231]
+.   .   .   .   .   .   .   .   .   Child: 0  Id: index  [lin |	.   .   .   .   .   .   .   .   .   Child: 0  Id: index [line
+.   .   .   .   .   .   .   .   .   Child: 1  Const 6  [line: |	.   .   .   .   .   .   .   .   .   Child: 1  Const 6 [line: 
+.   .   .   .   .   .   .   Child: 1  Compound  [line: 231]   |	.   .   .   .   .   .   .   Child: 1  Compound [line: 231]
+.   .   .   .   .   .   .   .   Child: 1  If  [line: 231]     |	.   .   .   .   .   .   .   .   Child: 1  If [line: 232]
+.   .   .   .   .   .   .   .   .   Child: 0  Op: or  [line:  |	.   .   .   .   .   .   .   .   .   Child: 0  Op: or [line: 2
+.   .   .   .   .   .   .   .   .   .   Child: 0  Op: =  [lin |	.   .   .   .   .   .   .   .   .   .   Child: 0  Op: = [line
+.   .   .   .   .   .   .   .   .   .   .   Child: 0  Op: [   |	.   .   .   .   .   .   .   .   .   .   .   Child: 0  Op: [ [
+.   .   .   .   .   .   .   .   .   .   .   .   Child: 0  Id: |	.   .   .   .   .   .   .   .   .   .   .   .   Child: 0  Id:
+.   .   .   .   .   .   .   .   .   .   .   .   Child: 1  Id: |	.   .   .   .   .   .   .   .   .   .   .   .   Child: 1  Id:
+.   .   .   .   .   .   .   .   .   .   .   Child: 1  Const 2 |	.   .   .   .   .   .   .   .   .   .   .   Child: 1  Const 2
+.   .   .   .   .   .   .   .   .   .   Child: 1  Op: =  [lin |	.   .   .   .   .   .   .   .   .   .   Child: 1  Op: = [line
+.   .   .   .   .   .   .   .   .   .   .   Child: 0  Op: [   |	.   .   .   .   .   .   .   .   .   .   .   Child: 0  Op: [ [
+.   .   .   .   .   .   .   .   .   .   .   .   Child: 0  Id: |	.   .   .   .   .   .   .   .   .   .   .   .   Child: 0  Id:
+.   .   .   .   .   .   .   .   .   .   .   .   Child: 1  Id: |	.   .   .   .   .   .   .   .   .   .   .   .   Child: 1  Id:
+.   .   .   .   .   .   .   .   .   .   .   Child: 1  Const 3 |	.   .   .   .   .   .   .   .   .   .   .   Child: 1  Const 3
+.   .   .   .   .   .   .   .   .   Child: 1  Compound  [line |	.   .   .   .   .   .   .   .   .   Child: 1  Compound [line:
+.   .   .   .   .   .   .   .   .   .   Child: 1  If  [line:  |	.   .   .   .   .   .   .   .   .   .   Child: 1  If [line: 2
+.   .   .   .   .   .   .   .   .   .   .   Child: 0  Id: con |	.   .   .   .   .   .   .   .   .   .   .   Child: 0  Id: con
+.   .   .   .   .   .   .   .   .   .   .   Child: 1  Compoun |	.   .   .   .   .   .   .   .   .   .   .   Child: 1  Compoun
+.   .   .   .   .   .   .   .   .   .   .   .   Child: 1  Ass |	.   .   .   .   .   .   .   .   .   .   .   .   Child: 1  Ass
+.   .   .   .   .   .   .   .   .   .   .   .   .   Child: 0  |	.   .   .   .   .   .   .   .   .   .   .   .   .   Child: 0 
+.   .   .   .   .   .   .   .   .   .   .   .   .   Child: 1  |	.   .   .   .   .   .   .   .   .   .   .   .   .   Child: 1 
+.   .   .   .   .   .   .   .   .   .   .   .   .   .   Child |	.   .   .   .   .   .   .   .   .   .   .   .   .   .   Child
+.   .   .   .   .   .   .   .   .   .   .   .   .   .   Child |	.   .   .   .   .   .   .   .   .   .   .   .   .   .   Child
+.   .   .   .   .   .   .   .   .   .   .   .   Sibling: 1  A |	.   .   .   .   .   .   .   .   .   .   .   .   Sibling: 1  A
+.   .   .   .   .   .   .   .   .   .   .   .   .   Child: 0  |	.   .   .   .   .   .   .   .   .   .   .   .   .   Child: 0 
+.   .   .   .   .   .   .   .   .   .   .   .   .   .   Child |	.   .   .   .   .   .   .   .   .   .   .   .   .   .   Child
+.   .   .   .   .   .   .   .   .   .   .   .   .   .   Child |	.   .   .   .   .   .   .   .   .   .   .   .   .   .   Child
+.   .   .   .   .   .   .   .   .   .   .   .   .   Child: 1  |	.   .   .   .   .   .   .   .   .   .   .   .   .   Child: 1 
+.   .   .   .   .   .   .   .   .   .   .   .   Sibling: 2  A |	.   .   .   .   .   .   .   .   .   .   .   .   Sibling: 2  A
+.   .   .   .   .   .   .   .   .   .   .   .   .   Child: 0  |	.   .   .   .   .   .   .   .   .   .   .   .   .   Child: 0 
+.   .   .   .   .   .   .   .   .   .   .   .   .   Child: 1  |	.   .   .   .   .   .   .   .   .   .   .   .   .   Child: 1 
+.   .   .   .   .   .   .   .   .   Child: 2  Compound  [line |	.   .   .   .   .   .   .   .   .   Child: 2  Compound [line:
+.   .   .   .   .   .   .   .   .   .   Child: 1  Assign: :=  |	.   .   .   .   .   .   .   .   .   .   Child: 1  Assign: := 
+.   .   .   .   .   .   .   .   .   .   .   Child: 0  Id: con |	.   .   .   .   .   .   .   .   .   .   .   Child: 0  Id: con
+.   .   .   .   .   .   .   .   .   .   .   Child: 1  Const f |	.   .   .   .   .   .   .   .   .   .   .   Child: 1  Const f
+.   .   .   .   .   .   .   Child: 2  Compound  [line: 244]   |	.   .   .   .   .   .   .   Child: 2  Compound [line: 244]
+.   .   .   .   .   .   .   .   Child: 1  Assign: :=  [line:  |	.   .   .   .   .   .   .   .   Child: 1  Assign: := [line: 2
+.   .   .   .   .   .   .   .   .   Child: 0  Id: consecutive |	.   .   .   .   .   .   .   .   .   Child: 0  Id: consecutive
+.   .   .   .   .   .   .   .   .   Child: 1  Const false  [l |	.   .   .   .   .   .   .   .   .   Child: 1  Const false [li
+.   .   .   .   Sibling: 1  Assign: %  [line: 249]	      |	.   .   .   .   Sibling: 1  Assign: -- [line: 249]
+.   .   .   .   .   Child: 0  Id: index  [line: 249]	      |	.   .   .   .   .   Child: 0  Id: index [line: 249]
+.   .   .   .   Sibling: 2  If  [line: 249]		      |	.   .   .   .   Sibling: 2  If [line: 250]
+.   .   .   .   .   Child: 0  Op: <  [line: 250]	      |	.   .   .   .   .   Child: 0  Op: < [line: 250]
+.   .   .   .   .   .   Child: 0  Id: index  [line: 250]      |	.   .   .   .   .   .   Child: 0  Id: index [line: 250]
+.   .   .   .   .   .   Child: 1  Const 0  [line: 250]	      |	.   .   .   .   .   .   Child: 1  Const 0 [line: 250]
+.   .   .   .   .   Child: 1  Compound  [line: 250]	      |	.   .   .   .   .   Child: 1  Compound [line: 250]
+.   .   .   .   .   .   Child: 1  Assign: :=  [line: 251]     |	.   .   .   .   .   .   Child: 1  Assign: := [line: 251]
+.   .   .   .   .   .   .   Child: 0  Id: index  [line: 251]  |	.   .   .   .   .   .   .   Child: 0  Id: index [line: 251]
+.   .   .   .   .   .   .   Child: 1  Const 11  [line: 251]   |	.   .   .   .   .   .   .   Child: 1  Const 11 [line: 251]
+.   .   .   .   Sibling: 3  Assign: %  [line: 254]	      |	.   .   .   .   Sibling: 3  Assign: -- [line: 254]
+.   .   .   .   .   Child: 0  Id: numSeeds2  [line: 254]      |	.   .   .   .   .   Child: 0  Id: numSeeds2 [line: 254]
+Func: main  [line: 258]					      |	Sibling: 13  Func: main  [line: 258]
+.   Child: 1  Compound  [line: 258]			      |	.   Child: 1  Compound [line: 258]
+.   .   Child: 0  Var: play   [line: 259]		      |	.   .   Child: 0  Var: play  [line: 259]
+.   .   Sibling: 1  Var: playConverted   [line: 260]	      |	.   .   Sibling: 1  Var: playConverted  [line: 260]
+.   .   Child: 1  Assign: :=  [line: 263]		      |	.   .   Child: 1  Assign: := [line: 263]
+.   .   .   Child: 0  Id: play  [line: 263]		      |	.   .   .   Child: 0  Id: play [line: 263]
+.   .   .   Child: 1  Const 0  [line: 263]		      |	.   .   .   Child: 1  Const 0 [line: 263]
+.   .   Sibling: 1  Assign: :=  [line: 264]		      |	.   .   Sibling: 1  Assign: := [line: 264]
+.   .   .   Child: 0  Id: playConverted  [line: 264]	      |	.   .   .   Child: 0  Id: playConverted [line: 264]
+.   .   .   Child: 1  Const false  [line: 264]		      |	.   .   .   Child: 1  Const false [line: 264]
+.   .   Sibling: 2  Assign: :=  [line: 265]		      |	.   .   Sibling: 2  Assign: := [line: 265]
+.   .   .   Child: 0  Id: turn  [line: 265]		      |	.   .   .   Child: 0  Id: turn [line: 265]
+.   .   .   Child: 1  Const true  [line: 265]		      |	.   .   .   Child: 1  Const true [line: 265]
+.   .   Sibling: 3  Assign: :=  [line: 266]		      |	.   .   Sibling: 3  Assign: := [line: 266]
+.   .   .   Child: 0  Id: winner  [line: 266]		      |	.   .   .   Child: 0  Id: winner [line: 266]
+.   .   .   Child: 1  Const false  [line: 266]		      |	.   .   .   Child: 1  Const false [line: 266]
+.   .   Sibling: 4  Assign: :=  [line: 267]		      |	.   .   Sibling: 4  Assign: := [line: 267]
+.   .   .   Child: 0  Id: sumPlayerT  [line: 267]	      |	.   .   .   Child: 0  Id: sumPlayerT [line: 267]
+.   .   .   Child: 1  Const 0  [line: 267]		      |	.   .   .   Child: 1  Const 0 [line: 267]
+.   .   Sibling: 5  Assign: :=  [line: 268]		      |	.   .   Sibling: 5  Assign: := [line: 268]
+.   .   .   Child: 0  Id: sumPlayerF  [line: 268]	      |	.   .   .   Child: 0  Id: sumPlayerF [line: 268]
+.   .   .   Child: 1  Const 0  [line: 268]		      |	.   .   .   Child: 1  Const 0 [line: 268]
+.   .   Sibling: 6  Assign: :=  [line: 269]		      |	.   .   Sibling: 6  Assign: := [line: 269]
+.   .   .   Child: 0  Id: winnerPlayerT  [line: 269]	      |	.   .   .   Child: 0  Id: winnerPlayerT [line: 269]
+.   .   .   Child: 1  Const false  [line: 269]		      |	.   .   .   Child: 1  Const false [line: 269]
+.   .   Sibling: 7  Assign: :=  [line: 270]		      |	.   .   Sibling: 7  Assign: := [line: 270]
+.   .   .   Child: 0  Id: winnerPlayerF  [line: 270]	      |	.   .   .   Child: 0  Id: winnerPlayerF [line: 270]
+.   .   .   Child: 1  Const false  [line: 270]		      |	.   .   .   Child: 1  Const false [line: 270]
+.   .   Sibling: 8  Call: initGame  [line: 272]		      |	.   .   Sibling: 8  Call: initGame [line: 272]
+.   .   Sibling: 9  Stmt  [line: 272]			      |	.   .   Sibling: 9  While [line: 275]
+.   .   .   Child: 0  Op: not  [line: 272]		      |	.   .   .   Child: 0  Op: not [line: 275]
+.   .   .   .   Child: 0  Id: winner  [line: 275]	      |	.   .   .   .   Child: 0  Id: winner [line: 275]
+.   .   .   Child: 1  Compound  [line: 275]		      |	.   .   .   Child: 1  Compound [line: 275]
+.   .   .   .   Child: 1  Call: printBoard  [line: 276]	      |	.   .   .   .   Child: 1  Call: printBoard [line: 276]
+.   .   .   .   Sibling: 1  If  [line: 276]		      |	.   .   .   .   Sibling: 1  If [line: 277]
+.   .   .   .   .   Child: 0  Id: turn  [line: 277]	      |	.   .   .   .   .   Child: 0  Id: turn [line: 277]
+.   .   .   .   .   Child: 1  Compound  [line: 277]	      |	.   .   .   .   .   Child: 1  Compound [line: 277]
+.   .   .   .   .   .   Child: 1  Call: outputb  [line: 278]  |	.   .   .   .   .   .   Child: 1  Call: outputb [line: 278]
+.   .   .   .   .   .   .   Child: 0  Const true  [line: 278] |	.   .   .   .   .   .   .   Child: 0  Const true [line: 278]
+.   .   .   .   .   Child: 2  Compound  [line: 280]	      |	.   .   .   .   .   Child: 2  Compound [line: 280]
+.   .   .   .   .   .   Child: 1  Call: outputb  [line: 281]  |	.   .   .   .   .   .   Child: 1  Call: outputb [line: 281]
+.   .   .   .   .   .   .   Child: 0  Const false  [line: 281 |	.   .   .   .   .   .   .   Child: 0  Const false [line: 281]
+.   .   .   .   Sibling: 2  Assign: :=  [line: 284]	      |	.   .   .   .   Sibling: 2  Assign: := [line: 284]
+.   .   .   .   .   Child: 0  Id: play  [line: 284]	      |	.   .   .   .   .   Child: 0  Id: play [line: 284]
+.   .   .   .   .   Child: 1  Call: input  [line: 284]	      |	.   .   .   .   .   Child: 1  Call: input [line: 284]
+.   .   .   .   Sibling: 3  Stmt  [line: 284]		      |	.   .   .   .   Sibling: 3  While [line: 285]
+.   .   .   .   .   Child: 0  Op: or  [line: 285]	      |	.   .   .   .   .   Child: 0  Op: or [line: 285]
+.   .   .   .   .   .   Child: 0  Op: >  [line: 285]	      |	.   .   .   .   .   .   Child: 0  Op: > [line: 285]
+.   .   .   .   .   .   .   Child: 0  Id: play  [line: 285]   |	.   .   .   .   .   .   .   Child: 0  Id: play [line: 285]
+.   .   .   .   .   .   .   Child: 1  Const 6  [line: 285]    |	.   .   .   .   .   .   .   Child: 1  Const 6 [line: 285]
+.   .   .   .   .   .   Child: 1  Op: <  [line: 285]	      |	.   .   .   .   .   .   Child: 1  Op: < [line: 285]
+.   .   .   .   .   .   .   Child: 0  Id: play  [line: 285]   |	.   .   .   .   .   .   .   Child: 0  Id: play [line: 285]
+.   .   .   .   .   .   .   Child: 1  Const 1  [line: 285]    |	.   .   .   .   .   .   .   Child: 1  Const 1 [line: 285]
+.   .   .   .   .   Child: 1  Compound  [line: 285]	      |	.   .   .   .   .   Child: 1  Compound [line: 285]
+.   .   .   .   .   .   Child: 1  Assign: :=  [line: 286]     |	.   .   .   .   .   .   Child: 1  Assign: := [line: 286]
+.   .   .   .   .   .   .   Child: 0  Id: play  [line: 286]   |	.   .   .   .   .   .   .   Child: 0  Id: play [line: 286]
+.   .   .   .   .   .   .   Child: 1  Call: input  [line: 286 |	.   .   .   .   .   .   .   Child: 1  Call: input [line: 286]
+.   .   .   .   Sibling: 4  Assign:   [line: 289]	      |	.   .   .   .   Sibling: 4  Assign: -= [line: 289]
+.   .   .   .   .   Child: 0  Id: play  [line: 289]	      |	.   .   .   .   .   Child: 0  Id: play [line: 289]
+.   .   .   .   .   Child: 1  Const 1  [line: 289]	      |	.   .   .   .   .   Child: 1  Const 1 [line: 289]
+.   .   .   .   Sibling: 5  If  [line: 289]		      |	.   .   .   .   Sibling: 5  If [line: 291]
+.   .   .   .   .   Child: 0  Id: turn  [line: 291]	      |	.   .   .   .   .   Child: 0  Id: turn [line: 291]
+.   .   .   .   .   Child: 1  Compound  [line: 291]	      |	.   .   .   .   .   Child: 1  Compound [line: 291]
+.   .   .   .   .   .   Child: 1  If  [line: 291]	      |	.   .   .   .   .   .   Child: 1  If [line: 292]
+.   .   .   .   .   .   .   Child: 0  Op: and  [line: 292]    |	.   .   .   .   .   .   .   Child: 0  Op: and [line: 292]
+.   .   .   .   .   .   .   .   Child: 0  Op: =  [line: 292]  |	.   .   .   .   .   .   .   .   Child: 0  Op: = [line: 292]
+.   .   .   .   .   .   .   .   .   Child: 0  Id: play  [line |	.   .   .   .   .   .   .   .   .   Child: 0  Id: play [line:
+.   .   .   .   .   .   .   .   .   Child: 1  Const 0  [line: |	.   .   .   .   .   .   .   .   .   Child: 1  Const 0 [line: 
+.   .   .   .   .   .   .   .   Child: 1  Op: not  [line: 292 |	.   .   .   .   .   .   .   .   Child: 1  Op: not [line: 292]
+.   .   .   .   .   .   .   .   .   Child: 0  Id: playConvert |	.   .   .   .   .   .   .   .   .   Child: 0  Id: playConvert
+.   .   .   .   .   .   .   Child: 1  Compound  [line: 292]   |	.   .   .   .   .   .   .   Child: 1  Compound [line: 292]
+.   .   .   .   .   .   .   .   Child: 1  Assign: :=  [line:  |	.   .   .   .   .   .   .   .   Child: 1  Assign: := [line: 2
+.   .   .   .   .   .   .   .   .   Child: 0  Id: play  [line |	.   .   .   .   .   .   .   .   .   Child: 0  Id: play [line:
+.   .   .   .   .   .   .   .   .   Child: 1  Const 5  [line: |	.   .   .   .   .   .   .   .   .   Child: 1  Const 5 [line: 
+.   .   .   .   .   .   .   .   Sibling: 1  Assign: :=  [line |	.   .   .   .   .   .   .   .   Sibling: 1  Assign: := [line:
+.   .   .   .   .   .   .   .   .   Child: 0  Id: playConvert |	.   .   .   .   .   .   .   .   .   Child: 0  Id: playConvert
+.   .   .   .   .   .   .   .   .   Child: 1  Const true  [li |	.   .   .   .   .   .   .   .   .   Child: 1  Const true [lin
+.   .   .   .   .   .   Sibling: 1  If  [line: 295]	      |	.   .   .   .   .   .   Sibling: 1  If [line: 296]
+.   .   .   .   .   .   .   Child: 0  Op: and  [line: 296]    |	.   .   .   .   .   .   .   Child: 0  Op: and [line: 296]
+.   .   .   .   .   .   .   .   Child: 0  Op: =  [line: 296]  |	.   .   .   .   .   .   .   .   Child: 0  Op: = [line: 296]
+.   .   .   .   .   .   .   .   .   Child: 0  Id: play  [line |	.   .   .   .   .   .   .   .   .   Child: 0  Id: play [line:
+.   .   .   .   .   .   .   .   .   Child: 1  Const 1  [line: |	.   .   .   .   .   .   .   .   .   Child: 1  Const 1 [line: 
+.   .   .   .   .   .   .   .   Child: 1  Op: not  [line: 296 |	.   .   .   .   .   .   .   .   Child: 1  Op: not [line: 296]
+.   .   .   .   .   .   .   .   .   Child: 0  Id: playConvert |	.   .   .   .   .   .   .   .   .   Child: 0  Id: playConvert
+.   .   .   .   .   .   .   Child: 1  Compound  [line: 296]   |	.   .   .   .   .   .   .   Child: 1  Compound [line: 296]
+.   .   .   .   .   .   .   .   Child: 1  Assign: :=  [line:  |	.   .   .   .   .   .   .   .   Child: 1  Assign: := [line: 2
+.   .   .   .   .   .   .   .   .   Child: 0  Id: play  [line |	.   .   .   .   .   .   .   .   .   Child: 0  Id: play [line:
+.   .   .   .   .   .   .   .   .   Child: 1  Const 4  [line: |	.   .   .   .   .   .   .   .   .   Child: 1  Const 4 [line: 
+.   .   .   .   .   .   .   .   Sibling: 1  Assign: :=  [line |	.   .   .   .   .   .   .   .   Sibling: 1  Assign: := [line:
+.   .   .   .   .   .   .   .   .   Child: 0  Id: playConvert |	.   .   .   .   .   .   .   .   .   Child: 0  Id: playConvert
+.   .   .   .   .   .   .   .   .   Child: 1  Const true  [li |	.   .   .   .   .   .   .   .   .   Child: 1  Const true [lin
+.   .   .   .   .   .   Sibling: 2  If  [line: 299]	      |	.   .   .   .   .   .   Sibling: 2  If [line: 300]
+.   .   .   .   .   .   .   Child: 0  Op: and  [line: 300]    |	.   .   .   .   .   .   .   Child: 0  Op: and [line: 300]
+.   .   .   .   .   .   .   .   Child: 0  Op: =  [line: 300]  |	.   .   .   .   .   .   .   .   Child: 0  Op: = [line: 300]
+.   .   .   .   .   .   .   .   .   Child: 0  Id: play  [line |	.   .   .   .   .   .   .   .   .   Child: 0  Id: play [line:
+.   .   .   .   .   .   .   .   .   Child: 1  Const 2  [line: |	.   .   .   .   .   .   .   .   .   Child: 1  Const 2 [line: 
+.   .   .   .   .   .   .   .   Child: 1  Op: not  [line: 300 |	.   .   .   .   .   .   .   .   Child: 1  Op: not [line: 300]
+.   .   .   .   .   .   .   .   .   Child: 0  Id: playConvert |	.   .   .   .   .   .   .   .   .   Child: 0  Id: playConvert
+.   .   .   .   .   .   .   Child: 1  Compound  [line: 300]   |	.   .   .   .   .   .   .   Child: 1  Compound [line: 300]
+.   .   .   .   .   .   .   .   Child: 1  Assign: :=  [line:  |	.   .   .   .   .   .   .   .   Child: 1  Assign: := [line: 3
+.   .   .   .   .   .   .   .   .   Child: 0  Id: play  [line |	.   .   .   .   .   .   .   .   .   Child: 0  Id: play [line:
+.   .   .   .   .   .   .   .   .   Child: 1  Const 3  [line: |	.   .   .   .   .   .   .   .   .   Child: 1  Const 3 [line: 
+.   .   .   .   .   .   .   .   Sibling: 1  Assign: :=  [line |	.   .   .   .   .   .   .   .   Sibling: 1  Assign: := [line:
+.   .   .   .   .   .   .   .   .   Child: 0  Id: playConvert |	.   .   .   .   .   .   .   .   .   Child: 0  Id: playConvert
+.   .   .   .   .   .   .   .   .   Child: 1  Const true  [li |	.   .   .   .   .   .   .   .   .   Child: 1  Const true [lin
+.   .   .   .   .   .   Sibling: 3  If  [line: 303]	      |	.   .   .   .   .   .   Sibling: 3  If [line: 304]
+.   .   .   .   .   .   .   Child: 0  Op: and  [line: 304]    |	.   .   .   .   .   .   .   Child: 0  Op: and [line: 304]
+.   .   .   .   .   .   .   .   Child: 0  Op: =  [line: 304]  |	.   .   .   .   .   .   .   .   Child: 0  Op: = [line: 304]
+.   .   .   .   .   .   .   .   .   Child: 0  Id: play  [line |	.   .   .   .   .   .   .   .   .   Child: 0  Id: play [line:
+.   .   .   .   .   .   .   .   .   Child: 1  Const 3  [line: |	.   .   .   .   .   .   .   .   .   Child: 1  Const 3 [line: 
+.   .   .   .   .   .   .   .   Child: 1  Op: not  [line: 304 |	.   .   .   .   .   .   .   .   Child: 1  Op: not [line: 304]
+.   .   .   .   .   .   .   .   .   Child: 0  Id: playConvert |	.   .   .   .   .   .   .   .   .   Child: 0  Id: playConvert
+.   .   .   .   .   .   .   Child: 1  Compound  [line: 304]   |	.   .   .   .   .   .   .   Child: 1  Compound [line: 304]
+.   .   .   .   .   .   .   .   Child: 1  Assign: :=  [line:  |	.   .   .   .   .   .   .   .   Child: 1  Assign: := [line: 3
+.   .   .   .   .   .   .   .   .   Child: 0  Id: play  [line |	.   .   .   .   .   .   .   .   .   Child: 0  Id: play [line:
+.   .   .   .   .   .   .   .   .   Child: 1  Const 2  [line: |	.   .   .   .   .   .   .   .   .   Child: 1  Const 2 [line: 
+.   .   .   .   .   .   .   .   Sibling: 1  Assign: :=  [line |	.   .   .   .   .   .   .   .   Sibling: 1  Assign: := [line:
+.   .   .   .   .   .   .   .   .   Child: 0  Id: playConvert |	.   .   .   .   .   .   .   .   .   Child: 0  Id: playConvert
+.   .   .   .   .   .   .   .   .   Child: 1  Const true  [li |	.   .   .   .   .   .   .   .   .   Child: 1  Const true [lin
+.   .   .   .   .   .   Sibling: 4  If  [line: 307]	      |	.   .   .   .   .   .   Sibling: 4  If [line: 308]
+.   .   .   .   .   .   .   Child: 0  Op: and  [line: 308]    |	.   .   .   .   .   .   .   Child: 0  Op: and [line: 308]
+.   .   .   .   .   .   .   .   Child: 0  Op: =  [line: 308]  |	.   .   .   .   .   .   .   .   Child: 0  Op: = [line: 308]
+.   .   .   .   .   .   .   .   .   Child: 0  Id: play  [line |	.   .   .   .   .   .   .   .   .   Child: 0  Id: play [line:
+.   .   .   .   .   .   .   .   .   Child: 1  Const 4  [line: |	.   .   .   .   .   .   .   .   .   Child: 1  Const 4 [line: 
+.   .   .   .   .   .   .   .   Child: 1  Op: not  [line: 308 |	.   .   .   .   .   .   .   .   Child: 1  Op: not [line: 308]
+.   .   .   .   .   .   .   .   .   Child: 0  Id: playConvert |	.   .   .   .   .   .   .   .   .   Child: 0  Id: playConvert
+.   .   .   .   .   .   .   Child: 1  Compound  [line: 308]   |	.   .   .   .   .   .   .   Child: 1  Compound [line: 308]
+.   .   .   .   .   .   .   .   Child: 1  Assign: :=  [line:  |	.   .   .   .   .   .   .   .   Child: 1  Assign: := [line: 3
+.   .   .   .   .   .   .   .   .   Child: 0  Id: play  [line |	.   .   .   .   .   .   .   .   .   Child: 0  Id: play [line:
+.   .   .   .   .   .   .   .   .   Child: 1  Const 1  [line: |	.   .   .   .   .   .   .   .   .   Child: 1  Const 1 [line: 
+.   .   .   .   .   .   .   .   Sibling: 1  Assign: :=  [line |	.   .   .   .   .   .   .   .   Sibling: 1  Assign: := [line:
+.   .   .   .   .   .   .   .   .   Child: 0  Id: playConvert |	.   .   .   .   .   .   .   .   .   Child: 0  Id: playConvert
+.   .   .   .   .   .   .   .   .   Child: 1  Const true  [li |	.   .   .   .   .   .   .   .   .   Child: 1  Const true [lin
+.   .   .   .   .   .   Sibling: 5  If  [line: 311]	      |	.   .   .   .   .   .   Sibling: 5  If [line: 312]
+.   .   .   .   .   .   .   Child: 0  Op: and  [line: 312]    |	.   .   .   .   .   .   .   Child: 0  Op: and [line: 312]
+.   .   .   .   .   .   .   .   Child: 0  Op: =  [line: 312]  |	.   .   .   .   .   .   .   .   Child: 0  Op: = [line: 312]
+.   .   .   .   .   .   .   .   .   Child: 0  Id: play  [line |	.   .   .   .   .   .   .   .   .   Child: 0  Id: play [line:
+.   .   .   .   .   .   .   .   .   Child: 1  Const 5  [line: |	.   .   .   .   .   .   .   .   .   Child: 1  Const 5 [line: 
+.   .   .   .   .   .   .   .   Child: 1  Op: not  [line: 312 |	.   .   .   .   .   .   .   .   Child: 1  Op: not [line: 312]
+.   .   .   .   .   .   .   .   .   Child: 0  Id: playConvert |	.   .   .   .   .   .   .   .   .   Child: 0  Id: playConvert
+.   .   .   .   .   .   .   Child: 1  Compound  [line: 312]   |	.   .   .   .   .   .   .   Child: 1  Compound [line: 312]
+.   .   .   .   .   .   .   .   Child: 1  Assign: :=  [line:  |	.   .   .   .   .   .   .   .   Child: 1  Assign: := [line: 3
+.   .   .   .   .   .   .   .   .   Child: 0  Id: play  [line |	.   .   .   .   .   .   .   .   .   Child: 0  Id: play [line:
+.   .   .   .   .   .   .   .   .   Child: 1  Const 0  [line: |	.   .   .   .   .   .   .   .   .   Child: 1  Const 0 [line: 
+.   .   .   .   .   .   .   .   Sibling: 1  Assign: :=  [line |	.   .   .   .   .   .   .   .   Sibling: 1  Assign: := [line:
+.   .   .   .   .   .   .   .   .   Child: 0  Id: playConvert |	.   .   .   .   .   .   .   .   .   Child: 0  Id: playConvert
+.   .   .   .   .   .   .   .   .   Child: 1  Const true  [li |	.   .   .   .   .   .   .   .   .   Child: 1  Const true [lin
+.   .   .   .   .   .   Sibling: 6  Assign: :=  [line: 316]   |	.   .   .   .   .   .   Sibling: 6  Assign: := [line: 316]
+.   .   .   .   .   .   .   Child: 0  Id: playConverted  [lin |	.   .   .   .   .   .   .   Child: 0  Id: playConverted [line
+.   .   .   .   .   .   .   Child: 1  Const false  [line: 316 |	.   .   .   .   .   .   .   Child: 1  Const false [line: 316]
+.   .   .   .   .   .   Sibling: 7  Call: moveSeeds  [line: 3 |	.   .   .   .   .   .   Sibling: 7  Call: moveSeeds [line: 31
+.   .   .   .   .   .   .   Child: 0  Id: play  [line: 317]   |	.   .   .   .   .   .   .   Child: 0  Id: play [line: 317]
+.   .   .   .   .   .   .   Sibling: 1  Const true  [line: 31 |	.   .   .   .   .   .   .   Sibling: 1  Const true [line: 317
+.   .   .   .   .   .   Sibling: 8  Assign: :=  [line: 318]   |	.   .   .   .   .   .   Sibling: 8  Assign: := [line: 318]
+.   .   .   .   .   .   .   Child: 0  Id: turn  [line: 318]   |	.   .   .   .   .   .   .   Child: 0  Id: turn [line: 318]
+.   .   .   .   .   .   .   Child: 1  Const false  [line: 318 |	.   .   .   .   .   .   .   Child: 1  Const false [line: 318]
+.   .   .   .   .   Child: 2  Compound  [line: 320]	      |	.   .   .   .   .   Child: 2  Compound [line: 320]
+.   .   .   .   .   .   Child: 1  Assign: :=  [line: 321]     |	.   .   .   .   .   .   Child: 1  Assign: := [line: 321]
+.   .   .   .   .   .   .   Child: 0  Id: play  [line: 321]   |	.   .   .   .   .   .   .   Child: 0  Id: play [line: 321]
+.   .   .   .   .   .   .   Child: 1  Op: +  [line: 321]      |	.   .   .   .   .   .   .   Child: 1  Op: + [line: 321]
+.   .   .   .   .   .   .   .   Child: 0  Id: play  [line: 32 |	.   .   .   .   .   .   .   .   Child: 0  Id: play [line: 321
+.   .   .   .   .   .   .   .   Child: 1  Const 6  [line: 321 |	.   .   .   .   .   .   .   .   Child: 1  Const 6 [line: 321]
+.   .   .   .   .   .   Sibling: 1  Call: moveSeeds  [line: 3 |	.   .   .   .   .   .   Sibling: 1  Call: moveSeeds [line: 32
+.   .   .   .   .   .   .   Child: 0  Id: play  [line: 322]   |	.   .   .   .   .   .   .   Child: 0  Id: play [line: 322]
+.   .   .   .   .   .   .   Sibling: 1  Const false  [line: 3 |	.   .   .   .   .   .   .   Sibling: 1  Const false [line: 32
+.   .   .   .   .   .   Sibling: 2  Assign: :=  [line: 323]   |	.   .   .   .   .   .   Sibling: 2  Assign: := [line: 323]
+.   .   .   .   .   .   .   Child: 0  Id: turn  [line: 323]   |	.   .   .   .   .   .   .   Child: 0  Id: turn [line: 323]
+.   .   .   .   .   .   .   Child: 1  Const true  [line: 323] |	.   .   .   .   .   .   .   Child: 1  Const true [line: 323]
+.   .   .   .   Sibling: 6  Call: tryPlayerT  [line: 325]     |	.   .   .   .   Sibling: 6  Call: tryPlayerT [line: 325]
+.   .   .   .   Sibling: 7  Call: tryPlayerF  [line: 326]     |	.   .   .   .   Sibling: 7  Call: tryPlayerF [line: 326]
+.   .   Sibling: 10  If  [line: 327]			      |	.   .   Sibling: 10  If [line: 330]
+.   .   .   Child: 0  Id: winnerPlayerT  [line: 330]	      |	.   .   .   Child: 0  Id: winnerPlayerT [line: 330]
+.   .   .   Child: 1  Compound  [line: 330]		      |	.   .   .   Child: 1  Compound [line: 330]
+.   .   .   .   Child: 1  Call: outnl  [line: 331]	      |	.   .   .   .   Child: 1  Call: outnl [line: 331]
+.   .   .   .   Sibling: 1  Call: outputb  [line: 332]	      |	.   .   .   .   Sibling: 1  Call: outputb [line: 332]
+.   .   .   .   .   Child: 0  Const true  [line: 332]	      |	.   .   .   .   .   Child: 0  Const true [line: 332]
+.   .   .   .   Sibling: 2  Call: output  [line: 333]	      |	.   .   .   .   Sibling: 2  Call: output [line: 333]
+.   .   .   .   .   Child: 0  Id: sumPlayerT  [line: 333]     |	.   .   .   .   .   Child: 0  Id: sumPlayerT [line: 333]
+.   .   .   .   Sibling: 3  Call: outnl  [line: 334]	      |	.   .   .   .   Sibling: 3  Call: outnl [line: 334]
+.   .   .   .   Sibling: 4  Call: outputb  [line: 335]	      |	.   .   .   .   Sibling: 4  Call: outputb [line: 335]
+.   .   .   .   .   Child: 0  Const false  [line: 335]	      |	.   .   .   .   .   Child: 0  Const false [line: 335]
+.   .   .   .   Sibling: 5  Call: output  [line: 336]	      |	.   .   .   .   Sibling: 5  Call: output [line: 336]
+.   .   .   .   .   Child: 0  Id: sumPlayerF  [line: 336]     |	.   .   .   .   .   Child: 0  Id: sumPlayerF [line: 336]
+.   .   .   .   Sibling: 6  Call: outnl  [line: 337]	      |	.   .   .   .   Sibling: 6  Call: outnl [line: 337]
+.   .   .   Child: 2  Compound  [line: 340]		      |	.   .   .   Child: 2  Compound [line: 340]
+.   .   .   .   Child: 1  Call: outnl  [line: 341]	      |	.   .   .   .   Child: 1  Call: outnl [line: 341]
+.   .   .   .   Sibling: 1  Call: outputb  [line: 342]	      |	.   .   .   .   Sibling: 1  Call: outputb [line: 342]
+.   .   .   .   .   Child: 0  Const false  [line: 342]	      |	.   .   .   .   .   Child: 0  Const false [line: 342]
+.   .   .   .   Sibling: 2  Call: output  [line: 343]	      |	.   .   .   .   Sibling: 2  Call: output [line: 343]
+.   .   .   .   .   Child: 0  Id: sumPlayerF  [line: 343]     |	.   .   .   .   .   Child: 0  Id: sumPlayerF [line: 343]
+.   .   .   .   Sibling: 3  Call: outnl  [line: 344]	      |	.   .   .   .   Sibling: 3  Call: outnl [line: 344]
+.   .   .   .   Sibling: 4  Call: outputb  [line: 345]	      |	.   .   .   .   Sibling: 4  Call: outputb [line: 345]
+.   .   .   .   .   Child: 0  Const true  [line: 345]	      |	.   .   .   .   .   Child: 0  Const true [line: 345]
+.   .   .   .   Sibling: 5  Call: output  [line: 346]	      |	.   .   .   .   Sibling: 5  Call: output [line: 346]
+.   .   .   .   .   Child: 0  Id: sumPlayerT  [line: 346]     |	.   .   .   .   .   Child: 0  Id: sumPlayerT [line: 346]
+.   .   .   .   Sibling: 6  Call: outnl  [line: 347]	      |	.   .   .   .   Sibling: 6  Call: outnl [line: 347]
+.   .   Sibling: 11  Stmt  [line: 348]			      |	.   .   Sibling: 11  Return [line: 349]

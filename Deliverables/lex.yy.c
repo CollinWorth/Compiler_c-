@@ -1116,30 +1116,38 @@ YY_RULE_SETUP
 #line 151 "c-.l"
 { 
     //printf("Lexer: matched symbol '%c' (ASCII %d)\n", *yytext, *yytext);
-    return setSimpleToken(*yytext); 
+    // Create a TokenData struct to hold the line number for punctuation
+    yylval.tokenData = new TokenData;
+    yylval.tokenData->linenum = line;
+    yylval.tokenData->tokenstr = NULL;
+    return *yytext; 
 }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 156 "c-.l"
+#line 160 "c-.l"
 { 
     //printf("Lexer: matched operator '%c' (ASCII %d)\n", *yytext, *yytext);
-    return setSimpleToken(*yytext); 
+    // Create a TokenData struct to hold the line number for simple operators
+    yylval.tokenData = new TokenData;
+    yylval.tokenData->linenum = line;
+    yylval.tokenData->tokenstr = NULL;
+    return *yytext; 
 }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 161 "c-.l"
+#line 169 "c-.l"
 { 
     //printf("Unknown character: %s\n", yytext); 
     return setValue(line, ERROR, yytext); }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 165 "c-.l"
+#line 173 "c-.l"
 ECHO;
 	YY_BREAK
-#line 1142 "lex.yy.c"
+#line 1150 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2156,7 +2164,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 165 "c-.l"
+#line 173 "c-.l"
 
 
 int yywrap() { return 1; }

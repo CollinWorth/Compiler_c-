@@ -147,7 +147,10 @@ static void printTreeRecursive(FILE *out, TreeNode *tree, int indent, int isChil
     // The sibling is NOT a child of the current node, so isChild is 0.
     // The sibling number is incremented from the current node's sibling number.
     if (tree->sibling) {
-        printTreeRecursive(out, tree->sibling, indent, 0, childNum + 1);
+        // The sibling's number should be 1 greater than the current node's sibling number.
+        // If the current node is a child, its sibling number is effectively 0, so its sibling is 1.
+        int nextSiblingNum = isChild ? 1 : childNum + 1;
+        printTreeRecursive(out, tree->sibling, indent, 0, nextSiblingNum);
     }
 }
 

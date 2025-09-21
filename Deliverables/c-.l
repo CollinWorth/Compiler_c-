@@ -150,12 +150,20 @@ identifier  {letter}({letter}|[0-9])*
 
 [()[\]{}:;?,%]  { 
     //printf("Lexer: matched symbol '%c' (ASCII %d)\n", *yytext, *yytext);
-    return setSimpleToken(*yytext); 
+    // Create a TokenData struct to hold the line number for punctuation
+    yylval.tokenData = new TokenData;
+    yylval.tokenData->linenum = line;
+    yylval.tokenData->tokenstr = NULL;
+    return *yytext; 
 }
 
 [+\-*/=]        { 
     //printf("Lexer: matched operator '%c' (ASCII %d)\n", *yytext, *yytext);
-    return setSimpleToken(*yytext); 
+    // Create a TokenData struct to hold the line number for simple operators
+    yylval.tokenData = new TokenData;
+    yylval.tokenData->linenum = line;
+    yylval.tokenData->tokenstr = NULL;
+    return *yytext; 
 }
 
 .                    { 
