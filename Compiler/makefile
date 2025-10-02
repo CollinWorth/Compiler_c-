@@ -1,12 +1,11 @@
 
 BIN = c-
 CXX = g++
-CXXFLAGS = -std=c++17 -Wall
+CXXFLAGS = -std=c++17 -Wall -g
 
-SRCS = $(BIN).y $(BIN).l tree.cpp
-HDRS = scanType.h tree.h globals.h
-OBJS = lex.yy.o c-.tab.o tree.o
-
+SRCS = main.cpp $(BIN).y $(BIN).l tree.cpp symbolTable.cpp semantic.cpp
+HDRS = scanType.h tree.h globals.h symbolTable.h semantic.h
+OBJS = main.o lex.yy.o c-.tab.o tree.o symbolTable.o semantic.o
 
 $(BIN): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(BIN)
@@ -30,6 +29,15 @@ c-.tab.o: c-.tab.cpp c-.tab.hpp
 
 tree.o: tree.cpp tree.h
 	$(CXX) $(CXXFLAGS) -c tree.cpp
+
+main.o: main.cpp globals.h tree.h c-.tab.hpp semantic.h
+	$(CXX) $(CXXFLAGS) -c main.cpp
+
+symbolTable.o: symbolTable.cpp symbolTable.h
+	$(CXX) $(CXXFLAGS) -c symbolTable.cpp
+
+semantic.o: semantic.cpp semantic.h tree.h symbolTable.h
+	$(CXX) $(CXXFLAGS) -c semantic.cpp
 
 
 # Clean generated files

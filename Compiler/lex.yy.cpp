@@ -540,7 +540,6 @@ char *yytext;
 #include <stdio.h>
 #include "globals.h"
 
-int numErrors = 0;
 
 // Print every token before returning
 //#define YY_USER_ACTION printf("Line %d: matched '%s'\n", line, yytext);
@@ -616,9 +615,9 @@ static int setValue(int linenum, int tokenClass, const char *svalue)
     return tokenClass;
 }
 
-#line 619 "lex.yy.cpp"
+#line 618 "lex.yy.cpp"
 #define YY_NO_INPUT 1
-#line 621 "lex.yy.cpp"
+#line 620 "lex.yy.cpp"
 
 #define INITIAL 0
 
@@ -833,10 +832,10 @@ YY_DECL
 		}
 
 	{
-#line 94 "c-.l"
+#line 93 "c-.l"
 
 
-#line 839 "lex.yy.cpp"
+#line 838 "lex.yy.cpp"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -905,211 +904,211 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 96 "c-.l"
+#line 95 "c-.l"
 { /* ignore comments */ }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 98 "c-.l"
+#line 97 "c-.l"
 { return setValue(yylineno, BOOLCONST, yytext); }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 99 "c-.l"
+#line 98 "c-.l"
 { return setValue(yylineno, BOOLCONST, yytext); }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 101 "c-.l"
+#line 100 "c-.l"
 { return setValue(yylineno, IF, yytext); }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 102 "c-.l"
+#line 101 "c-.l"
 { return setValue(yylineno, INT, yytext); }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 103 "c-.l"
+#line 102 "c-.l"
 { return setValue(yylineno, BOOL, yytext); }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 104 "c-.l"
+#line 103 "c-.l"
 { return setValue(yylineno, CHAR, yytext); }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 105 "c-.l"
+#line 104 "c-.l"
 { return setValue(yylineno, STATIC, yytext); }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 106 "c-.l"
+#line 105 "c-.l"
 { return setValue(yylineno, OR, yytext); }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 107 "c-.l"
+#line 106 "c-.l"
 { return setValue(yylineno, AND, yytext); }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 108 "c-.l"
+#line 107 "c-.l"
 { return setValue(yylineno, NOT, yytext); }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 109 "c-.l"
+#line 108 "c-.l"
 { return setValue(yylineno, FOR, yytext); }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 110 "c-.l"
+#line 109 "c-.l"
 { return setValue(yylineno, TO, yytext); }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 111 "c-.l"
+#line 110 "c-.l"
 { return setValue(yylineno, BY, yytext); }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 112 "c-.l"
+#line 111 "c-.l"
 { return setValue(yylineno, DO, yytext); }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 113 "c-.l"
+#line 112 "c-.l"
 { return setValue(yylineno, THEN, yytext); }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 114 "c-.l"
+#line 113 "c-.l"
 { return setValue(yylineno, BREAK, yytext); }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 115 "c-.l"
+#line 114 "c-.l"
 { return setValue(yylineno, ELSE, yytext); }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 116 "c-.l"
+#line 115 "c-.l"
 { return setValue(yylineno, RETURN, yytext); }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 117 "c-.l"
+#line 116 "c-.l"
 { return setValue(yylineno, WHILE, yytext); }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 119 "c-.l"
+#line 118 "c-.l"
 { return setValue(yylineno, GE, yytext); }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 120 "c-.l"
+#line 119 "c-.l"
 { return setValue(yylineno, LE, yytext); }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 121 "c-.l"
+#line 120 "c-.l"
 { return setValue(yylineno, ASSIGN, yytext); }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 122 "c-.l"
+#line 121 "c-.l"
 { return setValue(yylineno, ADDASS, yytext); }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 123 "c-.l"
+#line 122 "c-.l"
 { return setValue(yylineno, SUBASS, yytext); }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 124 "c-.l"
+#line 123 "c-.l"
 { return setValue(yylineno, MULASS, yytext); }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 125 "c-.l"
+#line 124 "c-.l"
 { return setValue(yylineno, DIVASS, yytext); }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 126 "c-.l"
+#line 125 "c-.l"
 { return setValue(yylineno, DEC, yytext); }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 127 "c-.l"
+#line 126 "c-.l"
 { return setValue(yylineno, INC, yytext); }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 128 "c-.l"
+#line 127 "c-.l"
 { return setValue(yylineno, NEQ, yytext); }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 129 "c-.l"
+#line 128 "c-.l"
 { return setValue(yylineno, EQ, yytext); }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 130 "c-.l"
+#line 129 "c-.l"
 { return setValue(yylineno, LT, yytext); }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 131 "c-.l"
+#line 130 "c-.l"
 { return setValue(yylineno, GT, yytext); }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 133 "c-.l"
+#line 132 "c-.l"
 { /* skip whitespace */ }
 	YY_BREAK
 case 35:
 /* rule 35 can match eol */
 YY_RULE_SETUP
-#line 134 "c-.l"
+#line 133 "c-.l"
 { /* yylineno is automatically updated */ }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 136 "c-.l"
+#line 135 "c-.l"
 { 
                         //printf("Lexer: matched symbol '%c' (ASCII %d)\n", *yytext, *yytext); 
                         return setValue(yylineno, ID, yytext); }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 139 "c-.l"
+#line 138 "c-.l"
 { 
                         //printf("Lexer: matched symbol '%c' (ASCII %d)\n", *yytext, *yytext); 
                         return setValue(yylineno, NUMCONST, yytext); }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 143 "c-.l"
+#line 142 "c-.l"
 { 
     //printf("Lexer: matched symbol '%c' (ASCII %d)\n", *yytext, *yytext);
     return setValue(yylineno, CHARCONST, yytext); }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 146 "c-.l"
+#line 145 "c-.l"
 { 
     //printf("Lexer: matched symbol '%c' (ASCII %d)\n", *yytext, *yytext);
     return setValue(yylineno, STRINGCONST, yytext); }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 150 "c-.l"
+#line 149 "c-.l"
 { 
     //printf("Lexer: matched symbol '%c' (ASCII %d)\n", *yytext, *yytext);
     // Create a TokenData struct to hold the line number for punctuation
@@ -1121,7 +1120,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 159 "c-.l"
+#line 158 "c-.l"
 { 
     //printf("Lexer: matched operator '%c' (ASCII %d)\n", *yytext, *yytext);
     // Create a TokenData struct to hold the line number for simple operators
@@ -1133,17 +1132,17 @@ YY_RULE_SETUP
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 168 "c-.l"
+#line 167 "c-.l"
 { 
     //printf("Unknown character: %s\n", yytext); 
     return setValue(yylineno, ERROR, yytext); }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 172 "c-.l"
+#line 171 "c-.l"
 ECHO;
 	YY_BREAK
-#line 1146 "lex.yy.cpp"
+#line 1145 "lex.yy.cpp"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2119,7 +2118,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 172 "c-.l"
+#line 171 "c-.l"
 
 
 int yywrap() { return 1; }

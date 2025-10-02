@@ -124,7 +124,7 @@
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 48 "c-.y"
+#line 43 "c-.y"
 {
     TreeNode *tree;
     TokenData *tokenData;

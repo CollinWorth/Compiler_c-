@@ -1,11 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "tree.h"
+#include "globals.h"
 #include "scanType.h"
 #include "c-.tab.hpp"
 
-// Private helper function to create a new node and initialize common fields.
-// This reduces code duplication in the public new...Node functions.
 static TreeNode *newNode(NodeKind nodekind, int lineno, TreeNode* c0, TreeNode* c1, TreeNode* c2) {
     TreeNode *t = new TreeNode;
     if (t == NULL) {
@@ -23,6 +22,8 @@ static TreeNode *newNode(NodeKind nodekind, int lineno, TreeNode* c0, TreeNode* 
     t->child[1] = c1;
     t->child[2] = c2;
     t->isArray = false;
+    t->isUsed = false;
+    t->isInitialized = false;
     t->isStatic = false;
     t->expType = UndefinedType;
     return t;
@@ -46,39 +47,27 @@ TreeNode *newExpNode(ExpKind kind, int lineno, TreeNode* c0, TreeNode* c1, TreeN
     return t;
 }
 
-// Adds a new sibling 's' to the end of the sibling list of 't'.
 TreeNode *addSibling(TreeNode *t, TreeNode *s) {
-    if (s == NULL) {
-        // It's not an error to try to add a NULL sibling, just do nothing.
-        return t;
-    }
-    if (t == NULL) {
-        // If the original list is empty, the new sibling is the whole list.
-        return s;
-    }
+    if (s == NULL) return t;
+    if (t == NULL) return s;
 
-    // Traverse to the end of the sibling list.
     TreeNode *tmp = t;
     while (tmp->sibling != NULL) {
         tmp = tmp->sibling;
     }
-    // Append the new sibling.
     tmp->sibling = s;
-    return t; // Return the head of the list.
+    return t;
 }
 
-//
-// NEW AND CORRECTED PRINTING LOGIC
-//
+// Separate helper functions
 
-// Helper to print operator names
 static void printOp(FILE *out, int op) {
     switch (op) {
         case OR: fprintf(out, "or"); break;
         case AND: fprintf(out, "and"); break;
         case NOT: fprintf(out, "not"); break;
         case EQ: fprintf(out, "="); break;
-        case NEQ: fprintf(out, "!="); break;
+        case NEQ: fprintf(out, "><"); break;
         case LT: fprintf(out, "<"); break;
         case LE: fprintf(out, "<="); break;
         case GT: fprintf(out, ">"); break;
@@ -96,43 +85,64 @@ static void printOp(FILE *out, int op) {
     }
 }
 
-// This is the recursive printing function.
-static void printTreeRecursive(FILE *out, TreeNode *tree, int indent, int siblingIndex, bool isChild) {
-    if (tree == NULL) return;
-
-    // If the statement is a NullK, don't print it.
-    if (tree->nodekind == StmtK && tree->subkind.stmt == NullK) {
-        return;
+static const char* typeToString(ExpType type) {
+    switch (type) {
+        case Void: return "void";
+        case Integer: return "int";
+        case Boolean: return "bool";
+        case Char: return "char";
+        case CharInt: return "char";
+        case Equal: return "equal";
+        default: return "undefined";
     }
+}
 
-    // Indentation
-    for (int i = 0; i < indent; i++) {
+static void printIndent(FILE *out, int depth) {
+    for (int i = 0; i < depth; i++) {
         fprintf(out, ".   ");
     }
+}
 
-    if(isChild == true){
-        printf("Child: %d  ", siblingIndex);
-        if(siblingIndex == 1){
-            siblingIndex = 0;
-        }
-    }else{
-        if(siblingIndex != 0){
-            printf("Sibling: %d  ", siblingIndex);
-        }
+static void printLabel(int siblingNum, bool isChild) {
+    if (isChild) {
+        fprintf(stdout, "Child: %d  ", siblingNum);
+    } else if (siblingNum > 0) {
+        fprintf(stdout, "Sibling: %d  ", siblingNum);
     }
- 
+}
 
-    // Node-specific printing
-    switch (tree->nodekind) {
+// Separated type descriptor building
+static void printTypeDescriptor(FILE *out, TreeNode *node) {
+    if (!printWithTypeInfo) return;
+    
+    const char* typeStr = typeToString(node->expType);
+    
+    // Handle arrays
+    if (node->isArray) {
+        fprintf(out, "is array ");
+    }
+    
+    // Different format based on node kind
+    if (node->nodekind == DeclK && node->subkind.decl == FuncK) {
+        fprintf(out, "returns type %s", typeStr);
+    } else {
+        fprintf(out, "of type %s", typeStr);
+    }
+}
+
+static void printNodeContent(FILE *out, TreeNode *node) {
+    switch (node->nodekind) {
         case DeclK:
-            switch (tree->subkind.decl) {
-                case FuncK:  fprintf(out, "Func: %s ", tree->attr.name ? tree->attr.name : "(null)"); break;
-                case VarK:   fprintf(out, "Var: %s ", tree->attr.name ? tree->attr.name : "(null)"); break;
-                case ParamK: fprintf(out, "Parm: %s ",tree->attr.name ? tree->attr.name : "(null)"); break;
+            switch (node->subkind.decl) {
+                case FuncK:  fprintf(out, "Func: %s ", node->attr.name); break;
+                case VarK:   fprintf(out, "Var: %s ", node->attr.name); break;
+                case ParamK: fprintf(out, "Parm: %s ", node->attr.name); break;
             }
+            printTypeDescriptor(out, node);
             break;
+            
         case StmtK:
-            switch (tree->subkind.stmt) {
+            switch (node->subkind.stmt) {
                 case CompoundK: fprintf(out, "Compound"); break;
                 case IfK:       fprintf(out, "If"); break;
                 case WhileK:    fprintf(out, "While"); break;
@@ -140,49 +150,81 @@ static void printTreeRecursive(FILE *out, TreeNode *tree, int indent, int siblin
                 case RangeK:    fprintf(out, "Range"); break;
                 case ReturnK:   fprintf(out, "Return"); break;
                 case BreakK:    fprintf(out, "Break"); break;
-                case NullK:     fprintf(out, "Null"); break;
                 default:        fprintf(out, "Unknown Stmt"); break;
             }
             break;
+            
         case ExpK:
-            switch (tree->subkind.exp) {
-                case OpK:       fprintf(out, "Op: "); printOp(out, tree->attr.op); break;
-                case ConstantK:
-                    if (tree->expType == Boolean) {
-                        fprintf(out, "Const %s", tree->attr.value ? "true" : "false");
-                    } else if (tree->expType == Char) {
-                        // Print character constants with single quotes
-                        fprintf(out, "Const '%c'", tree->attr.cvalue);
-                    } else if (tree->expType == CharInt) { // For string literals
-                        fprintf(out, "Const \"%s\"", tree->attr.string);
-                    } else { // Default to integer
-                        fprintf(out, "Const %d", tree->attr.value);
-                    }
+            switch (node->subkind.exp) {
+                case OpK:
+                    fprintf(out, "Op: ");
+                    printOp(out, node->attr.op);
                     break;
-                case IdK:     fprintf(out, "Id: %s", tree->attr.name); break;
-                case AssignK: fprintf(out, "Assign: "); printOp(out, tree->attr.op); break;
-                case CallK:   fprintf(out, "Call: %s", tree->attr.name); break;
-                default:      fprintf(out, "Unknown Exp"); break;
+                case ConstantK:
+                    if (node->expType == Boolean) {
+                        fprintf(out, "Const %s", node->attr.value ? "true" : "false");
+                    } else if (node->expType == Char) {
+                        fprintf(out, "Const '%c'", node->attr.cvalue);
+                    } else if (node->expType == CharInt) {
+                        fprintf(out, "Const \"%s\"", node->attr.string);
+                    } else {
+                        fprintf(out, "Const %d", node->attr.value);
+                    }
+                    if (printWithTypeInfo) {
+                        fprintf(out, " ");
+                        printTypeDescriptor(out, node);
+                    }
+                    return; // Early return to avoid double type printing
+                case IdK:
+                    fprintf(out, "Id: %s", node->attr.name);
+                    break;
+                case AssignK:
+                    fprintf(out, "Assign: ");
+                    printOp(out, node->attr.op);
+                    break;
+                case CallK:
+                    fprintf(out, "Call: %s", node->attr.name);
+                    break;
+                default:
+                    fprintf(out, "Unknown Exp");
+                    break;
+            }
+            if (printWithTypeInfo && node->subkind.exp != ConstantK) {
+                fprintf(out, " ");
+                printTypeDescriptor(out, node);
             }
             break;
+            
         default:
-            fprintf(out, "Unknown node kind");
+            fprintf(out, "Unknown node");
             break;
     }
+}
+
+static void printTreeRecursive(FILE *out, TreeNode *tree, int depth, int siblingNum, bool isChild) {
+    if (!tree) return;
+    if (tree->nodekind == StmtK && tree->subkind.stmt == NullK) return;
+
+    printIndent(out, depth);
+    printLabel(siblingNum, isChild);
+    printNodeContent(out, tree);
     fprintf(out, " [line: %d]\n", tree->lineno);
 
-    // --- Recurse on children (one level deeper) ---
-    //int childNum = 1;
-    for (int childIndex = 0; childIndex < MAXCHILDREN; childIndex++) {
-        printTreeRecursive(out, tree->child[childIndex], indent + 1, childIndex, true);
+    // Print children
+    for (int i = 0; i < MAXCHILDREN; i++) {
+        if (tree->child[i]) {
+            printTreeRecursive(out, tree->child[i], depth + 1, i, true);
+        }
     }
 
-    // --- Recurse on siblings (same level) ---
-    // This must be done *after* the node and all its children are printed.
-    printTreeRecursive(out, tree->sibling, indent, siblingIndex + 1, false);
+    // Print siblings - they always count from 1, 2, 3...
+    if (tree->sibling) {
+        int nextSiblingNum = isChild ? 1 : siblingNum + 1;
+        printTreeRecursive(out, tree->sibling, depth, nextSiblingNum, false);
+    }
 }
 
 void printTree(FILE *out, TreeNode *tree) {
-    if (tree == NULL) return;
+    if (!tree) return;
     printTreeRecursive(out, tree, 0, 0, false);
 }

@@ -5,7 +5,6 @@
 #include <stdio.h>
 #include "globals.h"
 
-int numErrors = 0;
 
 // Print every token before returning
 //#define YY_USER_ACTION printf("Line %d: matched '%s'\n", line, yytext);

@@ -26,6 +26,8 @@ typedef struct treeNode {
     union { int value; char cvalue; char *string; char *name; int op; } attr;
     ExpType expType;
     bool isArray;
+    bool isUsed;
+    bool isInitialized;
     bool isStatic;
 } TreeNode;
 

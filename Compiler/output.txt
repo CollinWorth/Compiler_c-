@@ -1,56 +1,367 @@
-Var: s  [line: 2]
-.   Child: 0  Const 73 [line: 2]
-Sibling: 1  Var: t  [line: 3]
-.   Child: 0  Const 'A' [line: 3]
-Sibling: 2  Var: u  [line: 3]
-.   Child: 0  Const 'Z' [line: 3]
-Sibling: 3  Func: main  [line: 5]
-.   Child: 1  Compound [line: 5]
-.   .   Child: 0  Var: i  [line: 6]
-.   .   Sibling: 1  Var: a  [line: 7]
-.   .   Sibling: 2  Var: y  [line: 8]
-.   .   Sibling: 3  Var: b  [line: 8]
-.   .   Sibling: 4  Var: x  [line: 9]
-.   .   Sibling: 5  Var: k  [line: 10]
-.   .   Sibling: 6  Var: ba  [line: 11]
-.   .   Sibling: 7  Var: bb  [line: 11]
-.   .   Sibling: 8  Var: bc  [line: 11]
-.   .   Sibling: 9  Var: ca  [line: 12]
-.   .   Child: 1  Assign: := [line: 14]
-.   .   .   Child: 0  Op: [ [line: 14]
-.   .   .   .   Child: 0  Id: x [line: 14]
-.   .   .   .   Child: 1  Const 1 [line: 14]
-.   .   .   Child: 1  Const 111 [line: 14]
-.   .   Sibling: 1  Assign: := [line: 15]
-.   .   .   Child: 0  Id: a [line: 15]
-.   .   .   Child: 1  Op: sizeof [line: 15]
-.   .   .   .   Child: 0  Id: b [line: 15]
-.   .   Sibling: 2  While [line: 16]
-.   .   .   Child: 0  Op: < [line: 16]
-.   .   .   .   Child: 0  Id: i [line: 16]
-.   .   .   .   Child: 1  Const 10 [line: 16]
-.   .   .   Child: 1  Compound [line: 16]
-.   .   .   .   Child: 0  Var: y  [line: 17]
-.   .   .   .   Sibling: 1  Var: t  [line: 18]
-.   .   .   .   Child: 1  If [line: 19]
-.   .   .   .   .   Child: 0  Id: t [line: 19]
-.   .   .   .   .   Child: 1  Break [line: 19]
-.   .   .   .   Sibling: 1  If [line: 20]
-.   .   .   .   .   Child: 0  Id: t [line: 20]
-.   .   .   .   .   Child: 1  Break [line: 20]
-.   .   .   .   .   Child: 2  Return [line: 20]
-.   .   .   .   Sibling: 2  Assign: := [line: 21]
-.   .   .   .   .   Child: 0  Op: [ [line: 21]
-.   .   .   .   .   .   Child: 0  Id: y [line: 21]
-.   .   .   .   .   .   Child: 1  Const 2 [line: 21]
-.   .   .   .   .   Child: 1  Const 222 [line: 21]
-.   .   Sibling: 3  Compound [line: 23]
-.   .   .   Child: 1  Compound [line: 24]
-.   .   .   .   Child: 0  Var: z  [line: 25]
-.   .   .   .   Child: 1  Assign: := [line: 26]
-.   .   .   .   .   Child: 0  Op: [ [line: 26]
-.   .   .   .   .   .   Child: 0  Id: z [line: 26]
-.   .   .   .   .   .   Child: 1  Const 3 [line: 26]
-.   .   .   .   .   Child: 1  Const 333 [line: 26]
-.   .   Sibling: 4  Call: output [line: 29]
-.   .   .   Child: 0  Const 666 [line: 29]
+Source code from file: testDataA3/allgood.c-
+----------------------------------------
+int ant() { return 111; }
+bat(int a; char c) {
+   bool b:false;
+
+   a := 222;
+   b := true;
+   c := 'z';
+
+   if a>222 then  333;
+   if a<333 then  444; else 555;
+   if a<=666 then  if a>=777 then  888; else 555;
+   while 999=a do 1010;
+   if b then  if not b then  while b and true do 1111; else 1212;
+   if b then  if not b then  while b or true do 1313; else 1414; else 1515;
+   if (b:=true) then 1616;
+
+   while false do break;
+
+   a+1717;
+   1818-a;
+   a*1919;
+   2020/a;
+   a%2121;
+
+   a+=1;
+   a-=2;
+   a*=3;
+   a/=4;
+
+   -a;
+   not b;
+   ?a;
+}
+
+char cat()
+{
+   int a; bool b; char c;
+   int aa[3]; bool ba[4]; char ca[5];
+
+   aa[2];
+   ba[a] := b;
+   ca[aa[1]] := c;
+
+   *ba;
+   ?11;
+
+   for z := aa to aa do z + z;
+   for z := ba to aa by aa do b and b;
+   for z := 3+4 to 7*8 by 15%3 do {
+       a := z;
+       z := a;
+   }
+
+   aa := aa;
+   ba = ba;
+   ca >< ca;
+   aa > aa;
+   ba >= ba;
+   ca < ca;
+   aa <= aa;
+
+   ca := "dogs are great";
+   
+   return 'm';
+}
+
+dog(int i) {
+   if i=3 then  {
+       int i;
+       i:=i;
+   }
+}
+
+int main()
+{
+   static bool bbb;
+   static char ccc[5]:"cows";
+   
+   ant();
+   bat(676, 'g');
+   cat();
+   bat(ant(), cat());
+   bbb := ccc[2]><'r';
+
+   return ant() + 807;
+}
+----------------------------------------
+WARNING(2): The variable 'a' seems not to be used.
+WARNING(2): The variable 'c' seems not to be used.
+WARNING(3): The variable 'b' seems not to be used.
+WARNING(37): The variable 'a' seems not to be used.
+WARNING(37): The variable 'b' seems not to be used.
+WARNING(37): The variable 'c' seems not to be used.
+WARNING(38): The variable 'aa' seems not to be used.
+WARNING(38): The variable 'ba' seems not to be used.
+WARNING(38): The variable 'ca' seems not to be used.
+WARNING(40): Variable 'aa' may be uninitialized when used here.
+WARNING(41): Variable 'ba' may be uninitialized when used here.
+WARNING(41): Variable 'a' may be uninitialized when used here.
+WARNING(41): Variable 'b' may be uninitialized when used here.
+WARNING(42): Variable 'ca' may be uninitialized when used here.
+WARNING(42): Variable 'aa' may be uninitialized when used here.
+WARNING(42): Variable 'c' may be uninitialized when used here.
+WARNING(47): The variable 'z' seems not to be used.
+WARNING(47): Variable 'aa' may be uninitialized when used here.
+WARNING(47): Variable 'aa' may be uninitialized when used here.
+WARNING(47): Variable 'z' may be uninitialized when used here.
+WARNING(47): Variable 'z' may be uninitialized when used here.
+WARNING(48): The variable 'z' seems not to be used.
+WARNING(48): Variable 'aa' may be uninitialized when used here.
+WARNING(48): Variable 'aa' may be uninitialized when used here.
+WARNING(48): Variable 'b' may be uninitialized when used here.
+WARNING(48): Variable 'b' may be uninitialized when used here.
+WARNING(49): The variable 'z' seems not to be used.
+WARNING(50): Variable 'a' may be uninitialized when used here.
+WARNING(50): Variable 'z' may be uninitialized when used here.
+WARNING(51): Variable 'z' may be uninitialized when used here.
+WARNING(54): Variable 'aa' may be uninitialized when used here.
+WARNING(54): Variable 'aa' may be uninitialized when used here.
+WARNING(62): Type mismatch in assignment.
+WARNING(67): The variable 'i' seems not to be used.
+WARNING(69): The variable 'i' seems not to be used.
+WARNING(70): Variable 'i' may be uninitialized when used here.
+WARNING(70): Variable 'i' may be uninitialized when used here.
+WARNING(76): The variable 'bbb' seems not to be used.
+WARNING(77): The variable 'ccc' seems not to be used.
+WARNING(83): Variable 'bbb' may be uninitialized when used here.
+Number of warnings: 40
+Number of errors: 6
+Func: ant returns type int [line: 1]
+.   Child: 1  Compound [line: 1]
+.   .   Child: 1  Return [line: 1]
+.   .   .   Child: 0  Const 111 of type int [line: 1]
+Sibling: 1  Func: bat returns type void [line: 2]
+.   Child: 0  Parm: a of type int [line: 2]
+.   Sibling: 1  Parm: c of type char [line: 2]
+.   Child: 1  Compound [line: 2]
+.   .   Child: 0  Var: b of type bool [line: 3]
+.   .   .   Child: 0  Const false of type bool [line: 3]
+.   .   Child: 1  Assign: := of type int [line: 5]
+.   .   .   Child: 0  Id: a of type int [line: 5]
+.   .   .   Child: 1  Const 222 of type int [line: 5]
+.   .   Sibling: 1  Assign: := of type bool [line: 6]
+.   .   .   Child: 0  Id: b of type bool [line: 6]
+.   .   .   Child: 1  Const true of type bool [line: 6]
+.   .   Sibling: 2  Assign: := of type char [line: 7]
+.   .   .   Child: 0  Id: c of type char [line: 7]
+.   .   .   Child: 1  Const 'z' of type char [line: 7]
+.   .   Sibling: 3  If [line: 9]
+.   .   .   Child: 0  Op: > of type bool [line: 9]
+.   .   .   .   Child: 0  Id: a of type int [line: 9]
+.   .   .   .   Child: 1  Const 222 of type int [line: 9]
+.   .   .   Child: 1  Const 333 of type int [line: 9]
+.   .   Sibling: 4  If [line: 10]
+.   .   .   Child: 0  Op: < of type bool [line: 10]
+.   .   .   .   Child: 0  Id: a of type int [line: 10]
+.   .   .   .   Child: 1  Const 333 of type int [line: 10]
+.   .   .   Child: 1  Const 444 of type int [line: 10]
+.   .   .   Child: 2  Const 555 of type int [line: 10]
+.   .   Sibling: 5  If [line: 11]
+.   .   .   Child: 0  Op: <= of type bool [line: 11]
+.   .   .   .   Child: 0  Id: a of type int [line: 11]
+.   .   .   .   Child: 1  Const 666 of type int [line: 11]
+.   .   .   Child: 1  If [line: 11]
+.   .   .   .   Child: 0  Op: >= of type bool [line: 11]
+.   .   .   .   .   Child: 0  Id: a of type int [line: 11]
+.   .   .   .   .   Child: 1  Const 777 of type int [line: 11]
+.   .   .   .   Child: 1  Const 888 of type int [line: 11]
+.   .   .   .   Child: 2  Const 555 of type int [line: 11]
+.   .   Sibling: 6  While [line: 12]
+.   .   .   Child: 0  Op: = of type bool [line: 12]
+.   .   .   .   Child: 0  Const 999 of type int [line: 12]
+.   .   .   .   Child: 1  Id: a of type int [line: 12]
+.   .   .   Child: 1  Const 1010 of type int [line: 12]
+.   .   Sibling: 7  If [line: 13]
+.   .   .   Child: 0  Id: b of type bool [line: 13]
+.   .   .   Child: 1  If [line: 13]
+.   .   .   .   Child: 0  Op: not of type bool [line: 13]
+.   .   .   .   .   Child: 0  Id: b of type bool [line: 13]
+.   .   .   .   Child: 1  While [line: 13]
+.   .   .   .   .   Child: 0  Op: and of type bool [line: 13]
+.   .   .   .   .   .   Child: 0  Id: b of type bool [line: 13]
+.   .   .   .   .   .   Child: 1  Const true of type bool [line: 13]
+.   .   .   .   .   Child: 1  Const 1111 of type int [line: 13]
+.   .   .   .   Child: 2  Const 1212 of type int [line: 13]
+.   .   Sibling: 8  If [line: 14]
+.   .   .   Child: 0  Id: b of type bool [line: 14]
+.   .   .   Child: 1  If [line: 14]
+.   .   .   .   Child: 0  Op: not of type bool [line: 14]
+.   .   .   .   .   Child: 0  Id: b of type bool [line: 14]
+.   .   .   .   Child: 1  While [line: 14]
+.   .   .   .   .   Child: 0  Op: or of type bool [line: 14]
+.   .   .   .   .   .   Child: 0  Id: b of type bool [line: 14]
+.   .   .   .   .   .   Child: 1  Const true of type bool [line: 14]
+.   .   .   .   .   Child: 1  Const 1313 of type int [line: 14]
+.   .   .   .   Child: 2  Const 1414 of type int [line: 14]
+.   .   .   Child: 2  Const 1515 of type int [line: 14]
+.   .   Sibling: 9  If [line: 15]
+.   .   .   Child: 0  Assign: := of type bool [line: 15]
+.   .   .   .   Child: 0  Id: b of type bool [line: 15]
+.   .   .   .   Child: 1  Const true of type bool [line: 15]
+.   .   .   Child: 1  Const 1616 of type int [line: 15]
+.   .   Sibling: 10  While [line: 17]
+.   .   .   Child: 0  Const false of type bool [line: 17]
+.   .   .   Child: 1  Break [line: 17]
+.   .   Sibling: 11  Op: + of type int [line: 19]
+.   .   .   Child: 0  Id: a of type int [line: 19]
+.   .   .   Child: 1  Const 1717 of type int [line: 19]
+.   .   Sibling: 12  Op: - of type int [line: 20]
+.   .   .   Child: 0  Const 1818 of type int [line: 20]
+.   .   .   Child: 1  Id: a of type int [line: 20]
+.   .   Sibling: 13  Op: * of type int [line: 21]
+.   .   .   Child: 0  Id: a of type int [line: 21]
+.   .   .   Child: 1  Const 1919 of type int [line: 21]
+.   .   Sibling: 14  Op: / of type int [line: 22]
+.   .   .   Child: 0  Const 2020 of type int [line: 22]
+.   .   .   Child: 1  Id: a of type int [line: 22]
+.   .   Sibling: 15  Op: % of type int [line: 23]
+.   .   .   Child: 0  Id: a of type int [line: 23]
+.   .   .   Child: 1  Const 2121 of type int [line: 23]
+.   .   Sibling: 16  Assign: += of type int [line: 25]
+.   .   .   Child: 0  Id: a of type int [line: 25]
+.   .   .   Child: 1  Const 1 of type int [line: 25]
+.   .   Sibling: 17  Assign: -= of type int [line: 26]
+.   .   .   Child: 0  Id: a of type int [line: 26]
+.   .   .   Child: 1  Const 2 of type int [line: 26]
+.   .   Sibling: 18  Assign: *= of type int [line: 27]
+.   .   .   Child: 0  Id: a of type int [line: 27]
+.   .   .   Child: 1  Const 3 of type int [line: 27]
+.   .   Sibling: 19  Assign: /= of type int [line: 28]
+.   .   .   Child: 0  Id: a of type int [line: 28]
+.   .   .   Child: 1  Const 4 of type int [line: 28]
+.   .   Sibling: 20  Op: chsign of type int [line: 30]
+.   .   .   Child: 0  Id: a of type int [line: 30]
+.   .   Sibling: 21  Op: not of type bool [line: 31]
+.   .   .   Child: 0  Id: b of type bool [line: 31]
+.   .   Sibling: 22  Op: ? of type int [line: 32]
+.   .   .   Child: 0  Id: a of type int [line: 32]
+Sibling: 2  Func: cat returns type char [line: 35]
+.   Child: 1  Compound [line: 36]
+.   .   Child: 0  Var: a of type int [line: 37]
+.   .   Sibling: 1  Var: b of type bool [line: 37]
+.   .   Sibling: 2  Var: c of type char [line: 37]
+.   .   Sibling: 3  Var: aa of type int [line: 38]
+.   .   Sibling: 4  Var: ba of type bool [line: 38]
+.   .   Sibling: 5  Var: ca of type char [line: 38]
+.   .   Child: 1  Op: [ of type int [line: 40]
+.   .   .   Child: 0  Id: aa of type int [line: 40]
+.   .   .   Child: 1  Const 2 of type int [line: 40]
+.   .   Sibling: 1  Assign: := of type bool [line: 41]
+.   .   .   Child: 0  Op: [ of type bool [line: 41]
+.   .   .   .   Child: 0  Id: ba of type bool [line: 41]
+.   .   .   .   Child: 1  Id: a of type int [line: 41]
+.   .   .   Child: 1  Id: b of type bool [line: 41]
+.   .   Sibling: 2  Assign: := of type char [line: 42]
+.   .   .   Child: 0  Op: [ of type char [line: 42]
+.   .   .   .   Child: 0  Id: ca of type char [line: 42]
+.   .   .   .   Child: 1  Op: [ of type int [line: 42]
+.   .   .   .   .   Child: 0  Id: aa of type int [line: 42]
+.   .   .   .   .   Child: 1  Const 1 of type int [line: 42]
+.   .   .   Child: 1  Id: c of type char [line: 42]
+.   .   Sibling: 3  Op: sizeof of type int [line: 44]
+.   .   .   Child: 0  Id: ba of type bool [line: 44]
+.   .   Sibling: 4  Op: ? of type int [line: 45]
+.   .   .   Child: 0  Const 11 of type int [line: 45]
+.   .   Sibling: 5  For [line: 47]
+.   .   .   Child: 0  Var: z of type int [line: 47]
+.   .   .   Child: 1  Range [line: 47]
+.   .   .   .   Child: 0  Id: aa of type int [line: 47]
+.   .   .   .   Child: 1  Id: aa of type int [line: 47]
+.   .   .   Child: 2  Op: + of type int [line: 47]
+.   .   .   .   Child: 0  Id: z of type int [line: 47]
+.   .   .   .   Child: 1  Id: z of type int [line: 47]
+.   .   Sibling: 6  For [line: 48]
+.   .   .   Child: 0  Var: z of type int [line: 48]
+.   .   .   Child: 1  Range [line: 48]
+.   .   .   .   Child: 0  Id: ba of type bool [line: 48]
+.   .   .   .   Child: 1  Id: aa of type int [line: 48]
+.   .   .   .   Child: 2  Id: aa of type int [line: 48]
+.   .   .   Child: 2  Op: and of type bool [line: 48]
+.   .   .   .   Child: 0  Id: b of type bool [line: 48]
+.   .   .   .   Child: 1  Id: b of type bool [line: 48]
+.   .   Sibling: 7  For [line: 49]
+.   .   .   Child: 0  Var: z of type int [line: 49]
+.   .   .   Child: 1  Range [line: 49]
+.   .   .   .   Child: 0  Op: + of type int [line: 49]
+.   .   .   .   .   Child: 0  Const 3 of type int [line: 49]
+.   .   .   .   .   Child: 1  Const 4 of type int [line: 49]
+.   .   .   .   Child: 1  Op: * of type int [line: 49]
+.   .   .   .   .   Child: 0  Const 7 of type int [line: 49]
+.   .   .   .   .   Child: 1  Const 8 of type int [line: 49]
+.   .   .   .   Child: 2  Op: % of type int [line: 49]
+.   .   .   .   .   Child: 0  Const 15 of type int [line: 49]
+.   .   .   .   .   Child: 1  Const 3 of type int [line: 49]
+.   .   .   Child: 2  Compound [line: 49]
+.   .   .   .   Child: 1  Assign: := of type int [line: 50]
+.   .   .   .   .   Child: 0  Id: a of type int [line: 50]
+.   .   .   .   .   Child: 1  Id: z of type int [line: 50]
+.   .   .   .   Sibling: 1  Assign: := of type int [line: 51]
+.   .   .   .   .   Child: 0  Id: z of type int [line: 51]
+.   .   .   .   .   Child: 1  Id: a of type int [line: 51]
+.   .   Sibling: 8  Assign: := of type int [line: 54]
+.   .   .   Child: 0  Id: aa of type int [line: 54]
+.   .   .   Child: 1  Id: aa of type int [line: 54]
+.   .   Sibling: 9  Op: = of type bool [line: 55]
+.   .   .   Child: 0  Id: ba of type bool [line: 55]
+.   .   .   Child: 1  Id: ba of type bool [line: 55]
+.   .   Sibling: 10  Op: >< of type bool [line: 56]
+.   .   .   Child: 0  Id: ca of type char [line: 56]
+.   .   .   Child: 1  Id: ca of type char [line: 56]
+.   .   Sibling: 11  Op: > of type bool [line: 57]
+.   .   .   Child: 0  Id: aa of type int [line: 57]
+.   .   .   Child: 1  Id: aa of type int [line: 57]
+.   .   Sibling: 12  Op: >= of type bool [line: 58]
+.   .   .   Child: 0  Id: ba of type bool [line: 58]
+.   .   .   Child: 1  Id: ba of type bool [line: 58]
+.   .   Sibling: 13  Op: < of type bool [line: 59]
+.   .   .   Child: 0  Id: ca of type char [line: 59]
+.   .   .   Child: 1  Id: ca of type char [line: 59]
+.   .   Sibling: 14  Op: <= of type bool [line: 60]
+.   .   .   Child: 0  Id: aa of type int [line: 60]
+.   .   .   Child: 1  Id: aa of type int [line: 60]
+.   .   Sibling: 15  Assign: := of type char [line: 62]
+.   .   .   Child: 0  Id: ca of type char [line: 62]
+.   .   .   Child: 1  Const "dogs are great" is array of type char [line: 62]
+.   .   Sibling: 16  Return [line: 64]
+.   .   .   Child: 0  Const 'm' of type char [line: 64]
+Sibling: 3  Func: dog returns type void [line: 67]
+.   Child: 0  Parm: i of type int [line: 67]
+.   Child: 1  Compound [line: 67]
+.   .   Child: 1  If [line: 68]
+.   .   .   Child: 0  Op: = of type bool [line: 68]
+.   .   .   .   Child: 0  Id: i of type int [line: 68]
+.   .   .   .   Child: 1  Const 3 of type int [line: 68]
+.   .   .   Child: 1  Compound [line: 68]
+.   .   .   .   Child: 0  Var: i of type int [line: 69]
+.   .   .   .   Child: 1  Assign: := of type int [line: 70]
+.   .   .   .   .   Child: 0  Id: i of type int [line: 70]
+.   .   .   .   .   Child: 1  Id: i of type int [line: 70]
+Sibling: 4  Func: main returns type int [line: 74]
+.   Child: 1  Compound [line: 75]
+.   .   Child: 0  Var: bbb of type bool [line: 76]
+.   .   Sibling: 1  Var: ccc is array of type char [line: 77]
+.   .   .   Child: 0  Const "cows" is array of type char [line: 77]
+.   .   Child: 1  Call: ant of type int [line: 79]
+.   .   Sibling: 1  Call: bat of type void [line: 80]
+.   .   .   Child: 0  Const 676 of type int [line: 80]
+.   .   .   Sibling: 1  Const 'g' of type char [line: 80]
+.   .   Sibling: 2  Call: cat of type char [line: 81]
+.   .   Sibling: 3  Call: bat of type void [line: 82]
+.   .   .   Child: 0  Call: ant of type int [line: 82]
+.   .   .   Sibling: 1  Call: cat of type char [line: 82]
+.   .   Sibling: 4  Assign: := of type bool [line: 83]
+.   .   .   Child: 0  Id: bbb of type bool [line: 83]
+.   .   .   Child: 1  Op: >< of type bool [line: 83]
+.   .   .   .   Child: 0  Op: [ of type char [line: 83]
+.   .   .   .   .   Child: 0  Id: ccc is array of type char [line: 83]
+.   .   .   .   .   Child: 1  Const 2 of type int [line: 83]
+.   .   .   .   Child: 1  Const 'r' of type char [line: 83]
+.   .   Sibling: 5  Return [line: 85]
+.   .   .   Child: 0  Op: + of type int [line: 85]
+.   .   .   .   Child: 0  Call: ant of type int [line: 85]
+.   .   .   .   Child: 1  Const 807 of type int [line: 85]
+Number of warnings: 40
+Number of errors: 6

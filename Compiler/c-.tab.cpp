@@ -152,10 +152,8 @@
 /* Copy the first part of user declarations.  */
 #line 1 "c-.y"
 
-#include "tree.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "scanType.h"   // for TokenData struct
 #include <math.h>
 #include "globals.h"
 #include <string.h>
@@ -193,9 +191,6 @@ void printToken(TokenData* t, const char* name) {
 extern int yylineno;
 int yylex(void);
 int yyerror(const char *s);
-TreeNode *syntaxTree = NULL;  // global AST root
-int printTreeFlag = 1;
-static TreeNode * savedTree;
 
 
 /* Enabling traces.  */
@@ -218,7 +213,7 @@ static TreeNode * savedTree;
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 48 "c-.y"
+#line 43 "c-.y"
 {
     TreeNode *tree;
     TokenData *tokenData;
@@ -226,7 +221,7 @@ typedef union YYSTYPE
     ExpType type;   // Add this field for ExpType enum
 }
 /* Line 193 of yacc.c.  */
-#line 230 "c-.tab.cpp"
+#line 225 "c-.tab.cpp"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
@@ -239,7 +234,7 @@ typedef union YYSTYPE
 
 
 /* Line 216 of yacc.c.  */
-#line 243 "c-.tab.cpp"
+#line 238 "c-.tab.cpp"
 
 #ifdef short
 # undef short
@@ -563,17 +558,17 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,    81,    81,    88,    92,    98,   102,   108,   146,   164,
-     185,   189,   195,   199,   209,   215,   227,   228,   229,   232,
-     240,   250,   255,   260,   264,   270,   290,   294,   300,   306,
-     315,   319,   323,   327,   331,   335,   341,   347,   353,   359,
-     365,   370,   377,   383,   398,   410,   414,   424,   428,   434,
-     438,   444,   450,   455,   460,   465,   471,   472,   473,   474,
-     475,   478,   483,   489,   494,   500,   505,   511,   516,   522,
-     523,   524,   525,   526,   527,   530,   535,   541,   542,   545,
-     550,   556,   557,   558,   561,   567,   573,   574,   575,   578,
-     582,   588,   594,   605,   609,   613,   619,   627,   632,   637,
-     641,   647,   653,   659,   666
+       0,    76,    76,    83,    87,    93,    97,   103,   140,   164,
+     190,   194,   200,   204,   213,   219,   231,   232,   233,   236,
+     244,   254,   259,   264,   268,   274,   294,   298,   304,   310,
+     319,   323,   327,   331,   335,   339,   345,   351,   357,   363,
+     369,   374,   381,   387,   402,   414,   418,   428,   432,   438,
+     442,   448,   454,   459,   464,   469,   475,   476,   477,   478,
+     479,   482,   487,   493,   498,   504,   509,   515,   520,   526,
+     527,   528,   529,   530,   531,   534,   539,   545,   546,   549,
+     554,   560,   561,   562,   565,   571,   577,   578,   579,   582,
+     586,   592,   598,   609,   613,   617,   623,   631,   636,   641,
+     645,   651,   657,   663,   671
 };
 #endif
 
@@ -1610,43 +1605,43 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 82 "c-.y"
+#line 77 "c-.y"
     {
                     //$$ = newDeclNode(ProgramK, 0, $1, NULL, NULL);
-                    savedTree = (yyvsp[(1) - (1)].tree);   /* root of the AST */
+                    syntaxTree = (yyvsp[(1) - (1)].tree);   /* root of the AST */
                 ;}
     break;
 
   case 3:
-#line 89 "c-.y"
+#line 84 "c-.y"
     {
                     (yyval.tree) = addSibling((yyvsp[(1) - (2)].tree), (yyvsp[(2) - (2)].tree));
                 ;}
     break;
 
   case 4:
-#line 93 "c-.y"
+#line 88 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
   case 5:
-#line 99 "c-.y"
+#line 94 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
   case 6:
-#line 103 "c-.y"
+#line 98 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
   case 7:
-#line 109 "c-.y"
+#line 104 "c-.y"
     {
                     // This rule now creates a VarK node for each item in the varDeclList.
                     // It copies the name and isArray properties from the list.
@@ -1667,12 +1662,11 @@ yyreduce:
                         } 
                         // Otherwise, it's a simple ID declaration.
                         else { // IdK
-                            varNode = newDeclNode(VarK, list->lineno, list, NULL, NULL);
                             // For a simple declaration, the VarK node is a leaf.
                             // It holds the name and type; it doesn't need a child.
                             varNode = newDeclNode(VarK, list->lineno, NULL, NULL, NULL);
                             varNode->attr.name = strdup(list->attr.name);
-                            varNode->isArray = list->isArray;
+                            //varNode->isArray = list->isArray;
                         }
 
                         varNode->expType = (yyvsp[(1) - (3)].type);
@@ -1685,20 +1679,26 @@ yyreduce:
     break;
 
   case 8:
-#line 147 "c-.y"
+#line 141 "c-.y"
     {
                     // This rule must also create a sibling list of leaf VarK nodes.
                     TreeNode * list = (yyvsp[(3) - (4)].tree);
                     TreeNode * head = NULL;
                     while (list != NULL) {
-                        TreeNode * newNode = newDeclNode(VarK, list->lineno, NULL, NULL, NULL);
-                        newNode->attr.name = new char[strlen(list->attr.name) + 1];
-                        strcpy(newNode->attr.name, list->attr.name);
-                        newNode->isArray = list->isArray;
-                        newNode->isStatic = true; // Set static flag
-                        newNode->expType = (yyvsp[(2) - (4)].type);    // Capture type. $2 is now an ExpType.
+                        TreeNode * varNode;
+                        if (list->subkind.exp == InitK) {
+                            varNode = newDeclNode(VarK, list->lineno, list->child[1], NULL, NULL);
+                            varNode->attr.name = strdup(list->child[0]->attr.name);
+                            varNode->isArray = list->child[0]->isArray;
+                        } else { // IdK
+                            varNode = newDeclNode(VarK, list->lineno, NULL, NULL, NULL);
+                            varNode->attr.name = strdup(list->attr.name);
+                            //varNode->isArray = list->isArray;
+                        }
+                        varNode->isStatic = true; // Set static flag
+                        varNode->expType = (yyvsp[(2) - (4)].type);    // Capture type.
                         
-                        head = addSibling(head, newNode);
+                        head = addSibling(head, varNode);
                         list = list->sibling;
                     }
                     (yyval.tree) = head;
@@ -1708,19 +1708,24 @@ yyreduce:
   case 9:
 #line 165 "c-.y"
     {
-                    // This is a local variable declaration, handled by localDecls.
-                    // This rule should be part of localDecls, not a separate scopedVarDecl.
-                    // For now, let's make it behave like the main varDecl.
+                    // This is a local variable declaration.
                     TreeNode * list = (yyvsp[(2) - (3)].tree);
                     TreeNode * head = NULL;
                     while (list != NULL) {
-                        TreeNode * newNode = newDeclNode(VarK, list->lineno, NULL, NULL, NULL);
-                        newNode->attr.name = new char[strlen(list->attr.name) + 1];
-                        strcpy(newNode->attr.name, list->attr.name);
-                        newNode->isArray = list->isArray;
-                        newNode->expType = (yyvsp[(1) - (3)].type); // Capture type. $1 is now an ExpType.
+                        TreeNode * varNode;
+                        if (list->subkind.exp == InitK) {
+                            varNode = newDeclNode(VarK, list->lineno, list->child[1], NULL, NULL);
+                            varNode->attr.name = strdup(list->child[0]->attr.name);
+                            varNode->isArray = list->child[0]->isArray;
+                        } else { // IdK
+                            varNode = newDeclNode(VarK, list->lineno, NULL, NULL, NULL);
+                            varNode->attr.name = strdup(list->attr.name);
+                            //varNode->isArray = list->isArray;
+                        }
+
+                        varNode->expType = (yyvsp[(1) - (3)].type); // Capture type.
                         
-                        head = addSibling(head, newNode);
+                        head = addSibling(head, varNode);
                         list = list->sibling;
                     }
                     (yyval.tree) = head;
@@ -1728,39 +1733,38 @@ yyreduce:
     break;
 
   case 10:
-#line 186 "c-.y"
+#line 191 "c-.y"
     {
                     (yyval.tree) = addSibling((yyvsp[(1) - (3)].tree), (yyvsp[(3) - (3)].tree));
                 ;}
     break;
 
   case 11:
-#line 190 "c-.y"
+#line 195 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
   case 12:
-#line 196 "c-.y"
+#line 201 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
   case 13:
-#line 200 "c-.y"
+#line 205 "c-.y"
     {
                     (yyval.tree) = newExpNode(InitK, yylineno, (yyvsp[(1) - (3)].tree), (yyvsp[(3) - (3)].tree), NULL);
                     if ((yyvsp[(1) - (3)].tree)->attr.name != NULL) {
                         (yyval.tree)->attr.name = strdup((yyvsp[(1) - (3)].tree)->attr.name);
                     }
-                    (yyval.tree)->isArray = (yyvsp[(1) - (3)].tree)->isArray;
                 ;}
     break;
 
   case 14:
-#line 210 "c-.y"
+#line 214 "c-.y"
     {
                     (yyval.tree) = newExpNode(IdK, (yyvsp[(1) - (1)].tokenData)->linenum, NULL, NULL, NULL);
                     (yyval.tree)->attr.name = new char[strlen((yyvsp[(1) - (1)].tokenData)->tokenstr) + 1];
@@ -1769,7 +1773,7 @@ yyreduce:
     break;
 
   case 15:
-#line 216 "c-.y"
+#line 220 "c-.y"
     {
                     TreeNode *sizeNode = newExpNode(ConstantK, (yyvsp[(3) - (4)].tokenData)->linenum, NULL, NULL, NULL);
                     sizeNode->attr.value = (yyvsp[(3) - (4)].tokenData)->numValue;
@@ -1782,22 +1786,22 @@ yyreduce:
     break;
 
   case 16:
-#line 227 "c-.y"
+#line 231 "c-.y"
     { (yyval.type) = Boolean; ;}
     break;
 
   case 17:
-#line 228 "c-.y"
+#line 232 "c-.y"
     { (yyval.type) = Char; ;}
     break;
 
   case 18:
-#line 229 "c-.y"
+#line 233 "c-.y"
     { (yyval.type) = Integer; ;}
     break;
 
   case 19:
-#line 233 "c-.y"
+#line 237 "c-.y"
     {
                     // Correctly assign parms to child[0] and body to child[1]
                     (yyval.tree) = newDeclNode(FuncK, (yyvsp[(2) - (6)].tokenData)->linenum, (yyvsp[(4) - (6)].tree), (yyvsp[(6) - (6)].tree), NULL);
@@ -1808,7 +1812,7 @@ yyreduce:
     break;
 
   case 20:
-#line 241 "c-.y"
+#line 245 "c-.y"
     {
                     // Correctly assign parms to child[0] and body to child[1]
                     (yyval.tree) = newDeclNode(FuncK, (yyvsp[(1) - (5)].tokenData)->linenum, (yyvsp[(3) - (5)].tree), (yyvsp[(5) - (5)].tree), NULL);
@@ -1819,35 +1823,35 @@ yyreduce:
     break;
 
   case 21:
-#line 251 "c-.y"
+#line 255 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
   case 22:
-#line 255 "c-.y"
+#line 259 "c-.y"
     {
                     (yyval.tree) = NULL;
                 ;}
     break;
 
   case 23:
-#line 261 "c-.y"
+#line 265 "c-.y"
     {
                     (yyval.tree) = addSibling((yyvsp[(1) - (3)].tree), (yyvsp[(3) - (3)].tree));
                 ;}
     break;
 
   case 24:
-#line 265 "c-.y"
+#line 269 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
   case 25:
-#line 271 "c-.y"
+#line 275 "c-.y"
     {
                     // Iterate through the parmIdList ($2) and create a ParamK node for each one.
                     // Each new ParamK node gets its type from typeSpec ($1).
@@ -1868,32 +1872,32 @@ yyreduce:
     break;
 
   case 26:
-#line 291 "c-.y"
+#line 295 "c-.y"
     {
                     (yyval.tree) = addSibling((yyvsp[(1) - (3)].tree), (yyvsp[(3) - (3)].tree));
                 ;}
     break;
 
   case 27:
-#line 295 "c-.y"
+#line 299 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
   case 28:
-#line 301 "c-.y"
+#line 305 "c-.y"
     {
-                    (yyval.tree) = newExpNode(IdK, yylineno, NULL, NULL, NULL);
+                    (yyval.tree) = newExpNode(IdK, (yyvsp[(1) - (1)].tokenData)->linenum, NULL, NULL, NULL);
                     (yyval.tree)->attr.name = new char[strlen((yyvsp[(1) - (1)].tokenData)->tokenstr) + 1];
                     strcpy((yyval.tree)->attr.name, (yyvsp[(1) - (1)].tokenData)->tokenstr);
                 ;}
     break;
 
   case 29:
-#line 307 "c-.y"
+#line 311 "c-.y"
     {
-                    (yyval.tree) = newExpNode(IdK, yylineno, NULL, NULL, NULL);
+                    (yyval.tree) = newExpNode(IdK, (yyvsp[(1) - (3)].tokenData)->linenum, NULL, NULL, NULL);
                     (yyval.tree)->attr.name = new char[strlen((yyvsp[(1) - (3)].tokenData)->tokenstr) + 1];
                     strcpy((yyval.tree)->attr.name, (yyvsp[(1) - (3)].tokenData)->tokenstr);
                     (yyval.tree)->isArray = true;
@@ -1901,49 +1905,49 @@ yyreduce:
     break;
 
   case 30:
-#line 316 "c-.y"
-    {
-                    (yyval.tree) = (yyvsp[(1) - (1)].tree);
-                ;}
-    break;
-
-  case 31:
 #line 320 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
-  case 32:
+  case 31:
 #line 324 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
-  case 33:
+  case 32:
 #line 328 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
-  case 34:
+  case 33:
 #line 332 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
-  case 35:
+  case 34:
 #line 336 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
+  case 35:
+#line 340 "c-.y"
+    {
+                    (yyval.tree) = (yyvsp[(1) - (1)].tree);
+                ;}
+    break;
+
   case 36:
-#line 342 "c-.y"
+#line 346 "c-.y"
     {
                     // Return the expression node itself as the statement.
                     // This removes the incorrect "Null Stmt" wrapper.
@@ -1952,21 +1956,21 @@ yyreduce:
     break;
 
   case 37:
-#line 348 "c-.y"
+#line 352 "c-.y"
     {
                     (yyval.tree) = newStmtNode(NullK, yylineno, NULL, NULL, NULL);
                 ;}
     break;
 
   case 38:
-#line 354 "c-.y"
+#line 358 "c-.y"
     {
                     (yyval.tree) = newStmtNode(CompoundK, (yyvsp[(1) - (4)].tokenData)->linenum, (yyvsp[(2) - (4)].tree), (yyvsp[(3) - (4)].tree), NULL);
                 ;}
     break;
 
   case 39:
-#line 360 "c-.y"
+#line 364 "c-.y"
     {
                     //printf("found localDecls\n");
                     (yyval.tree) = addSibling((yyvsp[(1) - (2)].tree), (yyvsp[(2) - (2)].tree));
@@ -1974,14 +1978,14 @@ yyreduce:
     break;
 
   case 40:
-#line 365 "c-.y"
+#line 369 "c-.y"
     {
                     (yyval.tree) = NULL;
                 ;}
     break;
 
   case 41:
-#line 371 "c-.y"
+#line 375 "c-.y"
     {
                     //printf("found stmtList\n");
                     // Correctly append to the list. addSibling handles the case where $1 is NULL.
@@ -1990,7 +1994,7 @@ yyreduce:
     break;
 
   case 42:
-#line 377 "c-.y"
+#line 381 "c-.y"
     {
                     //printf("found stmtList\n");
                     (yyval.tree) = NULL;
@@ -1998,7 +2002,7 @@ yyreduce:
     break;
 
   case 43:
-#line 384 "c-.y"
+#line 388 "c-.y"
     {
                     //printToken($1, "IF");
 
@@ -2016,7 +2020,7 @@ yyreduce:
     break;
 
   case 44:
-#line 399 "c-.y"
+#line 403 "c-.y"
     {
                     //printf("found selectStmt\n");
                     TreeNode *thenStmt = (yyvsp[(4) - (6)].tree);
@@ -2029,14 +2033,14 @@ yyreduce:
     break;
 
   case 45:
-#line 411 "c-.y"
+#line 415 "c-.y"
     {
                     (yyval.tree) = newStmtNode(WhileK, (yyvsp[(1) - (4)].tokenData)->linenum, (yyvsp[(2) - (4)].tree), (yyvsp[(4) - (4)].tree), NULL);
                 ;}
     break;
 
   case 46:
-#line 415 "c-.y"
+#line 419 "c-.y"
     {
                     TreeNode *varNode = newDeclNode(VarK, (yyvsp[(2) - (6)].tokenData)->linenum, NULL, NULL, NULL);
                     varNode->attr.name = new char[strlen((yyvsp[(2) - (6)].tokenData)->tokenstr) + 1];
@@ -2047,42 +2051,42 @@ yyreduce:
     break;
 
   case 47:
-#line 425 "c-.y"
+#line 429 "c-.y"
     {
                     (yyval.tree) = newStmtNode(RangeK, (yyvsp[(2) - (3)].tokenData)->linenum, (yyvsp[(1) - (3)].tree), (yyvsp[(3) - (3)].tree), NULL);
                 ;}
     break;
 
   case 48:
-#line 429 "c-.y"
+#line 433 "c-.y"
     {
                     (yyval.tree) = newStmtNode(RangeK, (yyvsp[(2) - (5)].tokenData)->linenum, (yyvsp[(1) - (5)].tree), (yyvsp[(3) - (5)].tree), (yyvsp[(5) - (5)].tree));
                 ;}
     break;
 
   case 49:
-#line 435 "c-.y"
+#line 439 "c-.y"
     {
                     (yyval.tree) = newStmtNode(ReturnK, (yyvsp[(1) - (2)].tokenData)->linenum, NULL, NULL, NULL);
                 ;}
     break;
 
   case 50:
-#line 439 "c-.y"
+#line 443 "c-.y"
     {
                     (yyval.tree) = newStmtNode(ReturnK, (yyvsp[(1) - (3)].tokenData)->linenum, (yyvsp[(2) - (3)].tree), NULL, NULL);
                 ;}
     break;
 
   case 51:
-#line 445 "c-.y"
+#line 449 "c-.y"
     {
                     (yyval.tree) = newStmtNode(BreakK, (yyvsp[(1) - (2)].tokenData)->linenum, NULL, NULL, NULL);
                 ;}
     break;
 
   case 52:
-#line 451 "c-.y"
+#line 455 "c-.y"
     {
                     (yyval.tree) = newExpNode(AssignK, (yyvsp[(1) - (3)].tree)->lineno, (yyvsp[(1) - (3)].tree), (yyvsp[(3) - (3)].tree), NULL); // Use lineno of the mutable
                     (yyval.tree)->attr.op = (yyvsp[(2) - (3)].op);
@@ -2090,7 +2094,7 @@ yyreduce:
     break;
 
   case 53:
-#line 456 "c-.y"
+#line 460 "c-.y"
     {
                     (yyval.tree) = newExpNode(AssignK, (yyvsp[(2) - (2)].tokenData)->linenum, (yyvsp[(1) - (2)].tree), NULL, NULL);
                     (yyval.tree)->attr.op = INC;
@@ -2098,7 +2102,7 @@ yyreduce:
     break;
 
   case 54:
-#line 461 "c-.y"
+#line 465 "c-.y"
     {
                     (yyval.tree) = newExpNode(AssignK, (yyvsp[(2) - (2)].tokenData)->linenum, (yyvsp[(1) - (2)].tree), NULL, NULL);
                     (yyval.tree)->attr.op = DEC;
@@ -2106,39 +2110,39 @@ yyreduce:
     break;
 
   case 55:
-#line 466 "c-.y"
+#line 470 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
   case 56:
-#line 471 "c-.y"
+#line 475 "c-.y"
     { (yyval.op) = ASSIGN; ;}
     break;
 
   case 57:
-#line 472 "c-.y"
+#line 476 "c-.y"
     { (yyval.op) = ADDASS; ;}
     break;
 
   case 58:
-#line 473 "c-.y"
+#line 477 "c-.y"
     { (yyval.op) = SUBASS; ;}
     break;
 
   case 59:
-#line 474 "c-.y"
+#line 478 "c-.y"
     { (yyval.op) = MULASS; ;}
     break;
 
   case 60:
-#line 475 "c-.y"
+#line 479 "c-.y"
     { (yyval.op) = DIVASS; ;}
     break;
 
   case 61:
-#line 479 "c-.y"
+#line 483 "c-.y"
     {
                     (yyval.tree) = newExpNode(OpK, (yyvsp[(2) - (3)].tokenData)->linenum, (yyvsp[(1) - (3)].tree), (yyvsp[(3) - (3)].tree), NULL);
                     (yyval.tree)->attr.op = OR;
@@ -2146,14 +2150,14 @@ yyreduce:
     break;
 
   case 62:
-#line 484 "c-.y"
+#line 488 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
   case 63:
-#line 490 "c-.y"
+#line 494 "c-.y"
     {
                     (yyval.tree) = newExpNode(OpK, (yyvsp[(2) - (3)].tokenData)->linenum, (yyvsp[(1) - (3)].tree), (yyvsp[(3) - (3)].tree), NULL);
                     (yyval.tree)->attr.op = AND;
@@ -2161,14 +2165,14 @@ yyreduce:
     break;
 
   case 64:
-#line 495 "c-.y"
+#line 499 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
   case 65:
-#line 501 "c-.y"
+#line 505 "c-.y"
     {
                     (yyval.tree) = newExpNode(OpK, (yyvsp[(1) - (2)].tokenData)->linenum, (yyvsp[(2) - (2)].tree), NULL, NULL);
                     (yyval.tree)->attr.op = NOT;
@@ -2176,14 +2180,14 @@ yyreduce:
     break;
 
   case 66:
-#line 506 "c-.y"
+#line 510 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
   case 67:
-#line 512 "c-.y"
+#line 516 "c-.y"
     {
                     (yyval.tree) = newExpNode(OpK, (yyvsp[(1) - (3)].tree)->lineno, (yyvsp[(1) - (3)].tree), (yyvsp[(3) - (3)].tree), NULL); // Use lineno of first expression
                     (yyval.tree)->attr.op = (yyvsp[(2) - (3)].op);
@@ -2191,44 +2195,44 @@ yyreduce:
     break;
 
   case 68:
-#line 517 "c-.y"
+#line 521 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
   case 69:
-#line 522 "c-.y"
+#line 526 "c-.y"
     { (yyval.op) = LT; ;}
     break;
 
   case 70:
-#line 523 "c-.y"
+#line 527 "c-.y"
     { (yyval.op) = LE; ;}
     break;
 
   case 71:
-#line 524 "c-.y"
+#line 528 "c-.y"
     { (yyval.op) = GT; ;}
     break;
 
   case 72:
-#line 525 "c-.y"
+#line 529 "c-.y"
     { (yyval.op) = GE; ;}
     break;
 
   case 73:
-#line 526 "c-.y"
+#line 530 "c-.y"
     { (yyval.op) = EQ; ;}
     break;
 
   case 74:
-#line 527 "c-.y"
+#line 531 "c-.y"
     { (yyval.op) = NEQ; ;}
     break;
 
   case 75:
-#line 531 "c-.y"
+#line 535 "c-.y"
     {
                     (yyval.tree) = newExpNode(OpK, (yyvsp[(1) - (3)].tree)->lineno, (yyvsp[(1) - (3)].tree), (yyvsp[(3) - (3)].tree), NULL); // Use lineno of first expression
                     (yyval.tree)->attr.op = (yyvsp[(2) - (3)].op);
@@ -2236,24 +2240,24 @@ yyreduce:
     break;
 
   case 76:
-#line 536 "c-.y"
+#line 540 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
   case 77:
-#line 541 "c-.y"
+#line 545 "c-.y"
     { (yyval.op) = '+'; ;}
     break;
 
   case 78:
-#line 542 "c-.y"
+#line 546 "c-.y"
     { (yyval.op) = '-'; ;}
     break;
 
   case 79:
-#line 546 "c-.y"
+#line 550 "c-.y"
     {
                     (yyval.tree) = newExpNode(OpK, (yyvsp[(1) - (3)].tree)->lineno, (yyvsp[(1) - (3)].tree), (yyvsp[(3) - (3)].tree), NULL); // Use lineno of first expression
                     (yyval.tree)->attr.op = (yyvsp[(2) - (3)].op);
@@ -2261,29 +2265,29 @@ yyreduce:
     break;
 
   case 80:
-#line 551 "c-.y"
+#line 555 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
   case 81:
-#line 556 "c-.y"
+#line 560 "c-.y"
     { (yyval.op) = '*'; ;}
     break;
 
   case 82:
-#line 557 "c-.y"
+#line 561 "c-.y"
     { (yyval.op) = '/'; ;}
     break;
 
   case 83:
-#line 558 "c-.y"
+#line 562 "c-.y"
     { (yyval.op) = '%'; ;}
     break;
 
   case 84:
-#line 562 "c-.y"
+#line 566 "c-.y"
     {
                     (yyval.tree) = newExpNode(OpK, (yyvsp[(2) - (2)].tree)->lineno, NULL, NULL, NULL); // Use lineno of expression
                     (yyval.tree)->attr.op = (yyvsp[(1) - (2)].op);
@@ -2292,43 +2296,43 @@ yyreduce:
     break;
 
   case 85:
-#line 568 "c-.y"
+#line 572 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
   case 86:
-#line 573 "c-.y"
+#line 577 "c-.y"
     { (yyval.op) = OP_CHSIGN; ;}
     break;
 
   case 87:
-#line 574 "c-.y"
+#line 578 "c-.y"
     { (yyval.op) = OP_SIZEOF; ;}
     break;
 
   case 88:
-#line 575 "c-.y"
+#line 579 "c-.y"
     { (yyval.op) = '?'; ;}
     break;
 
   case 89:
-#line 579 "c-.y"
-    {
-                    (yyval.tree) = (yyvsp[(1) - (1)].tree);
-                ;}
-    break;
-
-  case 90:
 #line 583 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
+  case 90:
+#line 587 "c-.y"
+    {
+                    (yyval.tree) = (yyvsp[(1) - (1)].tree);
+                ;}
+    break;
+
   case 91:
-#line 589 "c-.y"
+#line 593 "c-.y"
     {
                     (yyval.tree) = newExpNode(IdK, (yyvsp[(1) - (1)].tokenData)->linenum, NULL, NULL, NULL);
                     (yyval.tree)->attr.name = new char[strlen((yyvsp[(1) - (1)].tokenData)->tokenstr) + 1];
@@ -2337,7 +2341,7 @@ yyreduce:
     break;
 
   case 92:
-#line 595 "c-.y"
+#line 599 "c-.y"
     {
                     // Create an OpK node for array subscripting.
                     TreeNode *idNode = newExpNode(IdK, (yyvsp[(1) - (4)].tokenData)->linenum, NULL, NULL, NULL);
@@ -2349,28 +2353,28 @@ yyreduce:
     break;
 
   case 93:
-#line 606 "c-.y"
+#line 610 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(2) - (3)].tree);
                 ;}
     break;
 
   case 94:
-#line 610 "c-.y"
-    {
-                    (yyval.tree) = (yyvsp[(1) - (1)].tree);
-                ;}
-    break;
-
-  case 95:
 #line 614 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
+  case 95:
+#line 618 "c-.y"
+    {
+                    (yyval.tree) = (yyvsp[(1) - (1)].tree);
+                ;}
+    break;
+
   case 96:
-#line 620 "c-.y"
+#line 624 "c-.y"
     {
                     (yyval.tree) = newExpNode(CallK, (yyvsp[(1) - (4)].tokenData)->linenum, (yyvsp[(3) - (4)].tree), NULL, NULL);
                     (yyval.tree)->attr.name = new char[strlen((yyvsp[(1) - (4)].tokenData)->tokenstr) + 1];
@@ -2379,35 +2383,35 @@ yyreduce:
     break;
 
   case 97:
-#line 628 "c-.y"
+#line 632 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
   case 98:
-#line 632 "c-.y"
+#line 636 "c-.y"
     {
                     (yyval.tree) = NULL;
                 ;}
     break;
 
   case 99:
-#line 638 "c-.y"
+#line 642 "c-.y"
     {
                     (yyval.tree) = addSibling((yyvsp[(1) - (3)].tree), (yyvsp[(3) - (3)].tree));
                 ;}
     break;
 
   case 100:
-#line 642 "c-.y"
+#line 646 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
   case 101:
-#line 648 "c-.y"
+#line 652 "c-.y"
     {
                     (yyval.tree) = newExpNode(ConstantK, yylineno, NULL, NULL, NULL);
                     (yyval.tree)->attr.value = (yyvsp[(1) - (1)].tokenData)->numValue;
@@ -2416,7 +2420,7 @@ yyreduce:
     break;
 
   case 102:
-#line 654 "c-.y"
+#line 658 "c-.y"
     {
                     (yyval.tree) = newExpNode(ConstantK, yylineno, NULL, NULL, NULL);
                     (yyval.tree)->attr.cvalue = (yyvsp[(1) - (1)].tokenData)->charValue;
@@ -2425,17 +2429,18 @@ yyreduce:
     break;
 
   case 103:
-#line 660 "c-.y"
+#line 664 "c-.y"
     {
                     (yyval.tree) = newExpNode(ConstantK, yylineno, NULL, NULL, NULL);
                     (yyval.tree)->attr.string = new char[strlen((yyvsp[(1) - (1)].tokenData)->stringValue) + 1];
                     strcpy((yyval.tree)->attr.string, (yyvsp[(1) - (1)].tokenData)->stringValue);
                     (yyval.tree)->expType = CharInt;
+                    (yyval.tree)->isArray = true;
                 ;}
     break;
 
   case 104:
-#line 667 "c-.y"
+#line 672 "c-.y"
     {
                     (yyval.tree) = newExpNode(ConstantK, yylineno, NULL, NULL, NULL);
                     (yyval.tree)->attr.value = (yyvsp[(1) - (1)].tokenData)->boolValue;
@@ -2445,7 +2450,7 @@ yyreduce:
 
 
 /* Line 1267 of yacc.c.  */
-#line 2449 "c-.tab.cpp"
+#line 2454 "c-.tab.cpp"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -2659,56 +2664,9 @@ yyreturn:
 }
 
 
-#line 674 "c-.y"
+#line 679 "c-.y"
 
 #include <stdio.h>
 
 extern FILE *yyin;
-
-int yyparse();
-
-int yyerror(const char *s) {
-
-    //if($1->stringValue){
-    //    printf("%s",$1->stringValue);
-    //}
-    
-    fprintf(stderr, "Parse error: %s\n", s);
-    return 0;
-}
-
-int main(int argc, char **argv) {
-    if(argc > 1){
-        if(strcmp(argv[1], "-p") == 0){
-            // parse from file if provided as third argument
-            if(argc == 3){
-                yyin = fopen(argv[2], "r");
-                if(!yyin){
-                    perror("fopen");
-                    return 1;
-                }
-            } else {
-                yyin = stdin;
-            }
-        } else {
-            yyin = fopen(argv[1], "r");
-            if(!yyin){
-                perror("fopen");
-                return 0;
-            }
-        }
-    } else {
-        yyin = stdin;
-    }
-
-    yydebug = 0;
-
-    if(yyparse() == 0){
-        if(argc > 1 && strcmp(argv[1], "-p") == 0){
-            printTree(stdout, savedTree);
-        }
-    }
-
-    return 0;
-}
 

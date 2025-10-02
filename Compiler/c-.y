@@ -1,8 +1,6 @@
 %{
-#include "tree.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "scanType.h"   // for TokenData struct
 #include <math.h>
 #include "globals.h"
 #include <string.h>
@@ -40,9 +38,6 @@ void printToken(TokenData* t, const char* name) {
 extern int yylineno;
 int yylex(void);
 int yyerror(const char *s);
-TreeNode *syntaxTree = NULL;  // global AST root
-int printTreeFlag = 1;
-static TreeNode * savedTree;
 %}
 
 %union {
@@ -81,7 +76,7 @@ static TreeNode * savedTree;
 program         : declList
                 {
                     //$$ = newDeclNode(ProgramK, 0, $1, NULL, NULL);
-                    savedTree = $1;   /* root of the AST */
+                    syntaxTree = $1;   /* root of the AST */
                 }
                 ;
 
@@ -130,7 +125,7 @@ varDecl         : typeSpec varDeclList ';'
                             // It holds the name and type; it doesn't need a child.
                             varNode = newDeclNode(VarK, list->lineno, NULL, NULL, NULL);
                             varNode->attr.name = strdup(list->attr.name);
-                            varNode->isArray = list->isArray;
+                            //varNode->isArray = list->isArray;
                         }
 
                         varNode->expType = $1;
@@ -148,33 +143,44 @@ scopedVarDecl   : STATIC typeSpec varDeclList ';'
                     TreeNode * list = $3;
                     TreeNode * head = NULL;
                     while (list != NULL) {
-                        TreeNode * newNode = newDeclNode(VarK, list->lineno, NULL, NULL, NULL);
-                        newNode->attr.name = new char[strlen(list->attr.name) + 1];
-                        strcpy(newNode->attr.name, list->attr.name);
-                        newNode->isArray = list->isArray;
-                        newNode->isStatic = true; // Set static flag
-                        newNode->expType = $2;    // Capture type. $2 is now an ExpType.
+                        TreeNode * varNode;
+                        if (list->subkind.exp == InitK) {
+                            varNode = newDeclNode(VarK, list->lineno, list->child[1], NULL, NULL);
+                            varNode->attr.name = strdup(list->child[0]->attr.name);
+                            varNode->isArray = list->child[0]->isArray;
+                        } else { // IdK
+                            varNode = newDeclNode(VarK, list->lineno, NULL, NULL, NULL);
+                            varNode->attr.name = strdup(list->attr.name);
+                            //varNode->isArray = list->isArray;
+                        }
+                        varNode->isStatic = true; // Set static flag
+                        varNode->expType = $2;    // Capture type.
                         
-                        head = addSibling(head, newNode);
+                        head = addSibling(head, varNode);
                         list = list->sibling;
                     }
                     $$ = head;
                 }
                 | typeSpec varDeclList ';'
                 {
-                    // This is a local variable declaration, handled by localDecls.
-                    // This rule should be part of localDecls, not a separate scopedVarDecl.
-                    // For now, let's make it behave like the main varDecl.
+                    // This is a local variable declaration.
                     TreeNode * list = $2;
                     TreeNode * head = NULL;
                     while (list != NULL) {
-                        TreeNode * newNode = newDeclNode(VarK, list->lineno, NULL, NULL, NULL);
-                        newNode->attr.name = new char[strlen(list->attr.name) + 1];
-                        strcpy(newNode->attr.name, list->attr.name);
-                        newNode->isArray = list->isArray;
-                        newNode->expType = $1; // Capture type. $1 is now an ExpType.
+                        TreeNode * varNode;
+                        if (list->subkind.exp == InitK) {
+                            varNode = newDeclNode(VarK, list->lineno, list->child[1], NULL, NULL);
+                            varNode->attr.name = strdup(list->child[0]->attr.name);
+                            varNode->isArray = list->child[0]->isArray;
+                        } else { // IdK
+                            varNode = newDeclNode(VarK, list->lineno, NULL, NULL, NULL);
+                            varNode->attr.name = strdup(list->attr.name);
+                            //varNode->isArray = list->isArray;
+                        }
+
+                        varNode->expType = $1; // Capture type.
                         
-                        head = addSibling(head, newNode);
+                        head = addSibling(head, varNode);
                         list = list->sibling;
                     }
                     $$ = head;
@@ -201,7 +207,6 @@ varDeclInit     : varDeclId
                     if ($1->attr.name != NULL) {
                         $$->attr.name = strdup($1->attr.name);
                     }
-                    $$->isArray = $1->isArray;
                 }
                 ;
 
@@ -210,6 +215,7 @@ varDeclId       : ID
                     $$ = newExpNode(IdK, $1->linenum, NULL, NULL, NULL);
                     $$->attr.name = new char[strlen($1->tokenstr) + 1];
                     strcpy($$->attr.name, $1->tokenstr);
+                    $$->isArray = false;
                 }
                 | ID '[' NUMCONST ']'
                 {
@@ -298,13 +304,13 @@ parmIdList      : parmIdList ',' parmId
 
 parmId          : ID
                 {
-                    $$ = newExpNode(IdK, yylineno, NULL, NULL, NULL);
+                    $$ = newExpNode(IdK, $1->linenum, NULL, NULL, NULL);
                     $$->attr.name = new char[strlen($1->tokenstr) + 1];
                     strcpy($$->attr.name, $1->tokenstr);
                 }
                 | ID '[' ']'
                 {
-                    $$ = newExpNode(IdK, yylineno, NULL, NULL, NULL);
+                    $$ = newExpNode(IdK, $1->linenum, NULL, NULL, NULL);
                     $$->attr.name = new char[strlen($1->tokenstr) + 1];
                     strcpy($$->attr.name, $1->tokenstr);
                     $$->isArray = true;
@@ -661,6 +667,7 @@ constant        : NUMCONST
                     $$->attr.string = new char[strlen($1->stringValue) + 1];
                     strcpy($$->attr.string, $1->stringValue);
                     $$->expType = CharInt;
+                    $$->isArray = true;
                 }
                 | BOOLCONST
                 {
@@ -674,50 +681,3 @@ constant        : NUMCONST
 #include <stdio.h>
 
 extern FILE *yyin;
-
-int yyparse();
-
-int yyerror(const char *s) {
-
-    //if($1->stringValue){
-    //    printf("%s",$1->stringValue);
-    //}
-    
-    fprintf(stderr, "Parse error: %s\n", s);
-    return 0;
-}
-
-int main(int argc, char **argv) {
-    if(argc > 1){
-        if(strcmp(argv[1], "-p") == 0){
-            // parse from file if provided as third argument
-            if(argc == 3){
-                yyin = fopen(argv[2], "r");
-                if(!yyin){
-                    perror("fopen");
-                    return 1;
-                }
-            } else {
-                yyin = stdin;
-            }
-        } else {
-            yyin = fopen(argv[1], "r");
-            if(!yyin){
-                perror("fopen");
-                return 0;
-            }
-        }
-    } else {
-        yyin = stdin;
-    }
-
-    yydebug = 0;
-
-    if(yyparse() == 0){
-        if(argc > 1 && strcmp(argv[1], "-p") == 0){
-            printTree(stdout, savedTree);
-        }
-    }
-
-    return 0;
-}
