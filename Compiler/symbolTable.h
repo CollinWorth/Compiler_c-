@@ -59,6 +59,7 @@ public:
     void print(void (*printData)(void *));           // print all scopes using data printing function
     void enter(std::string name);                    // enter a scope with given name
     void leave();                                    // leave a scope (not allowed to leave global)
+    std::string scopeName();                         // returns name of current scope
     void *lookup(std::string sym);                   // returns ptr associated with sym anywhere in symbol table
                                                      // returns NULL if symbol not found
     void *lookupGlobal(std::string sym);             // returns ptr associated with sym in globals

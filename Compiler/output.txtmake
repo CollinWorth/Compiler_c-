@@ -1,109 +1,87 @@
-found NULL in VarDeclVar: (null)  [line: 2]
-Sibling: 1  Func: carbon  [line: 4]
-.   Child: 1  Compound [line: 4]
-.   .   Child: 1  Return [line: 4]
-.   .   .   Child: 0  Const 6 [line: 4]
-Sibling: 2  Func: fred  [line: 6]
-.   Child: 0  Parm: a  [line: 6]
-.   Sibling: 1  Parm: b  [line: 6]
-.   Sibling: 2  Parm: c  [line: 6]
-.   Sibling: 3  Parm: d  [line: 6]
-.   Sibling: 4  Parm: e  [line: 6]
-.   Sibling: 5  Parm: f  [line: 6]
-.   Child: 1  Compound [line: 6]
-.   .   Child: 1  For [line: 7]
-.   .   .   Child: 0  Id: x [line: 7]
-.   .   .   Child: 1  Range [line: 7]
-.   .   .   .   Child: 0  Const 1 [line: 7]
-.   .   .   .   Child: 1  Const 10 [line: 7]
-.   .   .   .   Child: 2  Const 3 [line: 7]
-.   .   .   Child: 2  Compound [line: 7]
-.   .   .   .   Child: 1  While [line: 8]
-.   .   .   .   .   Child: 0  Op: > [line: 8]
-.   .   .   .   .   .   Child: 0  Id: x [line: 8]
-.   .   .   .   .   .   Child: 1  Const 3 [line: 8]
-.   .   .   .   .   Child: 1  Compound [line: 8]
-.   .   .   .   .   .   Child: 1  If [line: 9]
-.   .   .   .   .   .   .   Child: 0  Op: < [line: 9]
-.   .   .   .   .   .   .   .   Child: 0  Id: x [line: 9]
-.   .   .   .   .   .   .   .   Child: 1  Const 5 [line: 9]
-.   .   .   .   .   .   .   Child: 1  Return [line: 9]
-.   .   .   .   .   .   .   Child: 2  Break [line: 10]
-.   .   .   .   .   .   Sibling: 1  If [line: 11]
-.   .   .   .   .   .   .   Child: 0  Const true [line: 11]
-.   .   .   .   .   .   .   Child: 1  If [line: 11]
-.   .   .   .   .   .   .   .   Child: 0  Op: = [line: 11]
-.   .   .   .   .   .   .   .   .   Child: 0  Id: c [line: 11]
-.   .   .   .   .   .   .   .   .   Child: 1  Const 97 [line: 11]
-.   .   .   .   .   .   .   .   Child: 1  Const 666 [line: 11]
-.   .   .   .   .   .   .   .   Child: 2  Const 777 [line: 11]
-.   .   .   .   .   .   Sibling: 2  Assign: := [line: 12]
-.   .   .   .   .   .   .   Child: 0  Id: a [line: 12]
-.   .   .   .   .   .   .   Child: 1  Assign:  [line: 12]
-.   .   .   .   .   .   .   .   Child: 0  Id: b [line: 12]
-.   .   .   .   .   .   .   .   Child: 1  Const 3 [line: 12]
-.   .   .   .   .   .   Sibling: 3  Assign:  [line: 13]
-.   .   .   .   .   .   .   Child: 0  Id: a [line: 13]
-.   .   .   .   .   .   .   Child: 1  Assign:  [line: 13]
-.   .   .   .   .   .   .   .   Child: 0  Id: b [line: 13]
-.   .   .   .   .   .   .   .   Child: 1  Const 4 [line: 13]
-.   .   .   .   .   .   Sibling: 4  Assign: ++ [line: 14]
-.   .   .   .   .   .   .   Child: 0  Id: a [line: 14]
-.   .   .   .   .   .   Sibling: 5  Assign: := [line: 15]
-.   .   .   .   .   .   .   Child: 0  Id: e [line: 15]
-.   .   .   .   .   .   .   Child: 1  Op: or [line: 15]
-.   .   .   .   .   .   .   .   Child: 0  Const true [line: 15]
-.   .   .   .   .   .   .   .   Child: 1  Op: and [line: 15]
-.   .   .   .   .   .   .   .   .   Child: 0  Const false [line: 15]
-.   .   .   .   .   .   .   .   .   Child: 1  Op: not [line: 15]
-.   .   .   .   .   .   .   .   .   .   Child: 0  Const false [line: 15]
-.   .   .   .   .   .   Sibling: 6  Assign:  [line: 16]
-.   .   .   .   .   .   .   Child: 0  Id: b [line: 16]
-.   .   .   .   .   .   .   Child: 1  Op: % [line: 16]
-.   .   .   .   .   .   .   .   Child: 0  Op: / [line: 16]
-.   .   .   .   .   .   .   .   .   Child: 0  Op: * [line: 16]
-.   .   .   .   .   .   .   .   .   .   Child: 0  Id: a [line: 16]
-.   .   .   .   .   .   .   .   .   .   Child: 1  Id: b [line: 16]
-.   .   .   .   .   .   .   .   .   Child: 1  Const 5 [line: 16]
-.   .   .   .   .   .   .   .   Child: 1  Const 13 [line: 16]
-.   .   .   .   .   .   Sibling: 7  Assign: -- [line: 17]
-.   .   .   .   .   .   .   Child: 0  Id: b [line: 17]
-.   .   .   .   .   .   Sibling: 8  Op: chsign [line: 18]
-.   .   .   .   .   .   .   Child: 0  Op: chsign [line: 18]
-.   .   .   .   .   .   .   .   Child: 0  Id: b [line: 18]
-.   .   .   .   .   .   Sibling: 9  Op: ? [line: 19]
-.   .   .   .   .   .   .   Child: 0  Op: * [line: 19]
-.   .   .   .   .   .   .   .   Child: 0  Id: f [line: 19]
-.   .   .   .   .   .   Sibling: 10  Assign: := [line: 20]
-.   .   .   .   .   .   .   Child: 0  Id: c [line: 20]
-.   .   .   .   .   .   .   Child: 1  Const 120 [line: 20]
-.   .   .   .   .   .   Sibling: 11  Assign: := [line: 21]
-.   .   .   .   .   .   .   Child: 0  Id: d [line: 21]
-.   .   .   .   .   .   .   Child: 1  Const 19844576 [line: 21]
-.   .   .   .   .   .   Sibling: 12  Call: carbon [line: 22]
-.   .   .   .   .   .   Sibling: 13  Return [line: 23]
-.   .   Sibling: 1  For [line: 26]
-.   .   .   Child: 0  Id: i [line: 26]
-.   .   .   Child: 1  Range [line: 26]
-.   .   .   .   Child: 0  Const 1 [line: 26]
-.   .   .   .   Child: 1  Const 107 [line: 26]
-.   .   .   Child: 2  Compound [line: 26]
-.   .   .   .   Child: 0  Var: x  [line: 26]
-Sibling: 3  Func: main  [line: 29]
-.   Child: 1  Compound [line: 29]
-.   .   Child: 0  Var: a  [line: 30]
-.   .   Sibling: 1  Var: b  [line: 30]
-.   .   Sibling: 2  Var: c  [line: 31]
-.   .   Sibling: 3  Var: d  [line: 31]
-.   .   Sibling: 4  Var: e  [line: 32]
-.   .   Sibling: 5  Var: f  [line: 32]
-.   .   Sibling: 6  Var: g  [line: 33]
-.   .   Child: 1  Call: fred [line: 34]
-.   .   .   Child: 0  Const 101 [line: 34]
-.   .   .   Sibling: 1  Op: [ [line: 34]
-.   .   .   .   Child: 0  Id: b [line: 34]
-.   .   .   .   Child: 1  Const 4 [line: 34]
-.   .   .   Sibling: 2  Const 113 [line: 34]
-.   .   .   Sibling: 3  Id: d [line: 34]
-.   .   .   Sibling: 4  Id: e [line: 34]
-.   .   .   Sibling: 5  Id: f [line: 34]
+WARNING(4): The variable 'c' seems not to be used.
+WARNING(4): The variable 'a' seems not to be used.
+WARNING(5): The variable 'b' seems not to be used.
+ERROR(7): ':=' requires operands of the same type but lhs is type bool and rhs is type int.
+WARNING(8): Variable 'b' may be uninitialized when used here.
+ERROR(8): ':=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(9): ':=' requires operands of the same type but lhs is type int and rhs is type char.
+ERROR(15): 'and' requires operands of type bool but lhs is of type int.
+ERROR(15): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(16): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(16): 'or' requires operands of type bool but lhs is of type int.
+ERROR(17): ':=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(21): '+' requires operands of type int but lhs is of type bool.
+ERROR(22): '-' requires operands of type int but rhs is of type bool.
+ERROR(24): '/' requires operands of type int but rhs is of type bool.
+ERROR(25): '%' requires operands of type int but lhs is of type bool.
+ERROR(27): '+=' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(28): '-=' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(29): '*=' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(30): '/=' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(32): Unary 'chsign' requires an operand of type int but was given type bool.
+ERROR(33): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(34): Unary '?' requires an operand of type int but was given type bool.
+WARNING(39): The variable 'c' seems not to be used.
+WARNING(39): The variable 'b' seems not to be used.
+WARNING(39): The variable 'a' seems not to be used.
+WARNING(40): The variable 'ca' seems not to be used.
+WARNING(40): The variable 'ba' seems not to be used.
+WARNING(40): The variable 'aa' seems not to be used.
+WARNING(42): Variable 'aa' may be uninitialized when used here.
+WARNING(43): Variable 'a' may be uninitialized when used here.
+WARNING(43): Variable 'ba' may be uninitialized when used here.
+ERROR(43): ':=' requires operands of the same type but lhs is type char and rhs is type int.
+ERROR(43): Array 'ba' should be indexed by type int but got type char.
+WARNING(43): Variable 'b' may be uninitialized when used here.
+ERROR(44): ':=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(44): Array 'ca' should be indexed by type int but got type bool.
+WARNING(44): Variable 'c' may be uninitialized when used here.
+WARNING(44): Variable 'ca' may be uninitialized when used here.
+ERROR(45): Array index is the unindexed array 'aa'.
+ERROR(46): Cannot use function 'cat' as a variable.
+ERROR(46): Cannot index nonarray 'cat'.
+ERROR(47): Cannot use function 'cat' as a variable.
+ERROR(47): Too many arguments to function 'cat'.
+WARNING(51): Variable 'z' may be uninitialized when used here.
+ERROR(52): Symbol 'z' is already declared at line 51.
+ERROR(53): Symbol 'z' is already declared at line 51.
+ERROR(54): ':=' requires operands of the same type but lhs is type char and rhs is type int.
+ERROR(58): The operation '=' does not work with arrays.
+ERROR(59): The operation '><' does not work with arrays.
+ERROR(60): The operation '>' does not work with arrays.
+ERROR(61): The operation '>=' does not work with arrays.
+ERROR(62): The operation '<' does not work with arrays.
+ERROR(63): The operation '<=' does not work with arrays.
+ERROR(65): ':=' requires operands of the same type but lhs is type int and rhs is type char.
+WARNING(70): The variable 'i' seems not to be used.
+WARNING(72): The variable 'i' seems not to be used.
+WARNING(73): Variable 'i' may be uninitialized when used here.
+WARNING(79): The variable 'a' seems not to be used.
+WARNING(79): The variable 'a' seems not to be used.
+ERROR(79): Symbol 'a' is already declared at line 79.
+WARNING(81): The variable 'a' seems not to be used.
+WARNING(82): Variable 'a' may be uninitialized when used here.
+ERROR(82): ':=' requires operands of the same type but lhs is type undefined and rhs is type int.
+ERROR(82): Symbol 'b' is not declared.
+WARNING(84): The variable 'a' seems not to be used.
+WARNING(84): The variable 'b' seems not to be used.
+WARNING(86): Variable 'b' may be uninitialized when used here.
+WARNING(93): The variable 'bbb' seems not to be used.
+WARNING(94): The variable 'ccc' seems not to be used.
+WARNING(96): Variable 'ccc' may be uninitialized when used here.
+ERROR(96): The operation '?' does not work with arrays.
+ERROR(97): The operation '/' does not work with arrays.
+ERROR(97): The operation '/' does not work with arrays.
+WARNING(98): Variable 'bbb' may be uninitialized when used here.
+ERROR(99): 'bbb' is a simple variable and cannot be called.
+ERROR(101): Expecting type int in parameter 2 of call to 'bat' but got type char.
+ERROR(101): Expecting type bool in parameter 1 of call to 'bat' but got type int.
+ERROR(102): ':=' requires operands of the same type but lhs is type char and rhs is type bool.
+ERROR(103): Expecting type int in parameter 2 of call to 'bat' but got type undefined.
+ERROR(103): Expecting type bool in parameter 1 of call to 'bat' but got type undefined.
+ERROR(105): '+' requires operands of the same type but lhs is type void and rhs is type bool.
+ERROR(105): Too few arguments to function 'dog'.
+ERROR(107): '+' requires operands of type int but lhs is of type char.
+WARNING(110): The variable 'mane' seems not to be used.
+Number of warnings: 32
+Number of errors: 53

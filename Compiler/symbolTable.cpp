@@ -214,6 +214,13 @@ void SymbolTable::leave()
     }
 }
 
+// returns the name of the current scope
+std::string SymbolTable::scopeName()
+{
+    if (stack.size() > 0) return stack.back()->scopeName();
+    return "";
+}
+
 
 // Lookup a symbol anywhere in the stack of scopes
 // Returns NULL if symbol not found, otherwise it returns the stored void * associated with the symbol
@@ -396,6 +403,3 @@ bool SymbolTable::test()
 
     return true;
 }
-
-
-

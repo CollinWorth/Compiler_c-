@@ -125,7 +125,7 @@ varDecl         : typeSpec varDeclList ';'
                             // It holds the name and type; it doesn't need a child.
                             varNode = newDeclNode(VarK, list->lineno, NULL, NULL, NULL);
                             varNode->attr.name = strdup(list->attr.name);
-                            //varNode->isArray = list->isArray;
+                            varNode->isArray = list->isArray;
                         }
 
                         varNode->expType = $1;
@@ -151,7 +151,7 @@ scopedVarDecl   : STATIC typeSpec varDeclList ';'
                         } else { // IdK
                             varNode = newDeclNode(VarK, list->lineno, NULL, NULL, NULL);
                             varNode->attr.name = strdup(list->attr.name);
-                            //varNode->isArray = list->isArray;
+                            varNode->isArray = list->isArray;
                         }
                         varNode->isStatic = true; // Set static flag
                         varNode->expType = $2;    // Capture type.
@@ -175,7 +175,7 @@ scopedVarDecl   : STATIC typeSpec varDeclList ';'
                         } else { // IdK
                             varNode = newDeclNode(VarK, list->lineno, NULL, NULL, NULL);
                             varNode->attr.name = strdup(list->attr.name);
-                            //varNode->isArray = list->isArray;
+                            varNode->isArray = list->isArray;
                         }
 
                         varNode->expType = $1; // Capture type.

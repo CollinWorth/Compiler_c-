@@ -15,6 +15,7 @@ TreeNode *syntaxTree = NULL;      // Defined here
 int numErrors = 0;                // Defined here
 int numWarnings = 0;              // Defined here
 SemanticMessage warnings[MAX_WARNINGS];
+SemanticMessage errors[MAX_WARNINGS];
 SymbolTable *symbolTable = NULL;  // Defined here
 bool traceParser = false;         // Defined here
 bool traceSymbolTable = false;    // Defined here
@@ -109,8 +110,8 @@ int main(int argc, char **argv) {
         // Perform semantic analysis
         semanticAnalysis(syntaxTree, symbolTable);
 
-        // Now print the tree if requested
-        if (printAST) {
+        // Now print the tree if requested, but only if there are no errors.
+        if (printAST && numErrors == 0) { 
             // printTreeRecursive will check the global printWithTypeInfo flag
             printTree(stdout, syntaxTree);
         }

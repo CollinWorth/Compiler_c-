@@ -20,8 +20,10 @@ extern bool printSource;
 struct SemanticMessage {
     int lineno;
     char message[256];
+    bool isError;
 };
 
 extern SemanticMessage warnings[MAX_WARNINGS];
+extern SemanticMessage errors[MAX_WARNINGS];
 
 #endif

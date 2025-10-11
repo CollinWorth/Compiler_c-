@@ -132,7 +132,7 @@ typedef union YYSTYPE
     ExpType type;   // Add this field for ExpType enum
 }
 /* Line 1529 of yacc.c.  */
-#line 136 "c-.tab.hpp"
+#line 136 "c-.tab.h"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1

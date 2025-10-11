@@ -29,6 +29,7 @@ typedef struct treeNode {
     bool isUsed;
     bool isInitialized;
     bool isStatic;
+    bool isLHS; // Is this node on the Left Hand Side of an assignment
 } TreeNode;
 
 TreeNode *addSibling(TreeNode *t, TreeNode *s);

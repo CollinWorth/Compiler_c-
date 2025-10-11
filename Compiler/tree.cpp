@@ -5,6 +5,15 @@
 #include "scanType.h"
 #include "c-.tab.hpp"
 
+// ============================================================================
+// FORWARD DECLARATIONS
+// ============================================================================
+static void printTreeRecursive(FILE *out, TreeNode *tree, int depth, int siblingNum, bool isChild);
+
+// ============================================================================
+// NODE CREATION FUNCTIONS (unchanged)
+// ============================================================================
+
 static TreeNode *newNode(NodeKind nodekind, int lineno, TreeNode* c0, TreeNode* c1, TreeNode* c2) {
     TreeNode *t = new TreeNode;
     if (t == NULL) {
@@ -25,6 +34,7 @@ static TreeNode *newNode(NodeKind nodekind, int lineno, TreeNode* c0, TreeNode* 
     t->isUsed = false;
     t->isInitialized = false;
     t->isStatic = false;
+    t->isLHS = false;
     t->expType = UndefinedType;
     return t;
 }
@@ -59,7 +69,21 @@ TreeNode *addSibling(TreeNode *t, TreeNode *s) {
     return t;
 }
 
-// Separate helper functions
+// ============================================================================
+// TYPE AND OPERATOR UTILITIES
+// ============================================================================
+
+static const char* typeToString(ExpType type) {
+    switch (type) {
+        case Void: return "void";
+        case Integer: return "int";
+        case Boolean: return "bool";
+        case Char: return "char";
+        case CharInt: return "char";
+        case Equal: return "equal";
+        default: return "undefined type";
+    }
+}
 
 static void printOp(FILE *out, int op) {
     switch (op) {
@@ -85,17 +109,177 @@ static void printOp(FILE *out, int op) {
     }
 }
 
-static const char* typeToString(ExpType type) {
-    switch (type) {
-        case Void: return "void";
-        case Integer: return "int";
-        case Boolean: return "bool";
-        case Char: return "char";
-        case CharInt: return "char";
-        case Equal: return "equal";
-        default: return "undefined";
+// ============================================================================
+// CONSTANT PRINTING FUNCTIONS
+// ============================================================================
+
+static void printStringConstant(FILE *out, TreeNode *node) {
+    fprintf(out, "Const");
+    if (printWithTypeInfo) {
+        fprintf(out, " is array \"%s\" of type char", node->attr.string);
+    } else {
+        fprintf(out, " \"%s\"", node->attr.string);
     }
 }
+
+static void printCharConstant(FILE *out, TreeNode *node) {
+    fprintf(out, "Const '%c'", node->attr.cvalue);
+    if (printWithTypeInfo) {
+        fprintf(out, " of type char");
+    }
+}
+
+static void printBooleanConstant(FILE *out, TreeNode *node) {
+    fprintf(out, "Const %s", node->attr.value ? "true" : "false");
+    if (printWithTypeInfo) {
+        fprintf(out, " of type bool");
+    }
+}
+
+static void printNumericConstant(FILE *out, TreeNode *node) {
+    fprintf(out, "Const %d", node->attr.value);
+    if (printWithTypeInfo) {
+        fprintf(out, " of type %s", typeToString(node->expType));
+    }
+}
+
+static void printConstant(FILE *out, TreeNode *node) {
+    switch (node->expType) {
+        case CharInt:
+            printStringConstant(out, node);
+            break;
+        case Char:
+            printCharConstant(out, node);
+            break;
+        case Boolean:
+            printBooleanConstant(out, node);
+            break;
+        default:
+            printNumericConstant(out, node);
+            break;
+    }
+}
+
+// ============================================================================
+// TYPE DESCRIPTOR FUNCTIONS
+// ============================================================================
+
+static bool shouldShowArrayPrefix(TreeNode *node) {
+    return node->isArray && 
+           ((node->nodekind == DeclK && node->subkind.decl == VarK) ||
+            (node->nodekind == ExpK && node->subkind.exp == OpK));
+}
+
+static bool isFunctionDeclaration(TreeNode *node) {
+    return node->nodekind == DeclK && node->subkind.decl == FuncK;
+}
+
+static bool isUndefinedType(TreeNode *node) {
+    return strcmp(typeToString(node->expType), "undefined type") == 0;
+}
+
+static void printTypeDescriptor(FILE *out, TreeNode *node) {
+    if (!printWithTypeInfo) return;
+    
+    // String constants handle their own type info
+    if (node->nodekind == ExpK && node->subkind.exp == ConstantK && node->expType == CharInt) {
+        return;
+    }
+    
+    const char* typeStr = typeToString(node->expType);
+    
+    // Print array prefix if needed
+    if (shouldShowArrayPrefix(node)) {
+        fprintf(out, "is array ");
+    }
+    
+    // Print type descriptor based on node type
+    if (isFunctionDeclaration(node)) {
+        fprintf(out, "returns type %s", typeStr);
+    } else if (isUndefinedType(node)) {
+        fprintf(out, "of %s", typeStr);
+    } else {
+        fprintf(out, "of type %s", typeStr);
+    }
+}
+
+// ============================================================================
+// NODE CONTENT PRINTING FUNCTIONS
+// ============================================================================
+
+static void printDeclNode(FILE *out, TreeNode *node) {
+    switch (node->subkind.decl) {
+        case FuncK:  fprintf(out, "Func: %s ", node->attr.name); break;
+        case VarK:   fprintf(out, "Var: %s ", node->attr.name); break;
+        case ParamK: fprintf(out, "Parm: %s ", node->attr.name); break;
+    }
+    printTypeDescriptor(out, node);
+}
+
+static void printStmtNode(FILE *out, TreeNode *node) {
+    switch (node->subkind.stmt) {
+        case CompoundK: fprintf(out, "Compound"); break;
+        case IfK:       fprintf(out, "If"); break;
+        case WhileK:    fprintf(out, "While"); break;
+        case ForK:      fprintf(out, "For"); break;
+        case RangeK:    fprintf(out, "Range"); break;
+        case ReturnK:   fprintf(out, "Return"); break;
+        case BreakK:    fprintf(out, "Break"); break;
+        default:        fprintf(out, "Unknown Stmt"); break;
+    }
+}
+
+static void printExpNode(FILE *out, TreeNode *node) {
+    switch (node->subkind.exp) {
+        case OpK:
+            fprintf(out, "Op: ");
+            printOp(out, node->attr.op);
+            break;
+        case ConstantK:
+            printConstant(out, node);
+            return; // Constants handle their own type info
+        case IdK:
+            fprintf(out, "Id: %s", node->attr.name);
+            break;
+        case AssignK:
+            fprintf(out, "Assign: ");
+            printOp(out, node->attr.op);
+            break;
+        case CallK:
+            fprintf(out, "Call: %s", node->attr.name);
+            break;
+        default:
+            fprintf(out, "Unknown Exp");
+            break;
+    }
+    
+    // Add type info for non-constant expressions
+    if (printWithTypeInfo) {
+        fprintf(out, " ");
+        printTypeDescriptor(out, node);
+    }
+}
+
+static void printNodeContent(FILE *out, TreeNode *node) {
+    switch (node->nodekind) {
+        case DeclK:
+            printDeclNode(out, node);
+            break;
+        case StmtK:
+            printStmtNode(out, node);
+            break;
+        case ExpK:
+            printExpNode(out, node);
+            break;
+        default:
+            fprintf(out, "Unknown node");
+            break;
+    }
+}
+
+// ============================================================================
+// TREE PRINTING UTILITIES
+// ============================================================================
 
 static void printIndent(FILE *out, int depth) {
     for (int i = 0; i < depth; i++) {
@@ -111,117 +295,41 @@ static void printLabel(int siblingNum, bool isChild) {
     }
 }
 
-// Separated type descriptor building
-static void printTypeDescriptor(FILE *out, TreeNode *node) {
-    if (!printWithTypeInfo) return;
-    
-    const char* typeStr = typeToString(node->expType);
-    
-    // Handle arrays
-    if (node->isArray) {
-        fprintf(out, "is array ");
-    }
-    
-    // Different format based on node kind
-    if (node->nodekind == DeclK && node->subkind.decl == FuncK) {
-        fprintf(out, "returns type %s", typeStr);
-    } else {
-        fprintf(out, "of type %s", typeStr);
-    }
+static bool shouldSkipNode(TreeNode *tree) {
+    return tree->nodekind == StmtK && tree->subkind.stmt == NullK;
 }
 
-static void printNodeContent(FILE *out, TreeNode *node) {
-    switch (node->nodekind) {
-        case DeclK:
-            switch (node->subkind.decl) {
-                case FuncK:  fprintf(out, "Func: %s ", node->attr.name); break;
-                case VarK:   fprintf(out, "Var: %s ", node->attr.name); break;
-                case ParamK: fprintf(out, "Parm: %s ", node->attr.name); break;
-            }
-            printTypeDescriptor(out, node);
-            break;
-            
-        case StmtK:
-            switch (node->subkind.stmt) {
-                case CompoundK: fprintf(out, "Compound"); break;
-                case IfK:       fprintf(out, "If"); break;
-                case WhileK:    fprintf(out, "While"); break;
-                case ForK:      fprintf(out, "For"); break;
-                case RangeK:    fprintf(out, "Range"); break;
-                case ReturnK:   fprintf(out, "Return"); break;
-                case BreakK:    fprintf(out, "Break"); break;
-                default:        fprintf(out, "Unknown Stmt"); break;
-            }
-            break;
-            
-        case ExpK:
-            switch (node->subkind.exp) {
-                case OpK:
-                    fprintf(out, "Op: ");
-                    printOp(out, node->attr.op);
-                    break;
-                case ConstantK:
-                    if (node->expType == Boolean) {
-                        fprintf(out, "Const %s", node->attr.value ? "true" : "false");
-                    } else if (node->expType == Char) {
-                        fprintf(out, "Const '%c'", node->attr.cvalue);
-                    } else if (node->expType == CharInt) {
-                        fprintf(out, "Const \"%s\"", node->attr.string);
-                    } else {
-                        fprintf(out, "Const %d", node->attr.value);
-                    }
-                    if (printWithTypeInfo) {
-                        fprintf(out, " ");
-                        printTypeDescriptor(out, node);
-                    }
-                    return; // Early return to avoid double type printing
-                case IdK:
-                    fprintf(out, "Id: %s", node->attr.name);
-                    break;
-                case AssignK:
-                    fprintf(out, "Assign: ");
-                    printOp(out, node->attr.op);
-                    break;
-                case CallK:
-                    fprintf(out, "Call: %s", node->attr.name);
-                    break;
-                default:
-                    fprintf(out, "Unknown Exp");
-                    break;
-            }
-            if (printWithTypeInfo && node->subkind.exp != ConstantK) {
-                fprintf(out, " ");
-                printTypeDescriptor(out, node);
-            }
-            break;
-            
-        default:
-            fprintf(out, "Unknown node");
-            break;
-    }
-}
-
-static void printTreeRecursive(FILE *out, TreeNode *tree, int depth, int siblingNum, bool isChild) {
-    if (!tree) return;
-    if (tree->nodekind == StmtK && tree->subkind.stmt == NullK) return;
-
-    printIndent(out, depth);
-    printLabel(siblingNum, isChild);
-    printNodeContent(out, tree);
-    fprintf(out, " [line: %d]\n", tree->lineno);
-
-    // Print children
+static void printChildren(FILE *out, TreeNode *tree, int depth) {
     for (int i = 0; i < MAXCHILDREN; i++) {
         if (tree->child[i]) {
             printTreeRecursive(out, tree->child[i], depth + 1, i, true);
         }
     }
+}
 
-    // Print siblings - they always count from 1, 2, 3...
+static void printSiblings(FILE *out, TreeNode *tree, int depth, int siblingNum, bool isChild) {
     if (tree->sibling) {
         int nextSiblingNum = isChild ? 1 : siblingNum + 1;
         printTreeRecursive(out, tree->sibling, depth, nextSiblingNum, false);
     }
+}
+
+// ============================================================================
+// MAIN TREE PRINTING FUNCTION
+// ============================================================================
+
+static void printTreeRecursive(FILE *out, TreeNode *tree, int depth, int siblingNum, bool isChild) {
+    if (!tree || shouldSkipNode(tree)) return;
+
+    // Print current node
+    printIndent(out, depth);
+    printLabel(siblingNum, isChild);
+    printNodeContent(out, tree);
+    fprintf(out, " [line: %d]\n", tree->lineno);
+
+    // Print children and siblings
+    printChildren(out, tree, depth);
+    printSiblings(out, tree, depth, siblingNum, isChild);
 }
 
 void printTree(FILE *out, TreeNode *tree) {
