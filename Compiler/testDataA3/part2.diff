@@ -1,0 +1,7 @@
+WARNING(4): Variable 'z' may be uninitialized when used here. |	ERROR(SymbolTable): You cannot leave global scope.  Number of
+ERROR(20): Symbol 'x' is already declared at line 18.	      <	
+WARNING(28): The variable 'z' seems not to be used.	      <	
+WARNING(49): Variable 'z' may be uninitialized when used here |	Number of warnings: 0
+WARNING(35): The variable 'd' seems not to be used.	      |	Number of errors: 6
+Number of warnings: 4					      <	
+Number of errors: 7					      <	

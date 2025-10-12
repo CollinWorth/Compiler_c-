@@ -1,0 +1,13 @@
+WARNING(6): The variable 'x' seems not to be used.
+WARNING(13): The variable 'x' seems not to be used.
+ERROR(16): Symbol 'lyra' is not declared.
+ERROR(18): Expecting type int in parameter 1 of call to 'ella' but got type undefined.
+ERROR(19): Expecting type int in parameter 1 of call to 'ella' but got type undefined.
+ERROR(20): Too many arguments to function 'dory'.
+ERROR(21): Too many arguments to function 'dory'.
+ERROR(22): Symbol 'lyra' is not declared.
+ERROR(23): Too many arguments to function 'dory'.
+ERROR(23): Symbol 'lyra' is not declared.
+ERROR(27): ':=' requires operands of the same type but lhs is type int and rhs is type void.
+Number of warnings: 2
+Number of errors: 10

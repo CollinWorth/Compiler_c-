@@ -1,0 +1,23 @@
+ERROR(13): ':=' requires both operands be arrays or not but l <	
+ERROR(14): ':=' requires both operands be arrays or not but l <	
+							      >	ERROR(29): The operation '?' does not work with arrays.
+ERROR(33): The operation '++' does not work with arrays.      <	
+WARNING(45): Variable 'c' may be uninitialized when used here <	
+WARNING(46): Variable 'cc' may be uninitialized when used her <	
+ERROR(47): ':=' requires both operands be arrays or not but l |	ERROR(54): The operation '=' does not work with arrays.
+ERROR(48): ':=' requires both operands be arrays or not but l |	ERROR(55): The operation '=' does not work with arrays.
+ERROR(51): ':=' requires both operands be arrays or not but l |	ERROR(56): The operation '=' does not work with arrays.
+ERROR(56): '=' requires operands of the same type but lhs is  |	ERROR(57): The operation '=' does not work with arrays.
+ERROR(57): '=' requires both operands be arrays or not but lh |	ERROR(58): The operation '=' does not work with arrays.
+ERROR(58): '=' requires both operands be arrays or not but lh |	ERROR(61): The operation '>=' does not work with arrays.
+ERROR(63): '>=' requires operands of the same type but lhs is |	ERROR(62): The operation '>=' does not work with arrays.
+ERROR(64): '>=' requires both operands be arrays or not but l |	ERROR(63): The operation '>=' does not work with arrays.
+ERROR(65): '>=' requires both operands be arrays or not but l |	ERROR(64): The operation '>=' does not work with arrays.
+ERROR(70): '<' requires operands of the same type but lhs is  |	ERROR(65): The operation '>=' does not work with arrays.
+ERROR(71): '<' requires both operands be arrays or not but lh |	ERROR(68): The operation '<' does not work with arrays.
+ERROR(72): '<' requires both operands be arrays or not but lh |	ERROR(69): The operation '<' does not work with arrays.
+ERROR(75): '<' requires operands of the same type but lhs is  |	ERROR(70): The operation '<' does not work with arrays.
+ERROR(75): '<' requires both operands be arrays or not but lh |	ERROR(71): The operation '<' does not work with arrays.
+Number of warnings: 2					      |	ERROR(72): The operation '<' does not work with arrays.
+							      >	ERROR(75): The operation '<' does not work with arrays.
+							      >	Number of warnings: 0

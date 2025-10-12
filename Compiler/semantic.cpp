@@ -48,7 +48,12 @@ static const char* opToString(int op) {
         case OP_CHSIGN: return "chsign";
         case OP_SIZEOF: return "sizeof";
         case '?': return "?";
-        default: return (new std::string(1, (char)op))->c_str();
+        default: {
+            static char buf[2];
+            buf[0] = (char)op;
+            buf[1] = '\0';
+            return buf;
+        }
     }
 }
 
@@ -79,18 +84,6 @@ void semanticAnalysis(TreeNode *t, SymbolTable *st) {
     warnedUninitVars.clear();  // Clear previous warnings
     traverse(t, st, nullptr);  // Start with no parent
 
-    // Check for main function
-    TreeNode *mainNode = (TreeNode *)st->lookup("main");
-    if (!mainNode || mainNode->subkind.decl != FuncK) {
-        // Add linker error to the buffer
-        if (numErrors < MAX_WARNINGS) {
-            errors[numErrors].lineno = 0; // Linker error has no line number
-            strncpy(errors[numErrors].message, "A function named 'main()' must be defined.", 255);
-            errors[numErrors].isError = true;
-            numErrors++;
-        }
-    }
-
     // Combine, sort, and print errors and warnings
     std::vector<SemanticMessage> allMessages;
     allMessages.insert(allMessages.end(), errors, errors + numErrors);
@@ -108,6 +101,18 @@ void semanticAnalysis(TreeNode *t, SymbolTable *st) {
             printf("WARNING(%d): %s\n", msg.lineno, msg.message);
         }
     }
+    
+    // Check for main function
+    TreeNode *mainNode = (TreeNode *)st->lookup("main");
+    if (!mainNode || mainNode->subkind.decl != FuncK) {
+        // Add linker error to the buffer
+        if (numErrors < MAX_WARNINGS) {
+            errors[numErrors].lineno = 0; // Linker error has no line number
+            strncpy(errors[numErrors].message, "A function named 'main()' must be defined.", 255);
+            errors[numErrors].isError = true;
+            numErrors++;
+        }
+    }
 }
 
 static void checkChildren(TreeNode *t, SymbolTable *st) {
@@ -121,6 +126,7 @@ static void traverse(TreeNode *t, SymbolTable *st, TreeNode *parent) {
     if (!t) return;
     
     insertNode(t, st, parent);
+    checkUse(t, st, parent); // Check for symbol use before traversing children
     
     // Pass t as parent to children
     for (int i = 0; i < MAXCHILDREN; i++) {
@@ -141,6 +147,8 @@ static void checkUse(TreeNode *t, SymbolTable *st, TreeNode *parent) {
         snprintf(buf, sizeof(buf), "Symbol '%s' is not declared.", t->attr.name);
         semanticError(t, buf);
     } else {
+        // The pointer returned by lookup IS the original declaration node.
+        // Mark it as used.
         declNode->isUsed = true;
         
         // Check if this is a function being used as a variable
@@ -149,18 +157,7 @@ static void checkUse(TreeNode *t, SymbolTable *st, TreeNode *parent) {
             snprintf(buf, sizeof(buf), "Cannot use function '%s' as a variable.", t->attr.name);
             semanticError(t, buf);
         }
-        
-        // Check if variable may be uninitialized when used
-        if (!declNode->isInitialized && !t->isLHS && declNode->subkind.decl != FuncK) {
-            std::string varKey = std::string(t->attr.name) + "_" + std::to_string(declNode->lineno);
-            if (warnedUninitVars.find(varKey) == warnedUninitVars.end()) {
-                warnedUninitVars.insert(varKey);
-                char buf[256];
-                snprintf(buf, sizeof(buf), "Variable '%s' may be uninitialized when used here.", t->attr.name);
-                semanticWarning(t, buf);
-            }
-        }
-        
+
         // Check if parent is a Range node
         bool inRangeContext = (parent && parent->nodekind == StmtK && 
                               parent->subkind.stmt == RangeK);
@@ -180,6 +177,7 @@ static void checkUse(TreeNode *t, SymbolTable *st, TreeNode *parent) {
                 snprintf(buf, sizeof(buf), "'%s' is a simple variable and cannot be called.", t->attr.name);
                 semanticError(t, buf);
             } else {
+                // Re-enable function call parameter checking
                 checkCall(t, declNode);
             }
         }
@@ -223,57 +221,54 @@ static void checkCall(TreeNode *t, TreeNode *declNode) {
 
 static void insertNode(TreeNode *t, SymbolTable *st, TreeNode *parent) {
     if (!t) return;
-
-    //st->lookup(t->attr.name);
-
-    /*
-    if (st->lookup(t->attr.name) == NULL){
-        printf("%s attribute name is already defined", t->attr.name);
-    }
-    */
     
     if (t->nodekind == StmtK && t->subkind.stmt == CompoundK) {
         st->enter("compound");
     }
     else if (t->nodekind == DeclK) {
         char buf[256];
-        bool inserted = st->insert(t->attr.name, t);
+        bool errorReported = false;
+        
+        // For function parameters, check against other parameters in the same parameter list
+        if (t->subkind.decl == ParamK && parent && parent->nodekind == DeclK && parent->subkind.decl == FuncK) {
+            // Walk through the parameter list to find duplicates
+            TreeNode *current = parent;
+            if (current->child[0]) { // child[0] is the parameter list
+                TreeNode *param = current->child[0];
+                while (param && param != t) {
+                    if (param->attr.name && strcmp(param->attr.name, t->attr.name) == 0) {
+                        snprintf(buf, sizeof(buf), "Symbol '%s' is already declared at line %d.", 
+                                t->attr.name, param->lineno);
+                        semanticError(t, buf);
+                        errorReported = true;
+                        break;
+                    }
+                    param = param->sibling;
+                }
+            }
+        }
+        
+        // Try to insert into symbol table
+        bool inserted = errorReported ? false : st->insert(t->attr.name, t);
         
         if (t->subkind.decl == FuncK) {
             if (!inserted) {
-                snprintf(buf, sizeof(buf), "Symbol '%s' is already declared at line %d.", t->attr.name, ((TreeNode*)st->lookup(t->attr.name))->lineno );
+                TreeNode *existing = (TreeNode*)st->lookup(t->attr.name);
+                snprintf(buf, sizeof(buf), "Symbol '%s' is already declared at line %d.", 
+                        t->attr.name, existing->lineno);
+                semanticError(t, buf);
             } else {
                 st->enter(t->attr.name);
-                return;
             }
         } else { // VarK or ParamK
+            // If the symbol is already in the table, insertion will fail.
             if (!inserted) {
-                snprintf(buf, sizeof(buf), "Symbol '%s' is already declared at line %d.", t->attr.name, ((TreeNode*)st->lookup(t->attr.name))->lineno );
-            } else {
-                TreeNode *outerDecl = (TreeNode *)st->lookupGlobal(t->attr.name);
-                if (outerDecl && outerDecl != t) {
-                    snprintf(buf, sizeof(buf), "Symbol '%s' shadows a variable from an outer scope.", t->attr.name);
-                    semanticWarning(t, buf);
+                TreeNode *existing = (TreeNode*)st->lookup(t->attr.name);
+                if (existing) { // Make sure lookup returned something
+                    snprintf(buf, sizeof(buf), "Symbol '%s' is already declared at line %d.", t->attr.name, existing->lineno);
+                    semanticError(t, buf);
                 }
-                // Parameters are considered initialized
-                if (t->subkind.decl == ParamK) {
-                    t->isInitialized = true;
-                }
-                // Variables with initializers are initialized
-                if (t->child[0] != NULL) {
-                    t->isInitialized = true;
-                }
-                return;
             }
-        }
-        semanticError(t, buf);
-    }
-    else if (t->nodekind == ExpK) {
-        checkUse(t, st, parent);
-    }
-    else if (t->nodekind == ExpK && t->subkind.exp == AssignK) {
-        if (t->child[0]) {
-            t->child[0]->isLHS = true;
         }
     }
 }
@@ -297,21 +292,8 @@ static void checkNode(TreeNode *t, SymbolTable *st, TreeNode *parent) {
         }
     }
     
-    // Only warn about unused variables at the end of their scope
-    if (t->nodekind == DeclK) {
-        if (t->subkind.decl == VarK || t->subkind.decl == ParamK) {
-            // Only warn about specific unused variables based on expected output
-            if (!t->isUsed) {
-                // Only warn for variables that appear in expected output
-                if ((strcmp(t->attr.name, "a") == 0 && t->lineno == 84) ||
-                    (strcmp(t->attr.name, "i") == 0 && t->lineno == 73)) {
-                    char buf[256];
-                    snprintf(buf, sizeof(buf), "The variable '%s' seems not to be used.", t->attr.name);
-                    semanticWarning(t, buf);
-                }
-            }
-        }
-    }
+    if (t->nodekind == DeclK && t->subkind.decl == FuncK) st->leave();
+    
     else if (t->nodekind == ExpK && t->subkind.exp == OpK) {
         // Handle binary operators
         switch (t->attr.op) {
@@ -345,17 +327,24 @@ static void checkNode(TreeNode *t, SymbolTable *st, TreeNode *parent) {
                 checkBinaryOp(t, st, Boolean, Boolean);
                 break;
                 
-            // Comparison operators
+            // Comparison operators - Add array checking
             case EQ:
             case NEQ:
             case LT:
             case LE:
             case GT:
             case GE:
+                // Add array operation errors
+                if (t->child[0]->isArray || t->child[1]->isArray) {
+                    char buf[256];
+                    snprintf(buf, sizeof(buf), "The operation '%s' does not work with arrays.", 
+                            opToString(t->attr.op));
+                    semanticError(t, buf);
+                }
                 checkBinaryOp(t, st, UndefinedType, Boolean);
                 break;
                 
-            // Arithmetic operators (including multiplication and dereference)
+            // Arithmetic operators
             case '+':
             case '-':
             case '/':
@@ -406,12 +395,13 @@ static void checkNode(TreeNode *t, SymbolTable *st, TreeNode *parent) {
                 break;
                 
             case '?':
-                checkUnaryOp(t, Integer, Integer);
+                // Add array operation error
                 if (t->child[0]->isArray) {
                     char buf[256];
                     snprintf(buf, sizeof(buf), "The operation '?' does not work with arrays.");
                     semanticError(t, buf);
                 }
+                checkUnaryOp(t, Integer, Integer);
                 break;
                 
             case OP_SIZEOF:
@@ -438,11 +428,9 @@ static void checkNode(TreeNode *t, SymbolTable *st, TreeNode *parent) {
             
             // Mark left-hand side as initialized
             if (t->child[0]->nodekind == ExpK && t->child[0]->subkind.exp == IdK) {
-                TreeNode *lhsDecl = (TreeNode *)st->lookup(t->child[0]->attr.name);
-                if(lhsDecl) lhsDecl->isUsed = true;
-
                 TreeNode *declNode = (TreeNode *)st->lookup(t->child[0]->attr.name);
                 if (declNode) {
+                    declNode->isUsed = true;
                     declNode->isInitialized = true;
                 }
             }
@@ -450,18 +438,16 @@ static void checkNode(TreeNode *t, SymbolTable *st, TreeNode *parent) {
             else if (t->child[0]->nodekind == ExpK && t->child[0]->subkind.exp == OpK && t->child[0]->attr.op == '[') {
                 if (t->child[0]->child[0] && t->child[0]->child[0]->nodekind == ExpK && 
                     t->child[0]->child[0]->subkind.exp == IdK) {
-                    TreeNode *lhsDecl = (TreeNode *)st->lookup(t->child[0]->child[0]->attr.name);
-                    if(lhsDecl) lhsDecl->isUsed = true;
-
                     TreeNode *declNode = (TreeNode *)st->lookup(t->child[0]->child[0]->attr.name);
                     if (declNode) {
+                        declNode->isUsed = true;
                         declNode->isInitialized = true;
                     }
                 } 
             }
         }
     }
-    else if (t->nodekind == StmtK && t->subkind.stmt == ReturnK) { // ReturnK
+    else if (t->nodekind == StmtK && t->subkind.stmt == ReturnK) {
         TreeNode* func = (TreeNode*)st->lookup(st->scopeName());
         if (func) {
             ExpType returnType = t->child[0] ? t->child[0]->expType : Void;
@@ -477,11 +463,17 @@ static void checkNode(TreeNode *t, SymbolTable *st, TreeNode *parent) {
             semanticError(t, buf);
         }
     }
-    else if (t->nodekind == DeclK) {
-        if (t->subkind.decl == FuncK) st->leave();
-    }
     else if (t->nodekind == StmtK && t->subkind.stmt == CompoundK) {
         st->leave();
+    }
+
+    // Check for unused variables at the end of their scope
+    if (t->nodekind == DeclK) {
+        if ((t->subkind.decl == VarK || t->subkind.decl == ParamK) && !t->isUsed) {
+            char buf[256];
+            snprintf(buf, sizeof(buf), "The variable '%s' seems not to be used.", t->attr.name);
+            semanticWarning(t, buf);
+        }
     }
 }
 
@@ -509,13 +501,17 @@ static void checkBinaryOp(TreeNode *t, SymbolTable *st, ExpType requiredType, Ex
     if (!typesMatch) {
         if (t->attr.op == ADDASS || t->attr.op == SUBASS || 
             t->attr.op == MULASS || t->attr.op == DIVASS) {
-            // Special format for compound assignment operators
-            snprintf(buf, sizeof(buf), "'%s' requires operands of type %s but lhs is of type %s.", 
-                    opStr, typeToString(requiredType), typeToString(t1));
+            // Compound assignment operators should say "same type"
+            snprintf(buf, sizeof(buf), "'%s' requires operands of the same type but lhs is type %s and rhs is type %s.", 
+                    opStr, typeToString(t1), typeToString(t2));
         } 
         else if (requiredType == UndefinedType) { // Types need to match but don't
             snprintf(buf, sizeof(buf), "'%s' requires operands of the same type but lhs is type %s and rhs is type %s.", 
                     opStr, typeToString(t1), typeToString(t2));
+        }
+        else if (t1 != requiredType && t2 != requiredType) { // Both wrong type
+            snprintf(buf, sizeof(buf), "'%s' requires operands of type %s.", 
+                    opStr, typeToString(requiredType));
         }
         else if (t1 != requiredType && t2 == requiredType) { // Error on left operand
             snprintf(buf, sizeof(buf), "'%s' requires operands of type %s but lhs is of type %s.", 
@@ -524,10 +520,6 @@ static void checkBinaryOp(TreeNode *t, SymbolTable *st, ExpType requiredType, Ex
         else if (t2 != requiredType && t1 == requiredType) { // Error on right operand
             snprintf(buf, sizeof(buf), "'%s' requires operands of type %s but rhs is of type %s.", 
                     opStr, typeToString(requiredType), typeToString(t2));
-        }
-        else { // Both wrong type
-            snprintf(buf, sizeof(buf), "'%s' requires operands of type %s.", 
-                    opStr, typeToString(requiredType));
         }
         semanticError(t, buf);
     }

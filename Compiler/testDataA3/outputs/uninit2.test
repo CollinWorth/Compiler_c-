@@ -1,0 +1,11 @@
+WARNING(3): The variable 'a' seems not to be used.
+WARNING(3): The variable 'b' seems not to be used.
+WARNING(3): The variable 'c' seems not to be used.
+WARNING(3): The variable 'd' seems not to be used.
+WARNING(4): The variable 'aa' seems not to be used.
+WARNING(4): The variable 'bb' seems not to be used.
+WARNING(4): The variable 'cc' seems not to be used.
+WARNING(4): The variable 'dd' seems not to be used.
+WARNING(4): The variable 'ee' seems not to be used.
+Number of warnings: 9
+Number of errors: 0

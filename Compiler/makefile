@@ -1,3 +1,4 @@
+
 BIN = c-
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -g
@@ -41,42 +42,8 @@ semantic.o: semantic.cpp semantic.h tree.h symbolTable.h
 
 # Clean generated files
 clean:
-	rm -f *~ $(OBJS) $(BIN) lex.yy.cpp c-.tab.hpp c-.tab.cpp $(BIN).output
+	rm -f *~ $(OBJS) $(BIN) lex.yy.cpp c-.tab.hpp c-.tab.cpp $(BIN).output c-.tar
 
-# Define the files to include in the tar
-TAR_FILES = *.h *.cpp *.y *.l makefile
-
-# Method 1: Use gnutar if available (install with: brew install gnu-tar)
-#tar:
-#	gnutar -cf c-.tar $(TAR_FILES)
-
-# Method 2: Use --no-mac-metadata flag (if your tar supports it)
-#tar:
-#	tar --no-mac-metadata -cf c-.tar $(TAR_FILES)
-
-# Method 3: Create tar in a clean temporary directory
-tar:
-	mkdir -p /tmp/clean_tar
-	cp $(TAR_FILES) /tmp/clean_tar/
-	cd /tmp/clean_tar && tar -cf c-.tar *
-	mv /tmp/clean_tar/c-.tar ./
-	rm -rf /tmp/clean_tar
-
-# Method 4: Use pax instead of tar
-#tar:
-#	pax -w -f c-.tar $(TAR_FILES)
-
-# Method 5: Explicitly exclude extended attributes
-#tar:
-#	COPYFILE_DISABLE=1 COPYFILE_EXTENDED_ATTRIBUTES_DISABLE=1 tar --no-xattrs -cf c-.tar $(TAR_FILES) 2>/dev/null || COPYFILE_DISABLE=1 tar -cf c-.tar $(TAR_FILES)
-
-# Method 6: Use rsync to copy to temp dir then tar
-#tar:
-#	mkdir -p /tmp/clean_submission
-#	rsync -av --exclude='.*' $(TAR_FILES) /tmp/clean_submission/
-#	cd /tmp/clean_submission && tar -cf $(CURDIR)/c-.tar *
-#	rm -rf /tmp/clean_submission
-
-# Method 7: Stripping extended attributes
-
-.PHONY: tar tar-fixed tar-clean
+# Tarball
+tar: $(HDRS) $(SRCS) makefile
+	tar -cvf $(BIN).tar $(HDRS) $(SRCS) makefile

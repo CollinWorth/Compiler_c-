@@ -1,0 +1,7 @@
+ERROR(3): Symbol 'z' is already declared at line 3.
+ERROR(3): Symbol 'z' is already declared at line 3.
+ERROR(13): Symbol 'dog' is not declared.
+ERROR(14): Cannot use function 'main' as a variable.
+ERROR(14): ':=' requires operands of the same type but lhs is type void and rhs is type int.
+Number of warnings: 0
+Number of errors: 5

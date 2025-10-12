@@ -1,0 +1,5 @@
+ERROR(11): Symbol 'output' is not declared.
+ERROR(12): Symbol 'output' is not declared.
+ERROR(13): Symbol 'output' is not declared.
+Number of warnings: 0
+Number of errors: 3

@@ -1,0 +1,36 @@
+ERROR(18): The operation 'chsign' does not work with arrays.
+ERROR(19): The operation 'chsign' does not work with arrays.
+ERROR(21): Cannot index nonarray 'a'.
+ERROR(22): Cannot index nonarray 'a'.
+ERROR(22): Array index is the unindexed array 'aa'.
+ERROR(24): Array index is the unindexed array 'aa'.
+ERROR(26): The operation 'sizeof' only works with arrays.
+ERROR(29): The operation '?' does not work with arrays.
+ERROR(29): The operation '?' does not work with arrays.
+ERROR(31): The operation 'not' does not work with arrays.
+ERROR(36): The operation '+' does not work with arrays.
+ERROR(37): The operation '+' does not work with arrays.
+ERROR(38): The operation '+' does not work with arrays.
+ERROR(41): The operation 'and' does not work with arrays.
+ERROR(42): The operation 'and' does not work with arrays.
+ERROR(43): The operation 'and' does not work with arrays.
+ERROR(45): Cannot index nonarray 'c'.
+ERROR(47): Cannot index nonarray 'c'.
+ERROR(54): The operation '=' does not work with arrays.
+ERROR(55): The operation '=' does not work with arrays.
+ERROR(56): The operation '=' does not work with arrays.
+ERROR(57): The operation '=' does not work with arrays.
+ERROR(58): The operation '=' does not work with arrays.
+ERROR(61): The operation '>=' does not work with arrays.
+ERROR(62): The operation '>=' does not work with arrays.
+ERROR(63): The operation '>=' does not work with arrays.
+ERROR(64): The operation '>=' does not work with arrays.
+ERROR(65): The operation '>=' does not work with arrays.
+ERROR(68): The operation '<' does not work with arrays.
+ERROR(69): The operation '<' does not work with arrays.
+ERROR(70): The operation '<' does not work with arrays.
+ERROR(71): The operation '<' does not work with arrays.
+ERROR(72): The operation '<' does not work with arrays.
+ERROR(75): The operation '<' does not work with arrays.
+Number of warnings: 0
+Number of errors: 34

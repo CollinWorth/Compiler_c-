@@ -1,0 +1,32 @@
+ERROR(SymbolTable): You cannot leave global scope.  Number of |	WARNING(4): Variable 'z' may be uninitialized when used here.
+WARNING(3): The variable 'z' seems not to be used.	      <	
+ERROR(5): Cannot return an array.				ERROR(5): Cannot return an array.
+WARNING(18): The variable 'y' seems not to be used.	      |	ERROR(20): Symbol 'x' is already declared at line 18.
+WARNING(18): The variable 'x' seems not to be used.	      <	
+WARNING(20): The variable 'x' seems not to be used.	      <	
+ERROR(26): Symbol 'dog' is already declared at line 18.		ERROR(26): Symbol 'dog' is already declared at line 18.
+WARNING(28): The variable 'z' seems not to be used.		WARNING(28): The variable 'z' seems not to be used.
+WARNING(34): The variable 'c' seems not to be used.	      <	
+ERROR(35): '+' requires operands of type int but lhs is of ty	ERROR(35): '+' requires operands of type int but lhs is of ty
+WARNING(35): The variable 'd' seems not to be used.	      <	
+WARNING(36): The variable 'z' seems not to be used.	      <	
+ERROR(42): Symbol 'zebu' is not declared.			ERROR(42): Symbol 'zebu' is not declared.
+ERROR(44): Too few arguments to function 'dog'.		      <	
+ERROR(45): Too few arguments to function 'dog'.		      <	
+ERROR(45): Expecting type int in parameter 1 of call to 'dog' <	
+ERROR(46): Expecting type int in parameter 2 of call to 'dog' <	
+ERROR(46): Expecting type int in parameter 1 of call to 'dog' <	
+ERROR(47): Too many arguments to function 'dog'.	      <	
+ERROR(47): '+' requires operands of type int but lhs is of ty	ERROR(47): '+' requires operands of type int but lhs is of ty
+ERROR(47): Unary 'chsign' requires an operand of type int but	ERROR(47): Unary 'chsign' requires an operand of type int but
+ERROR(47): Expecting type int in parameter 2 of call to 'dog' |	WARNING(49): Variable 'z' may be uninitialized when used here
+ERROR(47): Expecting type int in parameter 1 of call to 'dog' |	WARNING(35): The variable 'd' seems not to be used.
+ERROR(49): Too few arguments to function 'dog'.		      |	Number of warnings: 4
+ERROR(49): Expecting type int in parameter 1 of call to 'dog' |	Number of errors: 7
+ERROR(50): Expecting type bool in parameter 1 of call to 'elk <	
+ERROR(50): Expecting an array in parameter 1 of call to 'elk' <	
+ERROR(51): Expecting type bool in parameter 1 of call to 'elk <	
+ERROR(51): Expecting an array in parameter 1 of call to 'elk' <	
+ERROR(51): Expecting type int in parameter 1 of call to 'dog' <	
+Number of warnings: 8					      <	
+Number of errors: 21					      <	

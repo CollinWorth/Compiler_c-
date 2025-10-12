@@ -4,6 +4,7 @@
 #include "globals.h"
 #include "scanType.h"
 #include "c-.tab.hpp"
+#include <cstring>
 
 // ============================================================================
 // FORWARD DECLARATIONS

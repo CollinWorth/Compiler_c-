@@ -1,0 +1,40 @@
+WARNING(2): The variable 'fahrenheit' seems not to be used.   |	ERROR(19): Unary '--' requires an operand of type int but was
+WARNING(6): The variable 'f' seems not to be used.	      <	
+WARNING(6): The variable 'e' seems not to be used.	      <	
+WARNING(6): The variable 'd' seems not to be used.	      <	
+WARNING(6): The variable 'c' seems not to be used.	      <	
+WARNING(6): The variable 'b' seems not to be used.	      <	
+WARNING(6): The variable 'a' seems not to be used.	      <	
+WARNING(7): The variable 'x' seems not to be used.	      <	
+ERROR(20): Unary '?' requires an operand of type int but was 	ERROR(20): Unary '?' requires an operand of type int but was 
+ERROR(22): '+' requires operands of type int.		      <	
+ERROR(22): Cannot index nonarray 'e'.				ERROR(22): Cannot index nonarray 'e'.
+ERROR(22): Cannot index nonarray 'e'.				ERROR(22): Cannot index nonarray 'e'.
+ERROR(23): Array 'e' should be indexed by type int but got ty |	ERROR(22): '+' requires operands of type int but lhs is of ty
+							      >	ERROR(22): '+' requires operands of type int but rhs is of ty
+ERROR(23): Cannot index nonarray 'e'.				ERROR(23): Cannot index nonarray 'e'.
+ERROR(23): Cannot index nonarray 'e'.				ERROR(23): Cannot index nonarray 'e'.
+ERROR(25): ':=' requires operands of the same type but lhs is |	ERROR(23): Array 'e' should be indexed by type int but got ty
+ERROR(26): 'and' requires operands of type bool.	      |	ERROR(26): 'and' requires operands of type bool but lhs is of
+							      >	ERROR(26): 'and' requires operands of type bool but rhs is of
+WARNING(31): The variable 'i' seems not to be used.		WARNING(31): The variable 'i' seems not to be used.
+WARNING(31): The variable 'x' seems not to be used.		WARNING(31): The variable 'x' seems not to be used.
+							      >	WARNING(39): Variable 'b' may be uninitialized when used here
+							      >	WARNING(39): Variable 'd' may be uninitialized when used here
+							      >	WARNING(39): Variable 'e' may be uninitialized when used here
+							      >	WARNING(39): Variable 'f' may be uninitialized when used here
+WARNING(35): The variable 'a' seems not to be used.		WARNING(35): The variable 'a' seems not to be used.
+WARNING(35): The variable 'b' seems not to be used.	      <	
+WARNING(36): The variable 'c' seems not to be used.		WARNING(36): The variable 'c' seems not to be used.
+WARNING(36): The variable 'd' seems not to be used.	      <	
+WARNING(37): The variable 'e' seems not to be used.	      <	
+WARNING(37): The variable 'f' seems not to be used.	      <	
+WARNING(38): The variable 'g' seems not to be used.		WARNING(38): The variable 'g' seems not to be used.
+ERROR(39): Expecting type int in parameter 2 of call to 'fred |	Number of warnings: 9
+ERROR(39): Expecting type char in parameter 4 of call to 'fre |	Number of errors: 11
+ERROR(39): Expecting an array in parameter 4 of call to 'fred <	
+ERROR(39): Expecting type bool in parameter 5 of call to 'fre <	
+ERROR(39): Expecting type bool in parameter 6 of call to 'fre <	
+ERROR(39): Expecting an array in parameter 6 of call to 'fred <	
+Number of warnings: 17					      <	
+Number of errors: 15					      <	

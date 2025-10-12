@@ -1,0 +1,7 @@
+							      >	ERROR(5): '+' requires operands of type int but lhs is of typ
+							      >	ERROR(5): ':=' requires operands of the same type but lhs is 
+							      >	ERROR(8): Unary 'chsign' requires an operand of type int but 
+WARNING(1): The variable 'x' seems not to be used.	      |	Number of warnings: 0
+ERROR(LINKER): A function named 'main()' must be defined.     |	Number of errors: 13
+Number of warnings: 1					      <	
+Number of errors: 11					      <	

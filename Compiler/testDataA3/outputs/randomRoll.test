@@ -1,0 +1,9 @@
+WARNING(4): The variable 'i' seems not to be used.
+WARNING(4): The variable 'sum' seems not to be used.
+ERROR(11): Symbol 'outputb' is not declared.
+ERROR(13): Symbol 'outputb' is not declared.
+ERROR(14): Symbol 'outnl' is not declared.
+ERROR(16): Symbol 'outputb' is not declared.
+ERROR(17): Symbol 'outnl' is not declared.
+Number of warnings: 2
+Number of errors: 5

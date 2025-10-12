@@ -1,0 +1,4 @@
+							      >	ERROR(SymbolTable): You cannot leave global scope.  Number of
+							      >	ERROR(SymbolTable): You cannot leave global scope.  Number of
+							      >	ERROR(LINKER): A function named 'main()' must be defined.
+ERROR(LINKER): A function named 'main()' must be defined.     <	

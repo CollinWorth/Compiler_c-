@@ -1,0 +1,21 @@
+WARNING(2): The variable 'z' seems not to be used.	      <	
+ERROR(3): Symbol 'output' is not declared.			ERROR(3): Symbol 'output' is not declared.
+ERROR(5): Symbol 'outnl' is not declared.			ERROR(5): Symbol 'outnl' is not declared.
+WARNING(11): The variable 'y' seems not to be used.	      <	
+ERROR(12): Symbol 'output' is not declared.			ERROR(12): Symbol 'output' is not declared.
+ERROR(13): Expecting type int in parameter 1 of call to 'thre <	
+ERROR(13): Expecting an array in parameter 1 of call to 'thre <	
+ERROR(14): Symbol 'output' is not declared.			ERROR(14): Symbol 'output' is not declared.
+WARNING(20): The variable 'x' seems not to be used.	      <	
+ERROR(21): Symbol 'output' is not declared.			ERROR(21): Symbol 'output' is not declared.
+ERROR(22): Expecting type int in parameter 1 of call to 'two' <	
+ERROR(22): Expecting an array in parameter 1 of call to 'two' <	
+ERROR(23): Symbol 'output' is not declared.			ERROR(23): Symbol 'output' is not declared.
+WARNING(31): The variable 'w' seems not to be used.	      <	
+ERROR(34): Symbol 'output' is not declared.			ERROR(34): Symbol 'output' is not declared.
+ERROR(34): Expecting type int in parameter 1 of call to 'one' <	
+ERROR(34): Expecting an array in parameter 1 of call to 'one' <	
+ERROR(35): Symbol 'output' is not declared.			ERROR(35): Symbol 'output' is not declared.
+ERROR(36): Symbol 'outnl' is not declared.			ERROR(36): Symbol 'outnl' is not declared.
+Number of warnings: 4					      |	Number of warnings: 0
+Number of errors: 15					      |	Number of errors: 9

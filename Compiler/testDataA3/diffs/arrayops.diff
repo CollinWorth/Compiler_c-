@@ -1,0 +1,62 @@
+WARNING(4): The variable 'aa' seems not to be used.	      |	ERROR(13): ':=' requires both operands be arrays or not but l
+WARNING(4): The variable 'a' seems not to be used.	      |	ERROR(14): ':=' requires both operands be arrays or not but l
+WARNING(5): The variable 'bb' seems not to be used.	      <	
+WARNING(5): The variable 'b' seems not to be used.	      <	
+WARNING(6): The variable 'cc' seems not to be used.	      <	
+WARNING(6): The variable 'c' seems not to be used.	      <	
+ERROR(18): The operation 'chsign' does not work with arrays.	ERROR(18): The operation 'chsign' does not work with arrays.
+ERROR(19): The operation 'chsign' does not work with arrays.	ERROR(19): The operation 'chsign' does not work with arrays.
+ERROR(21): Cannot index nonarray 'a'.				ERROR(21): Cannot index nonarray 'a'.
+ERROR(22): Array index is the unindexed array 'aa'.	      <	
+ERROR(22): Cannot index nonarray 'a'.				ERROR(22): Cannot index nonarray 'a'.
+							      >	ERROR(22): Array index is the unindexed array 'aa'.
+ERROR(24): Array index is the unindexed array 'aa'.		ERROR(24): Array index is the unindexed array 'aa'.
+ERROR(26): The operation 'sizeof' only works with arrays.	ERROR(26): The operation 'sizeof' only works with arrays.
+ERROR(29): The operation '?' does not work with arrays.		ERROR(29): The operation '?' does not work with arrays.
+ERROR(29): The operation '?' does not work with arrays.	      <	
+ERROR(31): The operation 'not' does not work with arrays.	ERROR(31): The operation 'not' does not work with arrays.
+							      >	ERROR(33): The operation '++' does not work with arrays.
+ERROR(36): The operation '+' does not work with arrays.		ERROR(36): The operation '+' does not work with arrays.
+ERROR(37): The operation '+' does not work with arrays.		ERROR(37): The operation '+' does not work with arrays.
+ERROR(38): The operation '+' does not work with arrays.		ERROR(38): The operation '+' does not work with arrays.
+ERROR(41): The operation 'and' does not work with arrays.	ERROR(41): The operation 'and' does not work with arrays.
+ERROR(42): The operation 'and' does not work with arrays.	ERROR(42): The operation 'and' does not work with arrays.
+ERROR(43): The operation 'and' does not work with arrays.	ERROR(43): The operation 'and' does not work with arrays.
+							      >	WARNING(45): Variable 'c' may be uninitialized when used here
+ERROR(45): Cannot index nonarray 'c'.				ERROR(45): Cannot index nonarray 'c'.
+							      >	WARNING(46): Variable 'cc' may be uninitialized when used her
+ERROR(47): Cannot index nonarray 'c'.				ERROR(47): Cannot index nonarray 'c'.
+ERROR(54): The operation '=' does not work with arrays.	      |	ERROR(47): ':=' requires both operands be arrays or not but l
+ERROR(54): The operation '=' does not work with arrays.	      |	ERROR(48): ':=' requires both operands be arrays or not but l
+ERROR(55): The operation '=' does not work with arrays.	      |	ERROR(51): ':=' requires both operands be arrays or not but l
+ERROR(55): The operation '=' does not work with arrays.	      |	ERROR(56): '=' requires operands of the same type but lhs is 
+ERROR(56): The operation '=' does not work with arrays.	      |	ERROR(57): '=' requires both operands be arrays or not but lh
+ERROR(56): The operation '=' does not work with arrays.	      |	ERROR(58): '=' requires both operands be arrays or not but lh
+ERROR(57): The operation '=' does not work with arrays.	      |	ERROR(63): '>=' requires operands of the same type but lhs is
+ERROR(57): The operation '=' does not work with arrays.	      |	ERROR(64): '>=' requires both operands be arrays or not but l
+ERROR(58): The operation '=' does not work with arrays.	      |	ERROR(65): '>=' requires both operands be arrays or not but l
+ERROR(58): The operation '=' does not work with arrays.	      |	ERROR(70): '<' requires operands of the same type but lhs is 
+ERROR(61): The operation '>=' does not work with arrays.      |	ERROR(71): '<' requires both operands be arrays or not but lh
+ERROR(61): The operation '>=' does not work with arrays.      |	ERROR(72): '<' requires both operands be arrays or not but lh
+ERROR(62): The operation '>=' does not work with arrays.      |	ERROR(75): '<' requires operands of the same type but lhs is 
+ERROR(62): The operation '>=' does not work with arrays.      |	ERROR(75): '<' requires both operands be arrays or not but lh
+ERROR(63): The operation '>=' does not work with arrays.      |	Number of warnings: 2
+ERROR(63): The operation '>=' does not work with arrays.      |	Number of errors: 34
+ERROR(64): The operation '>=' does not work with arrays.      <	
+ERROR(64): The operation '>=' does not work with arrays.      <	
+ERROR(65): The operation '>=' does not work with arrays.      <	
+ERROR(65): The operation '>=' does not work with arrays.      <	
+ERROR(68): The operation '<' does not work with arrays.	      <	
+ERROR(68): The operation '<' does not work with arrays.	      <	
+ERROR(69): The operation '<' does not work with arrays.	      <	
+ERROR(69): The operation '<' does not work with arrays.	      <	
+ERROR(70): The operation '<' does not work with arrays.	      <	
+ERROR(70): The operation '<' does not work with arrays.	      <	
+ERROR(71): The operation '<' does not work with arrays.	      <	
+ERROR(71): The operation '<' does not work with arrays.	      <	
+ERROR(72): The operation '<' does not work with arrays.	      <	
+ERROR(72): The operation '<' does not work with arrays.	      <	
+ERROR(75): The operation '<' does not work with arrays.	      <	
+ERROR(75): The operation '<' does not work with arrays.	      <	
+Number of warnings: 6					      <	
+Number of errors: 50					      <	

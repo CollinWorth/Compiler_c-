@@ -1,0 +1,4 @@
+ERROR(LINKER): A function named 'main()' must be defined.
+ERROR(5): Symbol 'x' is already declared at line 5.
+Number of warnings: 0
+Number of errors: 2

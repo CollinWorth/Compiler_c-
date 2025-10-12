@@ -1,0 +1,25 @@
+WARNING(2): The variable 'gx' seems not to be used.	      <	
+WARNING(2): The variable 'gy' seems not to be used.	      <	
+WARNING(4): The variable 'px' seems not to be used.	      <	
+WARNING(4): The variable 'py' seems not to be used.	      <	
+WARNING(6): The variable 'x' seems not to be used.	      <	
+WARNING(6): The variable 'y' seems not to be used.	      <	
+WARNING(7): The variable 'sx' seems not to be used.	      <	
+WARNING(7): The variable 'sy' seems not to be used.	      <	
+ERROR(10): Symbol 'outputc' is not declared.			ERROR(10): Symbol 'outputc' is not declared.
+ERROR(12): Symbol 'outputc' is not declared.			ERROR(12): Symbol 'outputc' is not declared.
+ERROR(14): Symbol 'outputc' is not declared.			ERROR(14): Symbol 'outputc' is not declared.
+ERROR(16): Symbol 'outputc' is not declared.			ERROR(16): Symbol 'outputc' is not declared.
+ERROR(17): Symbol 'outnl' is not declared.			ERROR(17): Symbol 'outnl' is not declared.
+ERROR(19): Symbol 'outputc' is not declared.			ERROR(19): Symbol 'outputc' is not declared.
+ERROR(21): Symbol 'outputc' is not declared.			ERROR(21): Symbol 'outputc' is not declared.
+ERROR(23): Symbol 'outputc' is not declared.			ERROR(23): Symbol 'outputc' is not declared.
+ERROR(25): Symbol 'outputc' is not declared.			ERROR(25): Symbol 'outputc' is not declared.
+ERROR(26): Symbol 'outnl' is not declared.			ERROR(26): Symbol 'outnl' is not declared.
+WARNING(32): The variable 'zx' seems not to be used.	      |	WARNING(33): Variable 'zx' may be uninitialized when used her
+WARNING(32): The variable 'zy' seems not to be used.	      |	WARNING(33): Variable 'zy' may be uninitialized when used her
+ERROR(33): Expecting type char in parameter 1 of call to 'esp |	Number of warnings: 2
+ERROR(33): Expecting type char in parameter 2 of call to 'esp |	Number of errors: 10
+ERROR(33): Expecting an array in parameter 2 of call to 'espe <	
+Number of warnings: 10					      <	
+Number of errors: 13					      <	

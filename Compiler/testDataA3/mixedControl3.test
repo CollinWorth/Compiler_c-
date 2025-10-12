@@ -1,0 +1,8 @@
+ERROR(7): Symbol 'x' is already declared at line 4.
+ERROR(9): Symbol 'x' is already declared at line 4.
+ERROR(14): Symbol 'x' is already declared at line 4.
+ERROR(16): Symbol 'x' is already declared at line 4.
+ERROR(19): Symbol 'x' is already declared at line 4.
+ERROR(20): Symbol 'x' is already declared at line 4.
+Number of warnings: 0
+Number of errors: 6

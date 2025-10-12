@@ -1,0 +1,3 @@
+ERROR(12): Symbol 'x' is already declared at line 6.
+Number of warnings: 0
+Number of errors: 1

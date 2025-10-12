@@ -1,0 +1,43 @@
+ERROR(SymbolTable): You cannot leave global scope.  Number of scopes: 1.
+ERROR(SymbolTable): You cannot leave global scope.  Number of scopes: 1.
+ERROR(SymbolTable): You cannot leave global scope.  Number of scopes: 1.
+WARNING(2): The variable 'g' seems not to be used.
+WARNING(3): The variable 'x' seems not to be used.
+WARNING(5): The variable 'a' seems not to be used.
+ERROR(7): Symbol 'bat' is not declared.
+ERROR(8): 'or' requires operands of type bool.
+WARNING(12): The variable 'c' seems not to be used.
+ERROR(14): Symbol 'b' is not declared.
+WARNING(19): The variable 'IWouldNotEatItWithAGoat' seems not to be used.
+ERROR(25): Symbol 'b' is not declared.
+ERROR(26): Symbol 'c' is not declared.
+ERROR(30): Symbol 'b' is not declared.
+ERROR(31): Symbol 'c' is not declared.
+WARNING(37): The variable 'y' seems not to be used.
+WARNING(39): The variable 'z' seems not to be used.
+WARNING(40): The variable 'bat' seems not to be used.
+ERROR(41): Symbol 'x' is not declared.
+ERROR(42): Expecting type int in parameter 1 of call to 'ant' but got type undefined.
+ERROR(43): Expecting type int in parameter 1 of call to 'ant' but got type undefined.
+ERROR(44): Expecting type int in parameter 1 of call to 'ant' but got type undefined.
+ERROR(45): Symbol 'p' is not declared.
+ERROR(46): '+' requires operands of type int.
+ERROR(46): Symbol 'q' is not declared.
+ERROR(46): Symbol 'r' is not declared.
+ERROR(47): Symbol 't' is not declared.
+ERROR(47): Symbol 's' is not declared.
+ERROR(47): Too many arguments to function 'ant'.
+ERROR(47): Expecting type int in parameter 1 of call to 'ant' but got type undefined.
+ERROR(48): Symbol 'u' is not declared.
+ERROR(48): Symbol 'v' is not declared.
+ERROR(48): Symbol 'cow' is not declared.
+ERROR(49): Symbol 'abraxsis' is not declared.
+ERROR(50): Symbol 'a' is not declared.
+ERROR(55): Symbol 'g' is already declared at line 2.
+WARNING(55): The variable 'g' seems not to be used.
+ERROR(57): Symbol 'g' is already declared at line 2.
+ERROR(59): Symbol 'x' is not declared.
+ERROR(62): Symbol 'g' is already declared at line 2.
+ERROR(63): Symbol 'ant' is already declared at line 3.
+Number of warnings: 9
+Number of errors: 30
