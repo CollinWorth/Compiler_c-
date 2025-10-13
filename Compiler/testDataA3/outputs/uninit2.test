@@ -1,11 +1,58 @@
-WARNING(3): The variable 'a' seems not to be used.
-WARNING(3): The variable 'b' seems not to be used.
-WARNING(3): The variable 'c' seems not to be used.
-WARNING(3): The variable 'd' seems not to be used.
-WARNING(4): The variable 'aa' seems not to be used.
-WARNING(4): The variable 'bb' seems not to be used.
-WARNING(4): The variable 'cc' seems not to be used.
-WARNING(4): The variable 'dd' seems not to be used.
-WARNING(4): The variable 'ee' seems not to be used.
-Number of warnings: 9
+WARNING(6): Variable 'b' may be uninitialized when used here.
+WARNING(10): Variable 'c' may be uninitialized when used here.
+WARNING(11): Variable 'd' may be uninitialized when used here.
+Func: main returns type void [line: 1]
+.   Child: 1  Compound [line: 2]
+.   .   Child: 0  Var: a of type int [line: 3]
+.   .   Sibling: 1  Var: b of type int [line: 3]
+.   .   Sibling: 2  Var: c of type int [line: 3]
+.   .   Sibling: 3  Var: d of type int [line: 3]
+.   .   Sibling: 4  Var: aa is array of type int [line: 4]
+.   .   Sibling: 5  Var: bb is array of type int [line: 4]
+.   .   Sibling: 6  Var: cc is array of type int [line: 4]
+.   .   Sibling: 7  Var: dd is array of type int [line: 4]
+.   .   Sibling: 8  Var: ee is array of type int [line: 4]
+.   .   Child: 1  Assign: := of undefined type [line: 6]
+.   .   .   Child: 0  Id: a of type int [line: 6]
+.   .   .   Child: 1  Id: b of type int [line: 6]
+.   .   Sibling: 1  Assign: := of undefined type [line: 7]
+.   .   .   Child: 0  Id: a of type int [line: 7]
+.   .   .   Child: 1  Id: b of type int [line: 7]
+.   .   Sibling: 2  Assign: := of undefined type [line: 8]
+.   .   .   Child: 0  Id: a of type int [line: 8]
+.   .   .   Child: 1  Op: [ of undefined type [line: 8]
+.   .   .   .   Child: 0  Id: aa of type int [line: 8]
+.   .   .   .   Child: 1  Const 3 of type int [line: 8]
+.   .   Sibling: 3  Assign: := of undefined type [line: 9]
+.   .   .   Child: 0  Id: a of type int [line: 9]
+.   .   .   Child: 1  Op: [ of undefined type [line: 9]
+.   .   .   .   Child: 0  Id: bb of type int [line: 9]
+.   .   .   .   Child: 1  Op: [ of undefined type [line: 9]
+.   .   .   .   .   Child: 0  Id: cc of type int [line: 9]
+.   .   .   .   .   Child: 1  Const 3 of type int [line: 9]
+.   .   Sibling: 4  Assign: := of undefined type [line: 10]
+.   .   .   Child: 0  Op: [ of undefined type [line: 10]
+.   .   .   .   Child: 0  Id: cc of type int [line: 10]
+.   .   .   .   Child: 1  Id: c of type int [line: 10]
+.   .   .   Child: 1  Id: a of type int [line: 10]
+.   .   Sibling: 5  Assign: := of undefined type [line: 11]
+.   .   .   Child: 0  Op: [ of undefined type [line: 11]
+.   .   .   .   Child: 0  Id: cc of type int [line: 11]
+.   .   .   .   Child: 1  Op: + of undefined type [line: 11]
+.   .   .   .   .   Child: 0  Id: c of type int [line: 11]
+.   .   .   .   .   Child: 1  Id: d of type int [line: 11]
+.   .   .   Child: 1  Id: a of type int [line: 11]
+.   .   Sibling: 6  Op: [ of undefined type [line: 12]
+.   .   .   Child: 0  Id: cc of type int [line: 12]
+.   .   .   Child: 1  Op: [ of undefined type [line: 12]
+.   .   .   .   Child: 0  Id: dd of type int [line: 12]
+.   .   .   .   Child: 1  Const 3 of type int [line: 12]
+.   .   Sibling: 7  Assign: := of undefined type [line: 13]
+.   .   .   Child: 0  Op: [ of undefined type [line: 13]
+.   .   .   .   Child: 0  Id: cc of type int [line: 13]
+.   .   .   .   Child: 1  Op: [ of undefined type [line: 13]
+.   .   .   .   .   Child: 0  Id: ee of type int [line: 13]
+.   .   .   .   .   Child: 1  Const 3 of type int [line: 13]
+.   .   .   Child: 1  Const 284 of type int [line: 13]
+Number of warnings: 3
 Number of errors: 0

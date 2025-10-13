@@ -1,7 +1,6 @@
-WARNING(4): The variable 'i' seems not to be used.
 ERROR(10): Symbol 'output' is not declared.
 ERROR(12): Symbol 'outnl' is not declared.
 ERROR(16): Symbol 'output' is not declared.
 ERROR(17): Symbol 'outnl' is not declared.
-Number of warnings: 1
+Number of warnings: 0
 Number of errors: 4

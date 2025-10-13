@@ -1,58 +1,10 @@
-WARNING(2): The variable 'c' seems not to be used.
-WARNING(2): The variable 'b' seems not to be used.
-WARNING(2): The variable 'a' seems not to be used.
 ERROR(4): Symbol 'output' is not declared.
 ERROR(5): Symbol 'outputb' is not declared.
 ERROR(6): Symbol 'outputc' is not declared.
 ERROR(7): Symbol 'outnl' is not declared.
-WARNING(11): The variable 'b' seems not to be used.
-WARNING(11): The variable 'a' seems not to be used.
-WARNING(11): The variable 'c' seems not to be used.
 ERROR(13): Symbol 'output' is not declared.
 ERROR(14): Symbol 'outputb' is not declared.
 ERROR(15): Symbol 'outputc' is not declared.
 ERROR(16): Symbol 'outnl' is not declared.
-WARNING(20): The variable 'z' seems not to be used.
-WARNING(22): The variable 'b' seems not to be used.
-WARNING(23): The variable 'c' seems not to be used.
-ERROR(27): Expecting an array in parameter 3 of call to 'sioux' but got a simple value.
-ERROR(27): Expecting type char in parameter 3 of call to 'sioux' but got type undefined.
-ERROR(27): Expecting type int in parameter 1 of call to 'sioux' but got type undefined.
-ERROR(27): Expecting an array in parameter 2 of call to 'sioux' but got a simple value.
-ERROR(27): Expecting type bool in parameter 2 of call to 'sioux' but got type undefined.
-ERROR(27): Expecting an array in parameter 1 of call to 'sioux' but got a simple value.
-WARNING(32): The variable 'ga' seems not to be used.
-WARNING(33): The variable 'gb' seems not to be used.
-WARNING(34): The variable 'gc' seems not to be used.
-WARNING(38): The variable 'a' seems not to be used.
-WARNING(39): The variable 'b' seems not to be used.
-WARNING(40): The variable 'c' seems not to be used.
-ERROR(47): Expecting an array in parameter 2 of call to 'sioux' but got a simple value.
-ERROR(47): Expecting type char in parameter 3 of call to 'sioux' but got type undefined.
-ERROR(47): Expecting an array in parameter 3 of call to 'sioux' but got a simple value.
-ERROR(47): Expecting type bool in parameter 2 of call to 'sioux' but got type undefined.
-ERROR(47): Expecting an array in parameter 1 of call to 'sioux' but got a simple value.
-ERROR(47): Expecting type int in parameter 1 of call to 'sioux' but got type undefined.
-ERROR(48): Expecting an array in parameter 1 of call to 'comanche' but got a simple value.
-ERROR(48): Expecting type int in parameter 1 of call to 'comanche' but got type undefined.
-ERROR(53): Expecting an array in parameter 3 of call to 'sioux' but got a simple value.
-ERROR(53): Expecting type char in parameter 3 of call to 'sioux' but got type undefined.
-ERROR(53): Expecting type bool in parameter 2 of call to 'sioux' but got type undefined.
-ERROR(53): Expecting an array in parameter 1 of call to 'sioux' but got a simple value.
-ERROR(53): Expecting type int in parameter 1 of call to 'sioux' but got type undefined.
-ERROR(53): Expecting an array in parameter 2 of call to 'sioux' but got a simple value.
-ERROR(54): Expecting type int in parameter 1 of call to 'comanche' but got type undefined.
-ERROR(54): Expecting an array in parameter 1 of call to 'comanche' but got a simple value.
-WARNING(57): The variable 'ga' seems not to be used.
-WARNING(58): The variable 'gb' seems not to be used.
-WARNING(59): The variable 'gc' seems not to be used.
-ERROR(64): Expecting an array in parameter 3 of call to 'sioux' but got a simple value.
-ERROR(64): Expecting type char in parameter 3 of call to 'sioux' but got type undefined.
-ERROR(64): Expecting an array in parameter 2 of call to 'sioux' but got a simple value.
-ERROR(64): Expecting type bool in parameter 2 of call to 'sioux' but got type undefined.
-ERROR(64): Expecting an array in parameter 1 of call to 'sioux' but got a simple value.
-ERROR(64): Expecting type int in parameter 1 of call to 'sioux' but got type undefined.
-ERROR(65): Expecting an array in parameter 1 of call to 'comanche' but got a simple value.
-ERROR(65): Expecting type int in parameter 1 of call to 'comanche' but got type undefined.
-Number of warnings: 18
-Number of errors: 38
+Number of warnings: 0
+Number of errors: 8

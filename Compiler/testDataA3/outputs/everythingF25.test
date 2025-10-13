@@ -1,79 +1,28 @@
-WARNING(6): The variable 'gromit' seems not to be used.
-WARNING(6): The variable 'mysteriousPenguin' seems not to be used.
-WARNING(9): The variable 'trousers' seems not to be used.
-WARNING(9): The variable 'wrong' seems not to be used.
-WARNING(11): The variable 'shave' seems not to be used.
-WARNING(11): The variable 'close' seems not to be used.
-WARNING(12): The variable 'cheese' seems not to be used.
-WARNING(26): The variable 'out' seems not to be used.
-WARNING(26): The variable 'day' seems not to be used.
-WARNING(26): The variable 'grand' seems not to be used.
-WARNING(26): The variable 'a' seems not to be used.
-WARNING(37): The variable 'rabbit' seems not to be used.
-WARNING(37): The variable 'were' seems not to be used.
-WARNING(38): The variable 'sheep' seems not to be used.
-ERROR(42): Expecting type int in parameter 2 of call to 'wallace' but got type undefined.
-ERROR(42): Expecting type int in parameter 1 of call to 'wallace' but got type undefined.
-WARNING(44): The variable 'trousers' seems not to be used.
-WARNING(44): The variable 'wrong' seems not to be used.
-WARNING(44): The variable 'the' seems not to be used.
-WARNING(54): The variable 'moon' seems not to be used.
-WARNING(54): The variable 'launch' seems not to be used.
+ERROR(23): 'and' requires operands of type bool but lhs is of type undefined.
+ERROR(23): 'and' requires operands of type bool but rhs is of type undefined.
+ERROR(24): 'and' requires operands of type bool but lhs is of type undefined.
+ERROR(24): 'and' requires operands of type bool but rhs is of type undefined.
+ERROR(29): 'and' requires operands of type bool but lhs is of type undefined.
+ERROR(29): 'and' requires operands of type bool but rhs is of type undefined.
+ERROR(30): 'and' requires operands of type bool but lhs is of type undefined.
+ERROR(30): 'and' requires operands of type bool but rhs is of type undefined.
+ERROR(32): 'or' requires operands of type bool but lhs is of type undefined.
+ERROR(32): 'or' requires operands of type bool but rhs is of type undefined.
+WARNING(42): Variable 'were' may be uninitialized when used here.
+WARNING(42): Variable 'rabbit' may be uninitialized when used here.
 WARNING(54): The variable 'cheese' seems not to be used.
-WARNING(54): The variable 'McGraw' seems not to be used.
-WARNING(54): The variable 'Feathers' seems not to be used.
-WARNING(56): The variable 'tottington' seems not to be used.
-WARNING(57): The variable 'Wensleydale' seems not to be used.
+WARNING(54): The variable 'launch' seems not to be used.
 WARNING(58): The variable 'c' seems not to be used.
 WARNING(59): The variable 'i' seems not to be used.
-ERROR(62): The operation '<=' does not work with arrays.
-ERROR(62): The operation '<=' does not work with arrays.
-WARNING(68): The variable 'preston' seems not to be used.
-WARNING(68): The variable 'yarn' seems not to be used.
-WARNING(68): The variable 'shaun' seems not to be used.
-WARNING(68): The variable 'wool' seems not to be used.
+ERROR(62): 'and' requires operands of type bool but lhs is of type undefined.
 WARNING(70): The variable 'skein' seems not to be used.
-WARNING(78): The variable 'chicken' seems not to be used.
-WARNING(79): The variable 'run' seems not to be used.
-WARNING(80): The variable 'wallace' seems not to be used.
-WARNING(80): The variable 'gromit' seems not to be used.
-ERROR(82): Expecting type int in parameter 3 of call to 'Wendolene' but got type undefined.
-ERROR(82): Expecting type int in parameter 1 of call to 'Wendolene' but got type undefined.
-ERROR(82): Expecting an array in parameter 3 of call to 'Wendolene' but got a simple value.
-ERROR(82): Expecting type bool in parameter 4 of call to 'Wendolene' but got type undefined.
-ERROR(82): Expecting an array in parameter 4 of call to 'Wendolene' but got a simple value.
-ERROR(82): Expecting type bool in parameter 2 of call to 'Wendolene' but got type undefined.
-WARNING(88): The variable 'x' seems not to be used.
-WARNING(88): The variable 'y' seems not to be used.
-ERROR(90): Expecting type int in parameter 1 of call to 'cheese' but got type undefined.
-ERROR(90): Expecting type int in parameter 2 of call to 'cheese' but got type undefined.
-WARNING(90): The variable 'x' seems not to be used.
+ERROR(71): 'or' requires operands of type bool but lhs is of type undefined.
+ERROR(71): 'or' requires operands of type bool but rhs is of type undefined.
+ERROR(82): 'or' requires operands of type bool but lhs is of type undefined.
 WARNING(90): The variable 'y' seems not to be used.
-WARNING(92): The variable 'c' seems not to be used.
-WARNING(92): The variable 's' seems not to be used.
-WARNING(92): The variable 'i' seems not to be used.
-WARNING(95): The variable 'c' seems not to be used.
-WARNING(95): The variable 's' seems not to be used.
-WARNING(97): The variable 'ginger' seems not to be used.
 WARNING(98): The variable 'pastry' seems not to be used.
-WARNING(104): The variable 'x' seems not to be used.
 WARNING(116): The variable 'wool' seems not to be used.
-WARNING(116): The variable 'yarn' seems not to be used.
-WARNING(117): The variable 'shaun' seems not to be used.
-WARNING(117): The variable 'preston' seems not to be used.
-WARNING(118): The variable 'rocky' seems not to be used.
-ERROR(120): Expecting type int in parameter 1 of call to 'wallace' but got type undefined.
-ERROR(120): Expecting type int in parameter 2 of call to 'wallace' but got type undefined.
-ERROR(120): Expecting type int in parameter 2 of call to 'cheese' but got type undefined.
-ERROR(121): ':=' requires operands of the same type but lhs is type char and rhs is type char.
-ERROR(123): Expecting type char in parameter 2 of call to 'MrsTweedy' but got type undefined.
-ERROR(123): Expecting an array in parameter 2 of call to 'MrsTweedy' but got a simple value.
-ERROR(127): Expecting type int in parameter 3 of call to 'Wendolene' but got type undefined.
-ERROR(127): Expecting type int in parameter 1 of call to 'Wendolene' but got type undefined.
-ERROR(127): Expecting type bool in parameter 2 of call to 'Wendolene' but got type undefined.
-ERROR(127): Expecting an array in parameter 4 of call to 'Wendolene' but got a simple value.
-ERROR(127): Expecting type bool in parameter 4 of call to 'Wendolene' but got type undefined.
-ERROR(127): Expecting an array in parameter 3 of call to 'Wendolene' but got a simple value.
+WARNING(127): Variable 'shaun' may be uninitialized when used here.
 WARNING(130): The variable 'aBigLongVariableName6andthx1138' seems not to be used.
 WARNING(131): The variable 'odd' seems not to be used.
 WARNING(131): The variable 'separation' seems not to be used.
@@ -84,5 +33,5 @@ WARNING(135): The variable 'bat' seems not to be used.
 WARNING(136): The variable 'cat' seems not to be used.
 WARNING(137): The variable 'dog' seems not to be used.
 WARNING(138): The variable 'hog' seems not to be used.
-Number of warnings: 62
-Number of errors: 24
+Number of warnings: 21
+Number of errors: 14

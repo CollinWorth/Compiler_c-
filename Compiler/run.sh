@@ -15,7 +15,7 @@ for file in "$TEST_DIR"/*.c-; do
     expected_output="$TEST_DIR/$base.out"
 
     # Run your compiler
-    $COMPILER < "$file" > "$test_output" 2>&1
+    $COMPILER -P "$file" > "$test_output" 2>&1
 
     # Only diff if expected output exists
     if [ -f "$expected_output" ]; then

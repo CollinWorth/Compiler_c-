@@ -1,11 +1,3 @@
-WARNING(2): The variable 'gx' seems not to be used.
-WARNING(2): The variable 'gy' seems not to be used.
-WARNING(4): The variable 'px' seems not to be used.
-WARNING(4): The variable 'py' seems not to be used.
-WARNING(6): The variable 'x' seems not to be used.
-WARNING(6): The variable 'y' seems not to be used.
-WARNING(7): The variable 'sx' seems not to be used.
-WARNING(7): The variable 'sy' seems not to be used.
 ERROR(10): Symbol 'outputb' is not declared.
 ERROR(12): Symbol 'outputb' is not declared.
 ERROR(14): Symbol 'outputb' is not declared.
@@ -16,10 +8,6 @@ ERROR(22): Symbol 'outputb' is not declared.
 ERROR(24): Symbol 'outputb' is not declared.
 ERROR(26): Symbol 'outputb' is not declared.
 ERROR(27): Symbol 'outnl' is not declared.
-WARNING(33): The variable 'zx' seems not to be used.
-WARNING(33): The variable 'zy' seems not to be used.
-ERROR(34): Expecting type bool in parameter 1 of call to 'esperanza' but got type undefined.
-ERROR(34): Expecting type bool in parameter 2 of call to 'esperanza' but got type undefined.
-ERROR(34): Expecting an array in parameter 2 of call to 'esperanza' but got a simple value.
-Number of warnings: 10
-Number of errors: 13
+WARNING(34): Variable 'zx' may be uninitialized when used here.
+Number of warnings: 1
+Number of errors: 10

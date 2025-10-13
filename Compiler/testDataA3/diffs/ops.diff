@@ -1,9 +1,3 @@
-WARNING(4): The variable 'y' seems not to be used.	      <	
-WARNING(5): The variable 'x' seems not to be used.	      <	
-WARNING(9): The variable 'a' seems not to be used.	      <	
-WARNING(10): The variable 'b' seems not to be used.	      <	
-WARNING(11): The variable 'c' seems not to be used.	      <	
-WARNING(12): The variable 'z' seems not to be used.	      <	
 ERROR(25): Symbol 'outputb' is not declared.			ERROR(25): Symbol 'outputb' is not declared.
 ERROR(26): Symbol 'outputb' is not declared.			ERROR(26): Symbol 'outputb' is not declared.
 ERROR(27): Symbol 'outputb' is not declared.			ERROR(27): Symbol 'outputb' is not declared.
@@ -104,8 +98,8 @@ ERROR(151): Symbol 'outputb' is not declared.			ERROR(151): Symbol 'outputb' is 
 ERROR(152): Symbol 'outputb' is not declared.			ERROR(152): Symbol 'outputb' is not declared.
 ERROR(153): Symbol 'outputb' is not declared.			ERROR(153): Symbol 'outputb' is not declared.
 ERROR(154): Symbol 'outputb' is not declared.			ERROR(154): Symbol 'outputb' is not declared.
-Number of warnings: 6					      |	ERROR(155): Symbol 'outputb' is not declared.
-Number of errors: 100					      |	ERROR(156): Symbol 'outputb' is not declared.
+							      >	ERROR(155): Symbol 'outputb' is not declared.
+							      >	ERROR(156): Symbol 'outputb' is not declared.
 							      >	ERROR(157): Symbol 'outputb' is not declared.
 							      >	ERROR(158): Symbol 'outputb' is not declared.
 							      >	ERROR(159): Symbol 'outputb' is not declared.
@@ -114,5 +108,5 @@ Number of errors: 100					      |	ERROR(156): Symbol 'outputb' is not declared.
 							      >	ERROR(163): Symbol 'outputb' is not declared.
 							      >	ERROR(164): Symbol 'outputb' is not declared.
 							      >	ERROR(165): Symbol 'outnl' is not declared.
-							      >	Number of warnings: 0
-							      >	Number of errors: 110
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 100					      |	Number of errors: 110
