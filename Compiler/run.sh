@@ -1,12 +1,12 @@
 #!/bin/bash
 
 count=0
-TEST_DIR=${1:-testDataA3}
+TEST_DIR=${1:-testDataA4}
 COMPILER=${2:-./c-}
 
 # Create fresh output and diff directories
 #rm -rf "$TEST_DIR/outputs" "$TEST_DIR/diffs"
-#mkdir -p "$TEST_DIR/outputs" "$TEST_DIR/diffs"
+mkdir -p "$TEST_DIR/outputs" "$TEST_DIR/diffs"
 
 for file in "$TEST_DIR"/*.c-; do
     base=$(basename "$file" .c-)
@@ -19,7 +19,7 @@ for file in "$TEST_DIR"/*.c-; do
 
     # Only diff if expected output exists
     if [ -f "$expected_output" ]; then
-        diff -y "$test_output" "$expected_output" > "$diff_output"
+        diff -y -W 200 "$test_output" "$expected_output" > "$diff_output"
         if [ -s "$diff_output" ]; then
             echo "Difference found in $base.c-"
             ((count++))

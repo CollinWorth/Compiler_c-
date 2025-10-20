@@ -1,0 +1,85 @@
+digraph G {
+node0 [label="Var g"; shape=box];
+subgraph SibNames_0 {
+rankdir="LR"; rank="same";
+node0 [label="Var g"; shape=box];
+node1 [label="Var ug"; shape=box];
+node4 [label="Func dog"; shape=box];
+node6 [label="Func udog"; shape=box];
+node12 [label="Func main"; shape=box];
+}
+
+subgraph SibPtrs_0 {
+rankdir="LR";
+node0 -> node1;
+node1 -> node4;
+node4 -> node6;
+node6 -> node12;
+}
+
+subgraph childNames_4 {
+rankdir="LR"; rank="same"; ordering=out
+node2 [label="Param x"; shape=box];
+node3 [label="Compound"; shape=box];
+}
+
+subgraph childPtrs_4 {
+rankdir="TB";
+node4 -> node2 [label="0"];
+node4 -> node3 [label="1"];
+}
+
+subgraph childNames_6 {
+rankdir="LR"; rank="same"; ordering=out
+node5 [label="Compound"; shape=box];
+}
+
+subgraph childPtrs_6 {
+rankdir="TB";
+node6 -> node5 [label="1"];
+}
+
+subgraph childNames_12 {
+rankdir="LR"; rank="same"; ordering=out
+node11 [label="Compound"; shape=box];
+}
+
+subgraph childPtrs_12 {
+rankdir="TB";
+node12 -> node11 [label="1"];
+}
+
+subgraph childNames_11 {
+rankdir="LR"; rank="same"; ordering=out
+node9 [label="Assign: :="; shape=box];
+}
+
+subgraph childPtrs_11 {
+rankdir="TB";
+node11 -> node9 [label="1"];
+}
+
+subgraph childNames_9 {
+rankdir="LR"; rank="same"; ordering=out
+node7 [label="Id: ug"; shape=box];
+node8 [label="3"; shape=box];
+}
+
+subgraph childPtrs_9 {
+rankdir="TB";
+node9 -> node7 [label="0"];
+node9 -> node8 [label="1"];
+}
+
+subgraph SibNames_9 {
+rankdir="LR"; rank="same";
+node9 [label="Assign: :="; shape=box];
+node10 [label="Call: udog"; shape=box];
+}
+
+subgraph SibPtrs_9 {
+rankdir="LR";
+node9 -> node10;
+}
+
+}

@@ -1,9 +1,0 @@
-ERROR(11): Symbol 'outputb' is not declared.			ERROR(11): Symbol 'outputb' is not declared.
-ERROR(13): 'and' requires operands of type bool but lhs is of <	
-ERROR(13): 'and' requires operands of type bool but rhs is of <	
-ERROR(13): Symbol 'outputb' is not declared.			ERROR(13): Symbol 'outputb' is not declared.
-ERROR(14): Symbol 'outnl' is not declared.			ERROR(14): Symbol 'outnl' is not declared.
-ERROR(16): Symbol 'outputb' is not declared.			ERROR(16): Symbol 'outputb' is not declared.
-ERROR(17): Symbol 'outnl' is not declared.			ERROR(17): Symbol 'outnl' is not declared.
-Number of warnings: 0						Number of warnings: 0
-Number of errors: 7					      |	Number of errors: 5

@@ -1,0 +1,7 @@
+ERROR(19): Cannot have a break statement outside of loop.
+ERROR(21): Cannot have a break statement outside of loop.
+ERROR(27): Cannot have a break statement outside of loop.
+ERROR(30): Cannot have a break statement outside of loop.
+ERROR(33): Cannot have a break statement outside of loop.
+Number of warnings: 0
+Number of errors: 5

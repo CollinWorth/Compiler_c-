@@ -567,8 +567,8 @@ static const yytype_uint16 yyrline[] =
      480,   483,   488,   494,   499,   505,   510,   516,   521,   527,
      528,   529,   530,   531,   532,   535,   540,   546,   547,   550,
      555,   561,   562,   563,   566,   572,   578,   579,   580,   583,
-     587,   593,   599,   610,   614,   618,   624,   632,   637,   642,
-     646,   652,   658,   664,   672
+     587,   593,   600,   613,   617,   621,   627,   635,   640,   645,
+     649,   655,   661,   667,   675
 };
 #endif
 
@@ -1769,7 +1769,7 @@ yyreduce:
                     (yyval.tree) = newExpNode(IdK, (yyvsp[(1) - (1)].tokenData)->linenum, NULL, NULL, NULL);
                     (yyval.tree)->attr.name = new char[strlen((yyvsp[(1) - (1)].tokenData)->tokenstr) + 1];
                     strcpy((yyval.tree)->attr.name, (yyvsp[(1) - (1)].tokenData)->tokenstr);
-                    (yyval.tree)->isArray = false;
+                    (yyval.tree)->isArray = false;  // Add this
                 ;}
     break;
 
@@ -2338,44 +2338,47 @@ yyreduce:
                     (yyval.tree) = newExpNode(IdK, (yyvsp[(1) - (1)].tokenData)->linenum, NULL, NULL, NULL);
                     (yyval.tree)->attr.name = new char[strlen((yyvsp[(1) - (1)].tokenData)->tokenstr) + 1];
                     strcpy((yyval.tree)->attr.name, (yyvsp[(1) - (1)].tokenData)->tokenstr);
+                    (yyval.tree)->isArray = false;  // Add this
                 ;}
     break;
 
   case 92:
-#line 600 "c-.y"
+#line 601 "c-.y"
     {
                     // Create an OpK node for array subscripting.
                     TreeNode *idNode = newExpNode(IdK, (yyvsp[(1) - (4)].tokenData)->linenum, NULL, NULL, NULL);
                     idNode->attr.name = new char[strlen((yyvsp[(1) - (4)].tokenData)->tokenstr) + 1];
                     strcpy(idNode->attr.name, (yyvsp[(1) - (4)].tokenData)->tokenstr);
+                    idNode->isArray = true;   // Add this
                     (yyval.tree) = newExpNode(OpK, (yyvsp[(2) - (4)].tokenData)->linenum, idNode, (yyvsp[(3) - (4)].tree), NULL);
                     (yyval.tree)->attr.op = '[';
+                    (yyval.tree)->isArray = false;      // Add this
                 ;}
     break;
 
   case 93:
-#line 611 "c-.y"
+#line 614 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(2) - (3)].tree);
                 ;}
     break;
 
   case 94:
-#line 615 "c-.y"
+#line 618 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
   case 95:
-#line 619 "c-.y"
+#line 622 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
   case 96:
-#line 625 "c-.y"
+#line 628 "c-.y"
     {
                     (yyval.tree) = newExpNode(CallK, (yyvsp[(1) - (4)].tokenData)->linenum, (yyvsp[(3) - (4)].tree), NULL, NULL);
                     (yyval.tree)->attr.name = new char[strlen((yyvsp[(1) - (4)].tokenData)->tokenstr) + 1];
@@ -2384,35 +2387,35 @@ yyreduce:
     break;
 
   case 97:
-#line 633 "c-.y"
+#line 636 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
   case 98:
-#line 637 "c-.y"
+#line 640 "c-.y"
     {
                     (yyval.tree) = NULL;
                 ;}
     break;
 
   case 99:
-#line 643 "c-.y"
+#line 646 "c-.y"
     {
                     (yyval.tree) = addSibling((yyvsp[(1) - (3)].tree), (yyvsp[(3) - (3)].tree));
                 ;}
     break;
 
   case 100:
-#line 647 "c-.y"
+#line 650 "c-.y"
     {
                     (yyval.tree) = (yyvsp[(1) - (1)].tree);
                 ;}
     break;
 
   case 101:
-#line 653 "c-.y"
+#line 656 "c-.y"
     {
                     (yyval.tree) = newExpNode(ConstantK, yylineno, NULL, NULL, NULL);
                     (yyval.tree)->attr.value = (yyvsp[(1) - (1)].tokenData)->numValue;
@@ -2421,7 +2424,7 @@ yyreduce:
     break;
 
   case 102:
-#line 659 "c-.y"
+#line 662 "c-.y"
     {
                     (yyval.tree) = newExpNode(ConstantK, yylineno, NULL, NULL, NULL);
                     (yyval.tree)->attr.cvalue = (yyvsp[(1) - (1)].tokenData)->charValue;
@@ -2430,7 +2433,7 @@ yyreduce:
     break;
 
   case 103:
-#line 665 "c-.y"
+#line 668 "c-.y"
     {
                     (yyval.tree) = newExpNode(ConstantK, yylineno, NULL, NULL, NULL);
                     (yyval.tree)->attr.string = new char[strlen((yyvsp[(1) - (1)].tokenData)->stringValue) + 1];
@@ -2441,7 +2444,7 @@ yyreduce:
     break;
 
   case 104:
-#line 673 "c-.y"
+#line 676 "c-.y"
     {
                     (yyval.tree) = newExpNode(ConstantK, yylineno, NULL, NULL, NULL);
                     (yyval.tree)->attr.value = (yyvsp[(1) - (1)].tokenData)->boolValue;
@@ -2451,7 +2454,7 @@ yyreduce:
 
 
 /* Line 1267 of yacc.c.  */
-#line 2455 "c-.tab.cpp"
+#line 2458 "c-.tab.cpp"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -2665,7 +2668,7 @@ yyreturn:
 }
 
 
-#line 680 "c-.y"
+#line 683 "c-.y"
 
 #include <stdio.h>
 

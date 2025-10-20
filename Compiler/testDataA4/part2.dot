@@ -1,0 +1,470 @@
+digraph G {
+node7 [label="Func ant"; shape=box];
+subgraph childNames_7 {
+rankdir="LR"; rank="same"; ordering=out
+node6 [label="Compound"; shape=box];
+}
+
+subgraph childPtrs_7 {
+rankdir="TB";
+node7 -> node6 [label="1"];
+}
+
+subgraph childNames_6 {
+rankdir="LR"; rank="same"; ordering=out
+node0 [label="Var z"; shape=box];
+node3 [label="If"; shape=box];
+}
+
+subgraph childPtrs_6 {
+rankdir="TB";
+node6 -> node0 [label="0"];
+node6 -> node3 [label="1"];
+}
+
+subgraph childNames_3 {
+rankdir="LR"; rank="same"; ordering=out
+node1 [label="Id: z"; shape=box];
+node2 [label="2620"; shape=box];
+}
+
+subgraph childPtrs_3 {
+rankdir="TB";
+node3 -> node1 [label="0"];
+node3 -> node2 [label="1"];
+}
+
+subgraph SibNames_3 {
+rankdir="LR"; rank="same";
+node3 [label="If"; shape=box];
+node5 [label="Return"; shape=box];
+}
+
+subgraph SibPtrs_3 {
+rankdir="LR";
+node3 -> node5;
+}
+
+subgraph childNames_5 {
+rankdir="LR"; rank="same"; ordering=out
+node4 [label="Id: z"; shape=box];
+}
+
+subgraph childPtrs_5 {
+rankdir="TB";
+node5 -> node4 [label="0"];
+}
+
+subgraph SibNames_7 {
+rankdir="LR"; rank="same";
+node7 [label="Func ant"; shape=box];
+node11 [label="Func bat"; shape=box];
+node14 [label="Func cat"; shape=box];
+node25 [label="Func dog"; shape=box];
+node27 [label="Func dog"; shape=box];
+node30 [label="Func elk"; shape=box];
+node69 [label="Func main"; shape=box];
+}
+
+subgraph SibPtrs_7 {
+rankdir="LR";
+node7 -> node11;
+node11 -> node14;
+node14 -> node25;
+node25 -> node27;
+node27 -> node30;
+node30 -> node69;
+}
+
+subgraph childNames_11 {
+rankdir="LR"; rank="same"; ordering=out
+node10 [label="Compound"; shape=box];
+}
+
+subgraph childPtrs_11 {
+rankdir="TB";
+node11 -> node10 [label="1"];
+}
+
+subgraph childNames_10 {
+rankdir="LR"; rank="same"; ordering=out
+node9 [label="Return"; shape=box];
+}
+
+subgraph childPtrs_10 {
+rankdir="TB";
+node10 -> node9 [label="1"];
+}
+
+subgraph childNames_9 {
+rankdir="LR"; rank="same"; ordering=out
+node8 [label="666"; shape=box];
+}
+
+subgraph childPtrs_9 {
+rankdir="TB";
+node9 -> node8 [label="0"];
+}
+
+subgraph childNames_14 {
+rankdir="LR"; rank="same"; ordering=out
+node13 [label="Compound"; shape=box];
+}
+
+subgraph childPtrs_14 {
+rankdir="TB";
+node14 -> node13 [label="1"];
+}
+
+subgraph childNames_13 {
+rankdir="LR"; rank="same"; ordering=out
+node12 [label="Return"; shape=box];
+}
+
+subgraph childPtrs_13 {
+rankdir="TB";
+node13 -> node12 [label="1"];
+}
+
+subgraph childNames_25 {
+rankdir="LR"; rank="same"; ordering=out
+node15 [label="Param x"; shape=box];
+node24 [label="Compound"; shape=box];
+}
+
+subgraph childPtrs_25 {
+rankdir="TB";
+node25 -> node15 [label="0"];
+node25 -> node24 [label="1"];
+}
+
+subgraph SibNames_15 {
+rankdir="LR"; rank="same";
+node15 [label="Param x"; shape=box];
+node16 [label="Param y"; shape=box];
+}
+
+subgraph SibPtrs_15 {
+rankdir="LR";
+node15 -> node16;
+}
+
+subgraph childNames_24 {
+rankdir="LR"; rank="same"; ordering=out
+node17 [label="Var x"; shape=box];
+node20 [label="Assign: :="; shape=box];
+}
+
+subgraph childPtrs_24 {
+rankdir="TB";
+node24 -> node17 [label="0"];
+node24 -> node20 [label="1"];
+}
+
+subgraph childNames_20 {
+rankdir="LR"; rank="same"; ordering=out
+node18 [label="Id: x"; shape=box];
+node19 [label="2620"; shape=box];
+}
+
+subgraph childPtrs_20 {
+rankdir="TB";
+node20 -> node18 [label="0"];
+node20 -> node19 [label="1"];
+}
+
+subgraph SibNames_20 {
+rankdir="LR"; rank="same";
+node20 [label="Assign: :="; shape=box];
+node23 [label="Assign: :="; shape=box];
+}
+
+subgraph SibPtrs_20 {
+rankdir="LR";
+node20 -> node23;
+}
+
+subgraph childNames_23 {
+rankdir="LR"; rank="same"; ordering=out
+node21 [label="Id: y"; shape=box];
+node22 [label="2924"; shape=box];
+}
+
+subgraph childPtrs_23 {
+rankdir="TB";
+node23 -> node21 [label="0"];
+node23 -> node22 [label="1"];
+}
+
+subgraph childNames_27 {
+rankdir="LR"; rank="same"; ordering=out
+node26 [label="Compound"; shape=box];
+}
+
+subgraph childPtrs_27 {
+rankdir="TB";
+node27 -> node26 [label="1"];
+}
+
+subgraph childNames_30 {
+rankdir="LR"; rank="same"; ordering=out
+node28 [label="Param z"; shape=box];
+node29 [label="Compound"; shape=box];
+}
+
+subgraph childPtrs_30 {
+rankdir="TB";
+node30 -> node28 [label="0"];
+node30 -> node29 [label="1"];
+}
+
+subgraph childNames_69 {
+rankdir="LR"; rank="same"; ordering=out
+node68 [label="Compound"; shape=box];
+}
+
+subgraph childPtrs_69 {
+rankdir="TB";
+node69 -> node68 [label="1"];
+}
+
+subgraph childNames_68 {
+rankdir="LR"; rank="same"; ordering=out
+node31 [label="Var c"; shape=box];
+node38 [label="Break"; shape=box];
+}
+
+subgraph childPtrs_68 {
+rankdir="TB";
+node68 -> node31 [label="0"];
+node68 -> node38 [label="1"];
+}
+
+subgraph childNames_31 {
+rankdir="LR"; rank="same"; ordering=out
+node32 [label="3"; shape=box];
+}
+
+subgraph childPtrs_31 {
+rankdir="TB";
+node31 -> node32 [label="0"];
+}
+
+subgraph SibNames_31 {
+rankdir="LR"; rank="same";
+node31 [label="Var c"; shape=box];
+node33 [label="Var d"; shape=box];
+node37 [label="Var z"; shape=box];
+}
+
+subgraph SibPtrs_31 {
+rankdir="LR";
+node31 -> node33;
+node33 -> node37;
+}
+
+subgraph childNames_33 {
+rankdir="LR"; rank="same"; ordering=out
+node36 [label="+"; shape=box];
+}
+
+subgraph childPtrs_33 {
+rankdir="TB";
+node33 -> node36 [label="0"];
+}
+
+subgraph childNames_36 {
+rankdir="LR"; rank="same"; ordering=out
+node34 [label="Id: c"; shape=box];
+node35 [label="6"; shape=box];
+}
+
+subgraph childPtrs_36 {
+rankdir="TB";
+node36 -> node34 [label="0"];
+node36 -> node35 [label="1"];
+}
+
+subgraph SibNames_38 {
+rankdir="LR"; rank="same";
+node38 [label="Break"; shape=box];
+node41 [label="While"; shape=box];
+node44 [label="If"; shape=box];
+node45 [label="Call: zebu"; shape=box];
+node46 [label="Call: dog"; shape=box];
+node48 [label="Call: dog"; shape=box];
+node51 [label="Call: dog"; shape=box];
+node59 [label="Call: dog"; shape=box];
+node61 [label="Call: dog"; shape=box];
+node63 [label="Call: elk"; shape=box];
+node67 [label="Call: elk"; shape=box];
+}
+
+subgraph SibPtrs_38 {
+rankdir="LR";
+node38 -> node41;
+node41 -> node44;
+node44 -> node45;
+node45 -> node46;
+node46 -> node48;
+node48 -> node51;
+node51 -> node59;
+node59 -> node61;
+node61 -> node63;
+node63 -> node67;
+}
+
+subgraph childNames_41 {
+rankdir="LR"; rank="same"; ordering=out
+node39 [label="1184"; shape=box];
+node40 [label="1210"; shape=box];
+}
+
+subgraph childPtrs_41 {
+rankdir="TB";
+node41 -> node39 [label="0"];
+node41 -> node40 [label="1"];
+}
+
+subgraph childNames_44 {
+rankdir="LR"; rank="same"; ordering=out
+node42 [label="220"; shape=box];
+node43 [label="284"; shape=box];
+}
+
+subgraph childPtrs_44 {
+rankdir="TB";
+node44 -> node42 [label="0"];
+node44 -> node43 [label="1"];
+}
+
+subgraph childNames_48 {
+rankdir="LR"; rank="same"; ordering=out
+node47 [label="'a'"; shape=box];
+}
+
+subgraph childPtrs_48 {
+rankdir="TB";
+node48 -> node47 [label="0"];
+}
+
+subgraph childNames_51 {
+rankdir="LR"; rank="same"; ordering=out
+node49 [label="'a'"; shape=box];
+}
+
+subgraph childPtrs_51 {
+rankdir="TB";
+node51 -> node49 [label="0"];
+}
+
+subgraph SibNames_49 {
+rankdir="LR"; rank="same";
+node49 [label="'a'"; shape=box];
+node50 [label="'b'"; shape=box];
+}
+
+subgraph SibPtrs_49 {
+rankdir="LR";
+node49 -> node50;
+}
+
+subgraph childNames_59 {
+rankdir="LR"; rank="same"; ordering=out
+node52 [label="'a'"; shape=box];
+}
+
+subgraph childPtrs_59 {
+rankdir="TB";
+node59 -> node52 [label="0"];
+}
+
+subgraph SibNames_52 {
+rankdir="LR"; rank="same";
+node52 [label="'a'"; shape=box];
+node53 [label="'b'"; shape=box];
+node56 [label="+"; shape=box];
+node58 [label="chsign"; shape=box];
+}
+
+subgraph SibPtrs_52 {
+rankdir="LR";
+node52 -> node53;
+node53 -> node56;
+node56 -> node58;
+}
+
+subgraph childNames_56 {
+rankdir="LR"; rank="same"; ordering=out
+node54 [label="'c'"; shape=box];
+node55 [label="3"; shape=box];
+}
+
+subgraph childPtrs_56 {
+rankdir="TB";
+node56 -> node54 [label="0"];
+node56 -> node55 [label="1"];
+}
+
+subgraph childNames_58 {
+rankdir="LR"; rank="same"; ordering=out
+node57 [label="true"; shape=box];
+}
+
+subgraph childPtrs_58 {
+rankdir="TB";
+node58 -> node57 [label="0"];
+}
+
+subgraph childNames_61 {
+rankdir="LR"; rank="same"; ordering=out
+node60 [label="Id: z"; shape=box];
+}
+
+subgraph childPtrs_61 {
+rankdir="TB";
+node61 -> node60 [label="0"];
+}
+
+subgraph childNames_63 {
+rankdir="LR"; rank="same"; ordering=out
+node62 [label="13"; shape=box];
+}
+
+subgraph childPtrs_63 {
+rankdir="TB";
+node63 -> node62 [label="0"];
+}
+
+subgraph childNames_67 {
+rankdir="LR"; rank="same"; ordering=out
+node66 [label="Call: dog"; shape=box];
+}
+
+subgraph childPtrs_67 {
+rankdir="TB";
+node67 -> node66 [label="0"];
+}
+
+subgraph childNames_66 {
+rankdir="LR"; rank="same"; ordering=out
+node64 [label="true"; shape=box];
+}
+
+subgraph childPtrs_66 {
+rankdir="TB";
+node66 -> node64 [label="0"];
+}
+
+subgraph SibNames_64 {
+rankdir="LR"; rank="same";
+node64 [label="true"; shape=box];
+node65 [label="3"; shape=box];
+}
+
+subgraph SibPtrs_64 {
+rankdir="LR";
+node64 -> node65;
+}
+
+}

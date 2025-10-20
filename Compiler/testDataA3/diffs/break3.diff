@@ -10,7 +10,7 @@ Func: main returns type void [line: 2]				Func: main returns type void [line: 2]
 .   .   .   .   .   Child: 0  Const 1 of type int [line: 5]	.   .   .   .   .   Child: 0  Const 1 of type int [line: 5]
 .   .   .   .   .   Child: 1  Id: x of type int [line: 5]     |	.   .   .   .   .   Child: 1  Id: x of undefined type [line: 
 .   .   .   .   Child: 2  If [line: 5]				.   .   .   .   Child: 2  If [line: 5]
-.   .   .   .   .   Child: 0  Op: > of undefined type [line:  |	.   .   .   .   .   Child: 0  Op: > of type bool [line: 5]
+.   .   .   .   .   Child: 0  Op: > of type bool [line: 5]	.   .   .   .   .   Child: 0  Op: > of type bool [line: 5]
 .   .   .   .   .   .   Child: 0  Id: x of type int [line: 5]	.   .   .   .   .   .   Child: 0  Id: x of type int [line: 5]
 .   .   .   .   .   .   Child: 1  Const 1 of type int [line: 	.   .   .   .   .   .   Child: 1  Const 1 of type int [line: 
 .   .   .   .   .   Child: 1  Break [line: 5]			.   .   .   .   .   Child: 1  Break [line: 5]

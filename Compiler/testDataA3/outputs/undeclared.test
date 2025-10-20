@@ -9,5 +9,6 @@ ERROR(6): Symbol 'j' is not declared.
 ERROR(7): Symbol 'l' is not declared.
 ERROR(8): Symbol 'm' is not declared.
 ERROR(9): Symbol 'k' is not declared.
+ERROR(LINKER): A function named 'main()' must be defined.
 Number of warnings: 1
-Number of errors: 10
+Number of errors: 11

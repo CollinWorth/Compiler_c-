@@ -1,0 +1,34 @@
+ERROR(41): Cannot have a break statement outside of loop.
+ERROR(97): Expecting type int in position 2 in range of for statement but got type char.
+ERROR(98): Cannot have a break statement outside of loop.
+WARNING(62): Variable 'Wensleydale' may be uninitialized when used here.
+WARNING(82): Variable 'chicken' may be uninitialized when used here.
+WARNING(82): Variable 'run' may be uninitialized when used here.
+WARNING(125): Variable 'yarn' may be uninitialized when used here.
+WARNING(127): Variable 'preston' may be uninitialized when used here.
+WARNING(127): Variable 'shaun' may be uninitialized when used here.
+WARNING(54): The function 'penguin' seems not to be used.
+WARNING(54): The parameter 'cheese' seems not to be used.
+WARNING(54): The parameter 'launch' seems not to be used.
+WARNING(58): The variable 'c' seems not to be used.
+WARNING(59): The variable 'i' seems not to be used.
+WARNING(70): The variable 'skein' seems not to be used.
+WARNING(76): The function 'ramsBottom' seems not to be used.
+WARNING(90): The function 'Wensleydale' seems not to be used.
+WARNING(90): The parameter 'y' seems not to be used.
+WARNING(92): The function 'LadyCampanula' seems not to be used.
+WARNING(98): The variable 'pastry' seems not to be used.
+WARNING(104): The function 'TheWereRabbit' seems not to be used.
+WARNING(116): The variable 'wool' seems not to be used.
+WARNING(130): The variable 'aBigLongVariableName6andthx1138' seems not to be used.
+WARNING(131): The variable 'odd' seems not to be used.
+WARNING(131): The variable 'separation' seems not to be used.
+WARNING(131): The variable 'of' seems not to be used.
+WARNING(132): The variable 'stuff' seems not to be used.
+WARNING(134): The variable 'ant' seems not to be used.
+WARNING(135): The variable 'bat' seems not to be used.
+WARNING(136): The variable 'cat' seems not to be used.
+WARNING(137): The variable 'dog' seems not to be used.
+WARNING(138): The variable 'hog' seems not to be used.
+Number of warnings: 29
+Number of errors: 3

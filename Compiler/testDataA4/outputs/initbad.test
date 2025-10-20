@@ -1,0 +1,10 @@
+ERROR(10): ':=' requires operands of the same type but lhs is type int and rhs is type char.
+ERROR(11): ':=' requires operands of the same type but lhs is type int and rhs is type char.
+ERROR(11): ':=' requires both operands be arrays or not but lhs is not an array and rhs is an array.
+ERROR(12): ':=' requires operands of the same type but lhs is type int and rhs is type void.
+WARNING(2): The variable 'a' seems not to be used.
+WARNING(3): The variable 'b' seems not to be used.
+WARNING(4): The variable 'c' seems not to be used.
+WARNING(5): The variable 'd' seems not to be used.
+Number of warnings: 4
+Number of errors: 4

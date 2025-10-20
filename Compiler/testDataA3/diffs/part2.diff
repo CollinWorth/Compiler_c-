@@ -1,13 +1,14 @@
-WARNING(18): The variable 'x' seems not to be used.	      |	WARNING(4): Variable 'z' may be uninitialized when used here.
-							      >	ERROR(5): Cannot return an array.
-							      >	ERROR(20): Symbol 'x' is already declared at line 18.
+							      >	WARNING(4): Variable 'z' may be uninitialized when used here.
+ERROR(5): Cannot return an array.				ERROR(5): Cannot return an array.
+WARNING(18): The variable 'x' seems not to be used.	      |	ERROR(20): Symbol 'x' is already declared at line 18.
 ERROR(26): Symbol 'dog' is already declared at line 18.		ERROR(26): Symbol 'dog' is already declared at line 18.
 WARNING(28): The variable 'z' seems not to be used.		WARNING(28): The variable 'z' seems not to be used.
-WARNING(35): The variable 'd' seems not to be used.	      |	ERROR(35): '+' requires operands of type int but lhs is of ty
+ERROR(35): '+' requires operands of type int but lhs is of ty	ERROR(35): '+' requires operands of type int but lhs is of ty
+WARNING(35): The variable 'd' seems not to be used.	      <	
 ERROR(42): Symbol 'zebu' is not declared.			ERROR(42): Symbol 'zebu' is not declared.
-Number of warnings: 3					      |	ERROR(47): '+' requires operands of type int but lhs is of ty
-Number of errors: 2					      |	ERROR(47): Unary 'chsign' requires an operand of type int but
-							      >	WARNING(49): Variable 'z' may be uninitialized when used here
-							      >	WARNING(35): The variable 'd' seems not to be used.
+ERROR(47): '+' requires operands of type int but lhs is of ty	ERROR(47): '+' requires operands of type int but lhs is of ty
+ERROR(47): Unary 'chsign' requires an operand of type int but	ERROR(47): Unary 'chsign' requires an operand of type int but
+Number of warnings: 3					      |	WARNING(49): Variable 'z' may be uninitialized when used here
+Number of errors: 6					      |	WARNING(35): The variable 'd' seems not to be used.
 							      >	Number of warnings: 4
 							      >	Number of errors: 7

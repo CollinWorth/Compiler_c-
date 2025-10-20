@@ -1,0 +1,11 @@
+ERROR(6): Cannot use array as test condition in if statement.
+ERROR(7): Expecting Boolean test condition in if statement but got type int.
+ERROR(9): Cannot use array as test condition in while statement.
+ERROR(10): Expecting Boolean test condition in while statement but got type char.
+ERROR(13): Cannot use function 'main' as a variable.
+ERROR(13): Symbol 'x' is not declared.
+WARNING(6): Variable 'b' may be uninitialized when used here.
+WARNING(12): Variable 'a' may be uninitialized when used here.
+WARNING(12): The variable 'x' seems not to be used.
+Number of warnings: 3
+Number of errors: 6

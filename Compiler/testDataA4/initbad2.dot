@@ -1,0 +1,113 @@
+digraph G {
+node0 [label="Var a"; shape=box];
+subgraph childNames_0 {
+rankdir="LR"; rank="same"; ordering=out
+node1 [label="'a'"; shape=box];
+}
+
+subgraph childPtrs_0 {
+rankdir="TB";
+node0 -> node1 [label="0"];
+}
+
+subgraph SibNames_0 {
+rankdir="LR"; rank="same";
+node0 [label="Var a"; shape=box];
+node2 [label="Var b"; shape=box];
+node4 [label="Var c"; shape=box];
+node6 [label="Var s"; shape=box];
+node14 [label="Func main"; shape=box];
+}
+
+subgraph SibPtrs_0 {
+rankdir="LR";
+node0 -> node2;
+node2 -> node4;
+node4 -> node6;
+node6 -> node14;
+}
+
+subgraph childNames_2 {
+rankdir="LR"; rank="same"; ordering=out
+node3 [label="3"; shape=box];
+}
+
+subgraph childPtrs_2 {
+rankdir="TB";
+node2 -> node3 [label="0"];
+}
+
+subgraph childNames_4 {
+rankdir="LR"; rank="same"; ordering=out
+node5 [label="true"; shape=box];
+}
+
+subgraph childPtrs_4 {
+rankdir="TB";
+node4 -> node5 [label="0"];
+}
+
+subgraph childNames_14 {
+rankdir="LR"; rank="same"; ordering=out
+node13 [label="Compound"; shape=box];
+}
+
+subgraph childPtrs_14 {
+rankdir="TB";
+node14 -> node13 [label="1"];
+}
+
+subgraph childNames_13 {
+rankdir="LR"; rank="same"; ordering=out
+node7 [label="Var aa"; shape=box];
+}
+
+subgraph childPtrs_13 {
+rankdir="TB";
+node13 -> node7 [label="0"];
+}
+
+subgraph childNames_7 {
+rankdir="LR"; rank="same"; ordering=out
+node8 [label="Id: a"; shape=box];
+}
+
+subgraph childPtrs_7 {
+rankdir="TB";
+node7 -> node8 [label="0"];
+}
+
+subgraph SibNames_7 {
+rankdir="LR"; rank="same";
+node7 [label="Var aa"; shape=box];
+node9 [label="Var bb"; shape=box];
+node11 [label="Var cc"; shape=box];
+}
+
+subgraph SibPtrs_7 {
+rankdir="LR";
+node7 -> node9;
+node9 -> node11;
+}
+
+subgraph childNames_9 {
+rankdir="LR"; rank="same"; ordering=out
+node10 [label="Id: b"; shape=box];
+}
+
+subgraph childPtrs_9 {
+rankdir="TB";
+node9 -> node10 [label="0"];
+}
+
+subgraph childNames_11 {
+rankdir="LR"; rank="same"; ordering=out
+node12 [label="Id: c"; shape=box];
+}
+
+subgraph childPtrs_11 {
+rankdir="TB";
+node11 -> node12 [label="0"];
+}
+
+}

@@ -18,18 +18,10 @@ ERROR(24): Symbol 'outnl' is not declared.
 ERROR(25): Symbol 'outputb' is not declared.
 ERROR(26): Symbol 'outputb' is not declared.
 ERROR(27): Symbol 'outnl' is not declared.
-ERROR(28): 'and' requires operands of type bool but lhs is of type undefined.
-ERROR(28): 'and' requires operands of type bool but rhs is of type undefined.
 ERROR(28): Symbol 'outputb' is not declared.
-ERROR(29): 'and' requires operands of type bool but lhs is of type undefined.
-ERROR(29): 'and' requires operands of type bool but rhs is of type undefined.
-ERROR(29): 'or' requires operands of type bool but rhs is of type undefined.
 ERROR(29): Symbol 'outputb' is not declared.
 ERROR(30): Symbol 'outnl' is not declared.
-ERROR(31): 'and' requires operands of type bool but lhs is of type undefined.
-ERROR(31): 'and' requires operands of type bool but rhs is of type undefined.
-ERROR(31): 'or' requires operands of type bool but rhs is of type undefined.
 ERROR(31): Symbol 'outputb' is not declared.
 ERROR(32): Symbol 'outnl' is not declared.
 Number of warnings: 0
-Number of errors: 33
+Number of errors: 25

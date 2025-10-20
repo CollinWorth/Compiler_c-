@@ -215,7 +215,7 @@ varDeclId       : ID
                     $$ = newExpNode(IdK, $1->linenum, NULL, NULL, NULL);
                     $$->attr.name = new char[strlen($1->tokenstr) + 1];
                     strcpy($$->attr.name, $1->tokenstr);
-                    $$->isArray = false;
+                    $$->isArray = false;  // Add this
                 }
                 | ID '[' NUMCONST ']'
                 {
@@ -595,6 +595,7 @@ mutable         : ID
                     $$ = newExpNode(IdK, $1->linenum, NULL, NULL, NULL);
                     $$->attr.name = new char[strlen($1->tokenstr) + 1];
                     strcpy($$->attr.name, $1->tokenstr);
+                    $$->isArray = false;  // Add this
                 }
                 | ID '[' exp ']'
                 {
@@ -602,8 +603,10 @@ mutable         : ID
                     TreeNode *idNode = newExpNode(IdK, $1->linenum, NULL, NULL, NULL);
                     idNode->attr.name = new char[strlen($1->tokenstr) + 1];
                     strcpy(idNode->attr.name, $1->tokenstr);
+                    idNode->isArray = true;   // Add this
                     $$ = newExpNode(OpK, $2->linenum, idNode, $3, NULL);
                     $$->attr.op = '[';
+                    $$->isArray = false;      // Add this
                 }
                 ;
 

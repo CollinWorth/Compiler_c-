@@ -19,7 +19,7 @@ extern bool printSource;
 
 struct SemanticMessage {
     int lineno;
-    char message[256];
+    char message[512];
     bool isError;
 };
 

@@ -1,0 +1,98 @@
+digraph G {
+node0 [label="Var x"; shape=box];
+subgraph SibNames_0 {
+rankdir="LR"; rank="same";
+node0 [label="Var x"; shape=box];
+node1 [label="Var y"; shape=box];
+node2 [label="Var z"; shape=box];
+node26 [label="Func fred"; shape=box];
+}
+
+subgraph SibPtrs_0 {
+rankdir="LR";
+node0 -> node1;
+node1 -> node2;
+node2 -> node26;
+}
+
+subgraph childNames_26 {
+rankdir="LR"; rank="same"; ordering=out
+node3 [label="Param a"; shape=box];
+node25 [label="Compound"; shape=box];
+}
+
+subgraph childPtrs_26 {
+rankdir="TB";
+node26 -> node3 [label="0"];
+node26 -> node25 [label="1"];
+}
+
+subgraph SibNames_3 {
+rankdir="LR"; rank="same";
+node3 [label="Param a"; shape=box];
+node4 [label="Param b"; shape=box];
+node5 [label="Param c"; shape=box];
+node6 [label="Param d"; shape=box];
+node7 [label="Param e"; shape=box];
+node8 [label="Param f"; shape=box];
+node9 [label="Param g"; shape=box];
+node10 [label="Param h"; shape=box];
+node11 [label="Param i"; shape=box];
+node12 [label="Param j"; shape=box];
+node13 [label="Param k"; shape=box];
+node14 [label="Param l"; shape=box];
+node15 [label="Param m"; shape=box];
+}
+
+subgraph SibPtrs_3 {
+rankdir="LR";
+node3 -> node4;
+node4 -> node5;
+node5 -> node6;
+node6 -> node7;
+node7 -> node8;
+node8 -> node9;
+node9 -> node10;
+node10 -> node11;
+node11 -> node12;
+node12 -> node13;
+node13 -> node14;
+node14 -> node15;
+}
+
+subgraph childNames_25 {
+rankdir="LR"; rank="same"; ordering=out
+node16 [label="Var ii"; shape=box];
+}
+
+subgraph childPtrs_25 {
+rankdir="TB";
+node25 -> node16 [label="0"];
+}
+
+subgraph SibNames_16 {
+rankdir="LR"; rank="same";
+node16 [label="Var ii"; shape=box];
+node17 [label="Var hh"; shape=box];
+node18 [label="Var gg"; shape=box];
+node19 [label="Var ff"; shape=box];
+node20 [label="Var ee"; shape=box];
+node21 [label="Var dd"; shape=box];
+node22 [label="Var cc"; shape=box];
+node23 [label="Var bb"; shape=box];
+node24 [label="Var aa"; shape=box];
+}
+
+subgraph SibPtrs_16 {
+rankdir="LR";
+node16 -> node17;
+node17 -> node18;
+node18 -> node19;
+node19 -> node20;
+node20 -> node21;
+node21 -> node22;
+node22 -> node23;
+node23 -> node24;
+}
+
+}

@@ -1,0 +1,14 @@
+ERROR(18): Cannot have a break statement outside of loop.
+ERROR(19): Cannot have a break statement outside of loop.
+WARNING(9): Variable 'x' may be uninitialized when used here.
+WARNING(18): Variable 't' may be uninitialized when used here.
+WARNING(2): The variable 'u' seems not to be used.
+WARNING(7): The variable 'y' seems not to be used.
+WARNING(9): The variable 'k' seems not to be used.
+WARNING(9): The variable 'lenx' seems not to be used.
+WARNING(10): The variable 'ba' seems not to be used.
+WARNING(10): The variable 'bb' seems not to be used.
+WARNING(10): The variable 'bc' seems not to be used.
+WARNING(11): The variable 'ca' seems not to be used.
+Number of warnings: 10
+Number of errors: 2

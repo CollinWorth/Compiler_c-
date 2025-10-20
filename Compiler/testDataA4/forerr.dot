@@ -1,0 +1,291 @@
+digraph G {
+node55 [label="Func main"; shape=box];
+subgraph childNames_55 {
+rankdir="LR"; rank="same"; ordering=out
+node54 [label="Compound"; shape=box];
+}
+
+subgraph childPtrs_55 {
+rankdir="TB";
+node55 -> node54 [label="1"];
+}
+
+subgraph childNames_54 {
+rankdir="LR"; rank="same"; ordering=out
+node0 [label="Var a"; shape=box];
+node12 [label="For"; shape=box];
+}
+
+subgraph childPtrs_54 {
+rankdir="TB";
+node54 -> node0 [label="0"];
+node54 -> node12 [label="1"];
+}
+
+subgraph SibNames_0 {
+rankdir="LR"; rank="same";
+node0 [label="Var a"; shape=box];
+node1 [label="Var aa"; shape=box];
+node2 [label="Var b"; shape=box];
+node3 [label="Var bb"; shape=box];
+node4 [label="Var c"; shape=box];
+node5 [label="Var cc"; shape=box];
+}
+
+subgraph SibPtrs_0 {
+rankdir="LR";
+node0 -> node1;
+node1 -> node2;
+node2 -> node3;
+node3 -> node4;
+node4 -> node5;
+}
+
+subgraph childNames_12 {
+rankdir="LR"; rank="same"; ordering=out
+node13 [label="Var d"; shape=box];
+node8 [label="Range"; shape=box];
+node11 [label="*"; shape=box];
+}
+
+subgraph childPtrs_12 {
+rankdir="TB";
+node12 -> node13 [label="0"];
+node12 -> node8 [label="1"];
+node12 -> node11 [label="2"];
+}
+
+subgraph childNames_8 {
+rankdir="LR"; rank="same"; ordering=out
+node6 [label="Id: a"; shape=box];
+node7 [label="Id: aa"; shape=box];
+}
+
+subgraph childPtrs_8 {
+rankdir="TB";
+node8 -> node6 [label="0"];
+node8 -> node7 [label="1"];
+}
+
+subgraph childNames_11 {
+rankdir="LR"; rank="same"; ordering=out
+node9 [label="111"; shape=box];
+node10 [label="Id: d"; shape=box];
+}
+
+subgraph childPtrs_11 {
+rankdir="TB";
+node11 -> node9 [label="0"];
+node11 -> node10 [label="1"];
+}
+
+subgraph SibNames_12 {
+rankdir="LR"; rank="same";
+node12 [label="For"; shape=box];
+node20 [label="For"; shape=box];
+node29 [label="For"; shape=box];
+node37 [label="For"; shape=box];
+node52 [label="For"; shape=box];
+}
+
+subgraph SibPtrs_12 {
+rankdir="LR";
+node12 -> node20;
+node20 -> node29;
+node29 -> node37;
+node37 -> node52;
+}
+
+subgraph childNames_20 {
+rankdir="LR"; rank="same"; ordering=out
+node21 [label="Var d"; shape=box];
+node16 [label="Range"; shape=box];
+node19 [label="*"; shape=box];
+}
+
+subgraph childPtrs_20 {
+rankdir="TB";
+node20 -> node21 [label="0"];
+node20 -> node16 [label="1"];
+node20 -> node19 [label="2"];
+}
+
+subgraph childNames_16 {
+rankdir="LR"; rank="same"; ordering=out
+node14 [label="Id: b"; shape=box];
+node15 [label="Id: bb"; shape=box];
+}
+
+subgraph childPtrs_16 {
+rankdir="TB";
+node16 -> node14 [label="0"];
+node16 -> node15 [label="1"];
+}
+
+subgraph childNames_19 {
+rankdir="LR"; rank="same"; ordering=out
+node17 [label="222"; shape=box];
+node18 [label="Id: d"; shape=box];
+}
+
+subgraph childPtrs_19 {
+rankdir="TB";
+node19 -> node17 [label="0"];
+node19 -> node18 [label="1"];
+}
+
+subgraph childNames_29 {
+rankdir="LR"; rank="same"; ordering=out
+node30 [label="Var d"; shape=box];
+node25 [label="Range"; shape=box];
+node28 [label="*"; shape=box];
+}
+
+subgraph childPtrs_29 {
+rankdir="TB";
+node29 -> node30 [label="0"];
+node29 -> node25 [label="1"];
+node29 -> node28 [label="2"];
+}
+
+subgraph childNames_25 {
+rankdir="LR"; rank="same"; ordering=out
+node22 [label="Id: bb"; shape=box];
+node23 [label="Id: bb"; shape=box];
+node24 [label="Id: bb"; shape=box];
+}
+
+subgraph childPtrs_25 {
+rankdir="TB";
+node25 -> node22 [label="0"];
+node25 -> node23 [label="1"];
+node25 -> node24 [label="2"];
+}
+
+subgraph childNames_28 {
+rankdir="LR"; rank="same"; ordering=out
+node26 [label="333"; shape=box];
+node27 [label="Id: d"; shape=box];
+}
+
+subgraph childPtrs_28 {
+rankdir="TB";
+node28 -> node26 [label="0"];
+node28 -> node27 [label="1"];
+}
+
+subgraph childNames_37 {
+rankdir="LR"; rank="same"; ordering=out
+node38 [label="Var d"; shape=box];
+node33 [label="Range"; shape=box];
+node36 [label="*"; shape=box];
+}
+
+subgraph childPtrs_37 {
+rankdir="TB";
+node37 -> node38 [label="0"];
+node37 -> node33 [label="1"];
+node37 -> node36 [label="2"];
+}
+
+subgraph childNames_33 {
+rankdir="LR"; rank="same"; ordering=out
+node31 [label="Id: cc"; shape=box];
+node32 [label="Id: c"; shape=box];
+}
+
+subgraph childPtrs_33 {
+rankdir="TB";
+node33 -> node31 [label="0"];
+node33 -> node32 [label="1"];
+}
+
+subgraph childNames_36 {
+rankdir="LR"; rank="same"; ordering=out
+node34 [label="444"; shape=box];
+node35 [label="Id: d"; shape=box];
+}
+
+subgraph childPtrs_36 {
+rankdir="TB";
+node36 -> node34 [label="0"];
+node36 -> node35 [label="1"];
+}
+
+subgraph childNames_52 {
+rankdir="LR"; rank="same"; ordering=out
+node53 [label="Var d"; shape=box];
+node48 [label="Range"; shape=box];
+node51 [label="or"; shape=box];
+}
+
+subgraph childPtrs_52 {
+rankdir="TB";
+node52 -> node53 [label="0"];
+node52 -> node48 [label="1"];
+node52 -> node51 [label="2"];
+}
+
+subgraph childNames_48 {
+rankdir="LR"; rank="same"; ordering=out
+node40 [label="["; shape=box];
+node43 [label="["; shape=box];
+node46 [label="["; shape=box];
+}
+
+subgraph childPtrs_48 {
+rankdir="TB";
+node48 -> node40 [label="0"];
+node48 -> node43 [label="1"];
+node48 -> node46 [label="2"];
+}
+
+subgraph childNames_40 {
+rankdir="LR"; rank="same"; ordering=out
+node41 [label="Id: aa"; shape=box];
+node39 [label="0"; shape=box];
+}
+
+subgraph childPtrs_40 {
+rankdir="TB";
+node40 -> node41 [label="0"];
+node40 -> node39 [label="1"];
+}
+
+subgraph childNames_43 {
+rankdir="LR"; rank="same"; ordering=out
+node44 [label="Id: aa"; shape=box];
+node42 [label="1"; shape=box];
+}
+
+subgraph childPtrs_43 {
+rankdir="TB";
+node43 -> node44 [label="0"];
+node43 -> node42 [label="1"];
+}
+
+subgraph childNames_46 {
+rankdir="LR"; rank="same"; ordering=out
+node47 [label="Id: aa"; shape=box];
+node45 [label="2"; shape=box];
+}
+
+subgraph childPtrs_46 {
+rankdir="TB";
+node46 -> node47 [label="0"];
+node46 -> node45 [label="1"];
+}
+
+subgraph childNames_51 {
+rankdir="LR"; rank="same"; ordering=out
+node49 [label="555"; shape=box];
+node50 [label="Id: d"; shape=box];
+}
+
+subgraph childPtrs_51 {
+rankdir="TB";
+node51 -> node49 [label="0"];
+node51 -> node50 [label="1"];
+}
+
+}

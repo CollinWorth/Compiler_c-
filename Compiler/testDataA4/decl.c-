@@ -1,0 +1,7 @@
+// C-F25
+main()
+{
+   int a;
+   bool b;
+   char c;
+}

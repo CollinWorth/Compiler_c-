@@ -1,0 +1,60 @@
+digraph G {
+node8 [label="Func main"; shape=box];
+subgraph childNames_8 {
+rankdir="LR"; rank="same"; ordering=out
+node7 [label="Compound"; shape=box];
+}
+
+subgraph childPtrs_8 {
+rankdir="TB";
+node8 -> node7 [label="1"];
+}
+
+subgraph childNames_7 {
+rankdir="LR"; rank="same"; ordering=out
+node6 [label="While"; shape=box];
+}
+
+subgraph childPtrs_7 {
+rankdir="TB";
+node7 -> node6 [label="1"];
+}
+
+subgraph childNames_6 {
+rankdir="LR"; rank="same"; ordering=out
+node0 [label="true"; shape=box];
+node5 [label="Compound"; shape=box];
+}
+
+subgraph childPtrs_6 {
+rankdir="TB";
+node6 -> node0 [label="0"];
+node6 -> node5 [label="1"];
+}
+
+subgraph childNames_5 {
+rankdir="LR"; rank="same"; ordering=out
+node1 [label="666"; shape=box];
+}
+
+subgraph childPtrs_5 {
+rankdir="TB";
+node5 -> node1 [label="1"];
+}
+
+subgraph SibNames_1 {
+rankdir="LR"; rank="same";
+node1 [label="666"; shape=box];
+node2 [label="Break"; shape=box];
+node3 [label="777"; shape=box];
+node4 [label="Break"; shape=box];
+}
+
+subgraph SibPtrs_1 {
+rankdir="LR";
+node1 -> node2;
+node2 -> node3;
+node3 -> node4;
+}
+
+}

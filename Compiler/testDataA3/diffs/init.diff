@@ -15,7 +15,7 @@ Sibling: 2  Func: main returns type void [line: 6]		Sibling: 2  Func: main retur
 .   .   Sibling: 2  Var: c is array of type int [line: 10]	.   .   Sibling: 2  Var: c is array of type int [line: 10]
 .   .   Sibling: 3  Var: z of type int [line: 11]		.   .   Sibling: 3  Var: z of type int [line: 11]
 .   .   .   Child: 0  Const 888 of type int [line: 11]		.   .   .   Child: 0  Const 888 of type int [line: 11]
-.   .   Child: 1  Assign: := of undefined type [line: 13]     |	.   .   Child: 1  Assign: := of type int [line: 13]
+.   .   Child: 1  Assign: := of type int [line: 13]		.   .   Child: 1  Assign: := of type int [line: 13]
 .   .   .   Child: 0  Id: z of type int [line: 13]		.   .   .   Child: 0  Id: z of type int [line: 13]
 .   .   .   Child: 1  Const 999 of type int [line: 13]		.   .   .   Child: 1  Const 999 of type int [line: 13]
 Number of warnings: 5					      |	Number of warnings: 3

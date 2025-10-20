@@ -1,0 +1,157 @@
+digraph G {
+node28 [label="Func ant"; shape=box];
+subgraph childNames_28 {
+rankdir="LR"; rank="same"; ordering=out
+node27 [label="Compound"; shape=box];
+}
+
+subgraph childPtrs_28 {
+rankdir="TB";
+node28 -> node27 [label="1"];
+}
+
+subgraph childNames_27 {
+rankdir="LR"; rank="same"; ordering=out
+node0 [label="Var bat"; shape=box];
+node6 [label="If"; shape=box];
+}
+
+subgraph childPtrs_27 {
+rankdir="TB";
+node27 -> node0 [label="0"];
+node27 -> node6 [label="1"];
+}
+
+subgraph SibNames_0 {
+rankdir="LR"; rank="same";
+node0 [label="Var bat"; shape=box];
+node1 [label="Var hog"; shape=box];
+node2 [label="Var fox"; shape=box];
+}
+
+subgraph SibPtrs_0 {
+rankdir="LR";
+node0 -> node1;
+node1 -> node2;
+}
+
+subgraph childNames_6 {
+rankdir="LR"; rank="same"; ordering=out
+node3 [label="Id: hog"; shape=box];
+node4 [label="Id: bat"; shape=box];
+node5 [label="Id: fox"; shape=box];
+}
+
+subgraph childPtrs_6 {
+rankdir="TB";
+node6 -> node3 [label="0"];
+node6 -> node4 [label="1"];
+node6 -> node5 [label="2"];
+}
+
+subgraph SibNames_6 {
+rankdir="LR"; rank="same";
+node6 [label="If"; shape=box];
+node12 [label="If"; shape=box];
+node18 [label="If"; shape=box];
+node26 [label="If"; shape=box];
+}
+
+subgraph SibPtrs_6 {
+rankdir="LR";
+node6 -> node12;
+node12 -> node18;
+node18 -> node26;
+}
+
+subgraph childNames_12 {
+rankdir="LR"; rank="same"; ordering=out
+node7 [label="Id: hog"; shape=box];
+node11 [label="If"; shape=box];
+}
+
+subgraph childPtrs_12 {
+rankdir="TB";
+node12 -> node7 [label="0"];
+node12 -> node11 [label="1"];
+}
+
+subgraph childNames_11 {
+rankdir="LR"; rank="same"; ordering=out
+node8 [label="Id: fox"; shape=box];
+node9 [label="Id: fox"; shape=box];
+node10 [label="Id: fox"; shape=box];
+}
+
+subgraph childPtrs_11 {
+rankdir="TB";
+node11 -> node8 [label="0"];
+node11 -> node9 [label="1"];
+node11 -> node10 [label="2"];
+}
+
+subgraph childNames_18 {
+rankdir="LR"; rank="same"; ordering=out
+node13 [label="Id: hog"; shape=box];
+node14 [label="Id: bat"; shape=box];
+node17 [label="If"; shape=box];
+}
+
+subgraph childPtrs_18 {
+rankdir="TB";
+node18 -> node13 [label="0"];
+node18 -> node14 [label="1"];
+node18 -> node17 [label="2"];
+}
+
+subgraph childNames_17 {
+rankdir="LR"; rank="same"; ordering=out
+node15 [label="Id: fox"; shape=box];
+node16 [label="Id: fox"; shape=box];
+}
+
+subgraph childPtrs_17 {
+rankdir="TB";
+node17 -> node15 [label="0"];
+node17 -> node16 [label="1"];
+}
+
+subgraph childNames_26 {
+rankdir="LR"; rank="same"; ordering=out
+node19 [label="Id: hog"; shape=box];
+node20 [label="Id: bat"; shape=box];
+node25 [label="If"; shape=box];
+}
+
+subgraph childPtrs_26 {
+rankdir="TB";
+node26 -> node19 [label="0"];
+node26 -> node20 [label="1"];
+node26 -> node25 [label="2"];
+}
+
+subgraph childNames_25 {
+rankdir="LR"; rank="same"; ordering=out
+node21 [label="Id: fox"; shape=box];
+node24 [label="If"; shape=box];
+}
+
+subgraph childPtrs_25 {
+rankdir="TB";
+node25 -> node21 [label="0"];
+node25 -> node24 [label="1"];
+}
+
+subgraph childNames_24 {
+rankdir="LR"; rank="same"; ordering=out
+node22 [label="Id: bat"; shape=box];
+node23 [label="Id: hog"; shape=box];
+}
+
+subgraph childPtrs_24 {
+rankdir="TB";
+node24 -> node22 [label="0"];
+node24 -> node23 [label="1"];
+}
+
+}

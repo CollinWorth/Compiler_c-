@@ -168,6 +168,7 @@ static void printConstant(FILE *out, TreeNode *node) {
 static bool shouldShowArrayPrefix(TreeNode *node) {
     return node->isArray && 
            ((node->nodekind == DeclK && node->subkind.decl == VarK) ||
+            (node->nodekind == DeclK && node->subkind.decl == ParamK) ||
             (node->nodekind == ExpK && node->subkind.exp == OpK));
 }
 

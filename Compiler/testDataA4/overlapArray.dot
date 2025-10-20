@@ -1,0 +1,101 @@
+digraph G {
+node12 [label="Func main"; shape=box];
+subgraph childNames_12 {
+rankdir="LR"; rank="same"; ordering=out
+node0 [label="Param p"; shape=box];
+node11 [label="Compound"; shape=box];
+}
+
+subgraph childPtrs_12 {
+rankdir="TB";
+node12 -> node0 [label="0"];
+node12 -> node11 [label="1"];
+}
+
+subgraph childNames_11 {
+rankdir="LR"; rank="same"; ordering=out
+node1 [label="Var a"; shape=box];
+node3 [label="Compound"; shape=box];
+}
+
+subgraph childPtrs_11 {
+rankdir="TB";
+node11 -> node1 [label="0"];
+node11 -> node3 [label="1"];
+}
+
+subgraph childNames_3 {
+rankdir="LR"; rank="same"; ordering=out
+node2 [label="Var b"; shape=box];
+}
+
+subgraph childPtrs_3 {
+rankdir="TB";
+node3 -> node2 [label="0"];
+}
+
+subgraph SibNames_3 {
+rankdir="LR"; rank="same";
+node3 [label="Compound"; shape=box];
+node5 [label="Compound"; shape=box];
+node10 [label="Compound"; shape=box];
+}
+
+subgraph SibPtrs_3 {
+rankdir="LR";
+node3 -> node5;
+node5 -> node10;
+}
+
+subgraph childNames_5 {
+rankdir="LR"; rank="same"; ordering=out
+node4 [label="Var c"; shape=box];
+}
+
+subgraph childPtrs_5 {
+rankdir="TB";
+node5 -> node4 [label="0"];
+}
+
+subgraph childNames_10 {
+rankdir="LR"; rank="same"; ordering=out
+node7 [label="Compound"; shape=box];
+}
+
+subgraph childPtrs_10 {
+rankdir="TB";
+node10 -> node7 [label="1"];
+}
+
+subgraph childNames_7 {
+rankdir="LR"; rank="same"; ordering=out
+node6 [label="Var b"; shape=box];
+}
+
+subgraph childPtrs_7 {
+rankdir="TB";
+node7 -> node6 [label="0"];
+}
+
+subgraph SibNames_7 {
+rankdir="LR"; rank="same";
+node7 [label="Compound"; shape=box];
+node9 [label="Compound"; shape=box];
+}
+
+subgraph SibPtrs_7 {
+rankdir="LR";
+node7 -> node9;
+}
+
+subgraph childNames_9 {
+rankdir="LR"; rank="same"; ordering=out
+node8 [label="Var c"; shape=box];
+}
+
+subgraph childPtrs_9 {
+rankdir="TB";
+node9 -> node8 [label="0"];
+}
+
+}

@@ -1,0 +1,13 @@
+WARNING(3): Variable 'x' may be uninitialized when used here.
+Func: dog returns type int [line: 1]
+.   Child: 1  Compound [line: 1]
+.   .   Child: 0  Var: x is array of type int [line: 2]
+.   .   Child: 1  Return [line: 3]
+.   .   .   Child: 0  Assign: := of type int [line: 3]
+.   .   .   .   Child: 0  Id: x of type int [line: 3]
+.   .   .   .   Child: 1  Id: x of type int [line: 3]
+Sibling: 1  Func: main returns type void [line: 6]
+.   Child: 1  Compound [line: 7]
+.   .   Child: 1  Call: dog of type int [line: 8]
+Number of warnings: 1
+Number of errors: 0

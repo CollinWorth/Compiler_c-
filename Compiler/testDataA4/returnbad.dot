@@ -1,0 +1,140 @@
+digraph G {
+node3 [label="Func ruby"; shape=box];
+subgraph childNames_3 {
+rankdir="LR"; rank="same"; ordering=out
+node2 [label="Compound"; shape=box];
+}
+
+subgraph childPtrs_3 {
+rankdir="TB";
+node3 -> node2 [label="1"];
+}
+
+subgraph childNames_2 {
+rankdir="LR"; rank="same"; ordering=out
+node1 [label="Return"; shape=box];
+}
+
+subgraph childPtrs_2 {
+rankdir="TB";
+node2 -> node1 [label="1"];
+}
+
+subgraph childNames_1 {
+rankdir="LR"; rank="same"; ordering=out
+node0 [label="true"; shape=box];
+}
+
+subgraph childPtrs_1 {
+rankdir="TB";
+node1 -> node0 [label="0"];
+}
+
+subgraph SibNames_3 {
+rankdir="LR"; rank="same";
+node3 [label="Func ruby"; shape=box];
+node6 [label="Func weiss"; shape=box];
+node8 [label="Func blake"; shape=box];
+node12 [label="Func yang"; shape=box];
+node16 [label="Func rwby"; shape=box];
+}
+
+subgraph SibPtrs_3 {
+rankdir="LR";
+node3 -> node6;
+node6 -> node8;
+node8 -> node12;
+node12 -> node16;
+}
+
+subgraph childNames_6 {
+rankdir="LR"; rank="same"; ordering=out
+node5 [label="Compound"; shape=box];
+}
+
+subgraph childPtrs_6 {
+rankdir="TB";
+node6 -> node5 [label="1"];
+}
+
+subgraph childNames_5 {
+rankdir="LR"; rank="same"; ordering=out
+node4 [label="Return"; shape=box];
+}
+
+subgraph childPtrs_5 {
+rankdir="TB";
+node5 -> node4 [label="1"];
+}
+
+subgraph childNames_8 {
+rankdir="LR"; rank="same"; ordering=out
+node7 [label="Compound"; shape=box];
+}
+
+subgraph childPtrs_8 {
+rankdir="TB";
+node8 -> node7 [label="1"];
+}
+
+subgraph childNames_12 {
+rankdir="LR"; rank="same"; ordering=out
+node11 [label="Compound"; shape=box];
+}
+
+subgraph childPtrs_12 {
+rankdir="TB";
+node12 -> node11 [label="1"];
+}
+
+subgraph childNames_11 {
+rankdir="LR"; rank="same"; ordering=out
+node10 [label="Return"; shape=box];
+}
+
+subgraph childPtrs_11 {
+rankdir="TB";
+node11 -> node10 [label="1"];
+}
+
+subgraph childNames_10 {
+rankdir="LR"; rank="same"; ordering=out
+node9 [label="'x'"; shape=box];
+}
+
+subgraph childPtrs_10 {
+rankdir="TB";
+node10 -> node9 [label="0"];
+}
+
+subgraph childNames_16 {
+rankdir="LR"; rank="same"; ordering=out
+node15 [label="Compound"; shape=box];
+}
+
+subgraph childPtrs_16 {
+rankdir="TB";
+node16 -> node15 [label="1"];
+}
+
+subgraph childNames_15 {
+rankdir="LR"; rank="same"; ordering=out
+node14 [label="Return"; shape=box];
+}
+
+subgraph childPtrs_15 {
+rankdir="TB";
+node15 -> node14 [label="1"];
+}
+
+subgraph childNames_14 {
+rankdir="LR"; rank="same"; ordering=out
+node13 [label="'dogs'"; shape=box];
+}
+
+subgraph childPtrs_14 {
+rankdir="TB";
+node14 -> node13 [label="0"];
+}
+
+}

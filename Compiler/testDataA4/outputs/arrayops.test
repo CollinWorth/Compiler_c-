@@ -1,0 +1,19 @@
+ERROR(13): ':=' requires both operands be arrays or not but lhs is not an array and rhs is an array.
+ERROR(14): ':=' requires both operands be arrays or not but lhs is an array and rhs is not an array.
+ERROR(21): Cannot index nonarray 'a'.
+ERROR(22): Cannot index nonarray 'a'.
+ERROR(22): Array index is the unindexed array 'aa'.
+ERROR(24): Array index is the unindexed array 'aa'.
+ERROR(26): The operation 'sizeof' only works with arrays.
+ERROR(29): The operation '?' does not work with arrays.
+ERROR(45): Cannot index nonarray 'c'.
+ERROR(47): Cannot index nonarray 'c'.
+ERROR(48): ':=' requires both operands be arrays or not but lhs is an array and rhs is not an array.
+ERROR(51): ':=' requires both operands be arrays or not but lhs is an array and rhs is not an array.
+ERROR(56): '=' requires operands of the same type but lhs is type int and rhs is type char.
+ERROR(63): '>=' requires operands of the same type but lhs is type int and rhs is type char.
+ERROR(70): '<' requires operands of the same type but lhs is type int and rhs is type char.
+ERROR(75): '<' requires operands of the same type but lhs is type char and rhs is type int.
+WARNING(45): Variable 'c' may be uninitialized when used here.
+Number of warnings: 1
+Number of errors: 16
