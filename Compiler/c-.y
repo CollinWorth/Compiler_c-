@@ -1,9 +1,11 @@
 %{
+#define YYERROR_VERBOSE
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include "globals.h"
 #include <string.h>
+#include "globals.h"
+#include "yyerror.h"
 
 void freeTokenData(struct TokenData* tok) {
     if (!tok) return;

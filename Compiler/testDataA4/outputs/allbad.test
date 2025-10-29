@@ -7,10 +7,10 @@ ERROR(12): '<' requires operands of the same type but lhs is type bool and rhs i
 ERROR(13): '<=' requires operands of the same type but lhs is type bool and rhs is type int.
 ERROR(13): '>=' requires operands of the same type but lhs is type bool and rhs is type int.
 ERROR(14): '=' requires operands of the same type but lhs is type int and rhs is type bool.
-ERROR(15): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(15): Unary 'not' requires an operand of type bool but was given int.
 ERROR(15): 'and' requires operands of type bool but lhs is of type int.
 ERROR(15): Expecting Boolean test condition in if statement but got type int.
-ERROR(16): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(16): Unary 'not' requires an operand of type bool but was given int.
 ERROR(16): 'or' requires operands of type bool but lhs is of type int.
 ERROR(16): Expecting Boolean test condition in if statement but got type int.
 ERROR(17): ':=' requires operands of the same type but lhs is type int and rhs is type bool.
@@ -24,9 +24,9 @@ ERROR(27): '+=' requires operands of type int but lhs is of type bool.
 ERROR(28): '-=' requires operands of type int but lhs is of type bool.
 ERROR(29): '*=' requires operands of type int but lhs is of type bool.
 ERROR(30): '/=' requires operands of type int but lhs is of type bool.
-ERROR(32): Unary 'chsign' requires an operand of type int but was given type bool.
-ERROR(33): Unary 'not' requires an operand of type bool but was given type int.
-ERROR(34): Unary '?' requires an operand of type int but was given type bool.
+ERROR(32): Unary 'chsign' requires an operand of type int but was given bool.
+ERROR(33): Unary 'not' requires an operand of type bool but was given int.
+ERROR(34): Unary '?' requires an operand of type int but was given bool.
 ERROR(43): Array 'ba' should be indexed by type int but got type char.
 ERROR(43): ':=' requires operands of the same type but lhs is type char and rhs is type int.
 ERROR(44): Array 'ca' should be indexed by type int but got type bool.
@@ -45,8 +45,9 @@ ERROR(82): Symbol 'b' is not declared.
 ERROR(85): Symbol 'c' is not declared.
 ERROR(85): Symbol 'c' is not declared.
 ERROR(86): Symbol 'c' is not declared.
-ERROR(96): Unary '?' requires an operand of type int but was given type char.
+ERROR(96): Unary '?' requires an operand of type int but was given char.
 ERROR(96): The operation '?' does not work with arrays.
+ERROR(97): The operation '/' does not work with arrays.
 ERROR(97): '/' requires operands of type int but lhs is of type char.
 ERROR(97): '/' requires operands of type int but rhs is of type char.
 ERROR(98): The operation 'sizeof' only works with arrays.
@@ -72,4 +73,4 @@ WARNING(84): The variable 'a' seems not to be used.
 WARNING(91): The function 'mane' seems not to be used.
 ERROR(LINKER): A function named 'main' with no parameters must be defined.
 Number of warnings: 9
-Number of errors: 64
+Number of errors: 65

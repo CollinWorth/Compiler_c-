@@ -1,6 +1,7 @@
 ERROR(41): Cannot have a break statement outside of loop.
 ERROR(97): Expecting type int in position 2 in range of for statement but got type char.
 ERROR(98): Cannot have a break statement outside of loop.
+ERROR(134): Initializer for variable 'ant' of type char is of type char
 WARNING(62): Variable 'Wensleydale' may be uninitialized when used here.
 WARNING(82): Variable 'chicken' may be uninitialized when used here.
 WARNING(82): Variable 'run' may be uninitialized when used here.
@@ -31,4 +32,4 @@ WARNING(136): The variable 'cat' seems not to be used.
 WARNING(137): The variable 'dog' seems not to be used.
 WARNING(138): The variable 'hog' seems not to be used.
 Number of warnings: 29
-Number of errors: 3
+Number of errors: 4

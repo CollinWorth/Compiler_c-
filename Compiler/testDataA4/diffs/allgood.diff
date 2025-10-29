@@ -1,4 +1,5 @@
 ERROR(48): Expecting type int in position 2 in range of for statement but got type bool.	   |	WARNING(40): Variable 'aa' may be uninitialized when used here.
+ERROR(77): Initializer for variable 'ccc' of type char is of type char				   <	
 WARNING(41): Variable 'a' may be uninitialized when used here.					   <	
 WARNING(41): Variable 'b' may be uninitialized when used here.						WARNING(41): Variable 'b' may be uninitialized when used here.
 WARNING(42): Variable 'c' may be uninitialized when used here.						WARNING(42): Variable 'c' may be uninitialized when used here.
@@ -12,4 +13,4 @@ WARNING(48): The variable 'z' seems not to be used.							WARNING(48): The varia
 												   >	WARNING(70): Variable 'i' may be uninitialized when used here.
 WARNING(67): The function 'dog' seems not to be used.							WARNING(67): The function 'dog' seems not to be used.
 Number of warnings: 7										   |	Number of warnings: 6
-Number of errors: 1										   |	Number of errors: 6
+Number of errors: 2										   |	Number of errors: 6

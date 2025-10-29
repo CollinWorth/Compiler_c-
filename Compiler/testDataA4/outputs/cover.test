@@ -1,6 +1,6 @@
 ERROR(10): Cannot have a break statement outside of loop.
 ERROR(19): '--' requires operand of type int but was given char.
-ERROR(20): Unary '?' requires an operand of type int but was given type char.
+ERROR(20): Unary '?' requires an operand of type int but was given char.
 ERROR(22): Cannot index nonarray 'e'.
 ERROR(22): Cannot index nonarray 'e'.
 ERROR(23): Cannot index nonarray 'e'.

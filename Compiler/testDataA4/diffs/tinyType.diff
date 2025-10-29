@@ -22,8 +22,8 @@ ERROR(26): 'and' requires operands of type bool but rhs is of type char.				ERRO
 ERROR(29): The operation 'sizeof' only works with arrays.						ERROR(29): The operation 'sizeof' only works with arrays.
 ERROR(30): Too few parameters passed for function 'main' declared on line 7.				ERROR(30): Too few parameters passed for function 'main' declared on line 7.
 ERROR(30): The operation 'sizeof' only works with arrays.						ERROR(30): The operation 'sizeof' only works with arrays.
-ERROR(31): Unary '?' requires an operand of type int but was given type char.				ERROR(31): Unary '?' requires an operand of type int but was given type char.
-ERROR(31): Unary '?' requires an operand of type int but was given type bool.				ERROR(31): Unary '?' requires an operand of type int but was given type bool.
+ERROR(31): Unary '?' requires an operand of type int but was given char.			   |	ERROR(31): Unary '?' requires an operand of type int but was given type char.
+ERROR(31): Unary '?' requires an operand of type int but was given bool.			   |	ERROR(31): Unary '?' requires an operand of type int but was given type bool.
 ERROR(33): Too few parameters passed for function 'main' declared on line 7.				ERROR(33): Too few parameters passed for function 'main' declared on line 7.
 ERROR(33): Symbol 'fred' is not declared.								ERROR(33): Symbol 'fred' is not declared.
 ERROR(33): 'and' requires operands of type bool but lhs is of type int.					ERROR(33): 'and' requires operands of type bool but lhs is of type int.

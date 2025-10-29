@@ -1,7 +1,8 @@
-												   >	ERROR(2): Initializer for variable 'a' requires both operands be arrays or not but variable is a
+ERROR(2): Initializer for variable 'a' requires both operands be arrays or not but variable is a	ERROR(2): Initializer for variable 'a' requires both operands be arrays or not but variable is a
 												   >	ERROR(4): Initializer for variable 'c' is not a constant expression.
-												   >	ERROR(6): Initializer for variable 'x' of type int is of type char
-												   >	ERROR(7): Initializer for variable 'y' of type int is of type char
+ERROR(6): Initializer for variable 'x' of type int is of type char					ERROR(6): Initializer for variable 'x' of type int is of type char
+ERROR(7): Initializer for variable 'y' requires both operands be arrays or not but variable is n   <	
+ERROR(7): Initializer for variable 'y' of type int is of type char					ERROR(7): Initializer for variable 'y' of type int is of type char
 												   >	ERROR(7): Initializer for variable 'y' requires both operands be arrays or not but variable is n
 												   >	ERROR(8): Initializer for variable 'z' is not a constant expression.
 												   >	ERROR(8): Initializer for variable 'z' of type int is of type void
@@ -14,4 +15,4 @@ WARNING(3): The variable 'b' seems not to be used.							WARNING(3): The variabl
 WARNING(4): The variable 'c' seems not to be used.							WARNING(4): The variable 'c' seems not to be used.
 WARNING(5): The variable 'd' seems not to be used.							WARNING(5): The variable 'd' seems not to be used.
 Number of warnings: 4											Number of warnings: 4
-Number of errors: 4										   |	Number of errors: 11
+Number of errors: 8										   |	Number of errors: 11

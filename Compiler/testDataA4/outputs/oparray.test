@@ -17,6 +17,8 @@ ERROR(29): ':=' requires operands of the same type but lhs is type int and rhs i
 ERROR(29): ':=' requires both operands be arrays or not but lhs is not an array and rhs is an array.
 ERROR(30): ':=' requires operands of the same type but lhs is type int and rhs is type bool.
 ERROR(30): ':=' requires both operands be arrays or not but lhs is not an array and rhs is an array.
+ERROR(39): '>' requires both operands be arrays or not but lhs is an array and rhs is not an array.
+ERROR(40): '>' requires both operands be arrays or not but lhs is not an array and rhs is an array.
 ERROR(42): The operation '?' does not work with arrays.
 ERROR(45): The operation 'sizeof' only works with arrays.
 ERROR(46): Cannot index nonarray 'x'.
@@ -32,4 +34,4 @@ WARNING(22): Variable 'b' may be uninitialized when used here.
 WARNING(9): The variable 'y' seems not to be used.
 WARNING(9): The variable 'ya' seems not to be used.
 Number of warnings: 8
-Number of errors: 25
+Number of errors: 27

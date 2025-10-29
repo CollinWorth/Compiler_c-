@@ -1,26 +1,13 @@
-WARNING(4): The variable 's' seems not to be used.						   |	ERROR(1): Initializer for variable 'a' of type int is of type char
-												   >	ERROR(2): Initializer for variable 'b' of type bool is of type int
-												   >	ERROR(3): Initializer for variable 'c' of type char is of type bool
-												   >	ERROR(8): Initializer for variable 'aa' is not a constant expression.
-												   >	ERROR(9): Initializer for variable 'bb' is not a constant expression.
-												   >	ERROR(10): Initializer for variable 'cc' is not a constant expression.
+ERROR(1): Initializer for variable 'a' of type int is of type char					ERROR(1): Initializer for variable 'a' of type int is of type char
+ERROR(2): Initializer for variable 'b' of type bool is of type int					ERROR(2): Initializer for variable 'b' of type bool is of type int
+ERROR(3): Initializer for variable 'c' of type char is of type bool					ERROR(3): Initializer for variable 'c' of type char is of type bool
+ERROR(8): Initializer for variable 'aa' is not a constant expression.					ERROR(8): Initializer for variable 'aa' is not a constant expression.
+ERROR(9): Initializer for variable 'bb' is not a constant expression.					ERROR(9): Initializer for variable 'bb' is not a constant expression.
+ERROR(10): Initializer for variable 'cc' is not a constant expression.					ERROR(10): Initializer for variable 'cc' is not a constant expression.
+WARNING(4): The variable 's' seems not to be used.						   <	
 WARNING(8): The variable 'aa' seems not to be used.							WARNING(8): The variable 'aa' seems not to be used.
 WARNING(9): The variable 'bb' seems not to be used.							WARNING(9): The variable 'bb' seems not to be used.
 WARNING(10): The variable 'cc' seems not to be used.							WARNING(10): The variable 'cc' seems not to be used.
-Var: a of type int [line: 1]									   |	WARNING(4): The variable 's' seems not to be used.
-.   Child: 0  Const 'a' of type char [line: 1]							   <	
-Sibling: 1  Var: b of type bool [line: 2]							   <	
-.   Child: 0  Const 3 of type int [line: 2]							   <	
-Sibling: 2  Var: c of type char [line: 3]							   <	
-.   Child: 0  Const true of type bool [line: 3]							   <	
-Sibling: 3  Var: s is array of type char [line: 4]						   <	
-Sibling: 4  Func: main returns type void [line: 6]						   <	
-.   Child: 1  Compound [line: 7]								   <	
-.   .   Child: 0  Var: aa of type int [line: 8]							   <	
-.   .   .   Child: 0  Id: a of type int [line: 8]						   <	
-.   .   Sibling: 1  Var: bb of type bool [line: 9]						   <	
-.   .   .   Child: 0  Id: b of type bool [line: 9]						   <	
-.   .   Sibling: 2  Var: cc of type char [line: 10]						   <	
-.   .   .   Child: 0  Id: c of type char [line: 10]						   <	
+												   >	WARNING(4): The variable 's' seems not to be used.
 Number of warnings: 4											Number of warnings: 4
-Number of errors: 0										   |	Number of errors: 6
+Number of errors: 6											Number of errors: 6

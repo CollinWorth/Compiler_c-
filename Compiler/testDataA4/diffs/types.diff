@@ -17,23 +17,23 @@ ERROR(29): '=' requires operands of the same type but lhs is type bool and rhs i
 ERROR(33): '><' requires operands of the same type but lhs is type int and rhs is type bool.		ERROR(33): '><' requires operands of the same type but lhs is type int and rhs is type bool.
 ERROR(34): '><' requires operands of the same type but lhs is type bool and rhs is type int.		ERROR(34): '><' requires operands of the same type but lhs is type bool and rhs is type int.
 												   >	WARNING(37): Variable 'ia' may be uninitialized when used here.
-												   >	ERROR(37): The operation '+' does not work with arrays.
-												   >	WARNING(38): Variable 'ba' may be uninitialized when used here.
+ERROR(37): The operation '+' does not work with arrays.							ERROR(37): The operation '+' does not work with arrays.
+ERROR(38): The operation '+' does not work with arrays.						   |	WARNING(38): Variable 'ba' may be uninitialized when used here.
 ERROR(38): '+' requires operands of type int but rhs is of type bool.					ERROR(38): '+' requires operands of type int but rhs is of type bool.
-												   >	ERROR(38): The operation '+' does not work with arrays.
+ERROR(39): The operation '+' does not work with arrays.						   |	ERROR(38): The operation '+' does not work with arrays.
 ERROR(39): '+' requires operands of type int but lhs is of type bool.					ERROR(39): '+' requires operands of type int but lhs is of type bool.
-												   >	ERROR(39): The operation '+' does not work with arrays.
+ERROR(40): The operation '+' does not work with arrays.						   |	ERROR(39): The operation '+' does not work with arrays.
 ERROR(40): '+' requires operands of type int but lhs is of type bool.					ERROR(40): '+' requires operands of type int but lhs is of type bool.
 ERROR(40): '+' requires operands of type int but rhs is of type bool.					ERROR(40): '+' requires operands of type int but rhs is of type bool.
-												   >	ERROR(40): The operation '+' does not work with arrays.
+ERROR(42): The operation 'and' does not work with arrays.					   |	ERROR(40): The operation '+' does not work with arrays.
 ERROR(42): 'and' requires operands of type bool but lhs is of type int.					ERROR(42): 'and' requires operands of type bool but lhs is of type int.
 ERROR(42): 'and' requires operands of type bool but rhs is of type int.					ERROR(42): 'and' requires operands of type bool but rhs is of type int.
-												   >	ERROR(42): The operation 'and' does not work with arrays.
+ERROR(43): The operation 'and' does not work with arrays.					   |	ERROR(42): The operation 'and' does not work with arrays.
 ERROR(43): 'and' requires operands of type bool but lhs is of type int.					ERROR(43): 'and' requires operands of type bool but lhs is of type int.
-												   >	ERROR(43): The operation 'and' does not work with arrays.
+ERROR(44): The operation 'and' does not work with arrays.					   |	ERROR(43): The operation 'and' does not work with arrays.
 ERROR(44): 'and' requires operands of type bool but rhs is of type int.					ERROR(44): 'and' requires operands of type bool but rhs is of type int.
 												   >	ERROR(44): The operation 'and' does not work with arrays.
-												   >	ERROR(45): The operation 'and' does not work with arrays.
+ERROR(45): The operation 'and' does not work with arrays.						ERROR(45): The operation 'and' does not work with arrays.
 ERROR(48): ':=' requires operands of the same type but lhs is type int and rhs is type bool.		ERROR(48): ':=' requires operands of the same type but lhs is type int and rhs is type bool.
 ERROR(49): ':=' requires operands of the same type but lhs is type bool and rhs is type int.		ERROR(49): ':=' requires operands of the same type but lhs is type bool and rhs is type int.
 ERROR(53): '=' requires operands of the same type but lhs is type int and rhs is type bool.		ERROR(53): '=' requires operands of the same type but lhs is type int and rhs is type bool.
@@ -44,12 +44,12 @@ ERROR(59): '+' requires operands of type int but rhs is of type bool.					ERROR(
 ERROR(61): 'or' requires operands of type bool but lhs is of type int.					ERROR(61): 'or' requires operands of type bool but lhs is of type int.
 ERROR(62): 'or' requires operands of type bool but rhs is of type int.					ERROR(62): 'or' requires operands of type bool but rhs is of type int.
 ERROR(63): 'or' requires operands of type bool but rhs is of type int.					ERROR(63): 'or' requires operands of type bool but rhs is of type int.
-ERROR(66): Unary 'not' requires an operand of type bool but was given type int.				ERROR(66): Unary 'not' requires an operand of type bool but was given type int.
-												   >	ERROR(67): The operation 'not' does not work with arrays.
-ERROR(68): Unary 'not' requires an operand of type bool but was given type int.				ERROR(68): Unary 'not' requires an operand of type bool but was given type int.
-												   >	ERROR(68): The operation 'not' does not work with arrays.
-ERROR(70): Unary 'chsign' requires an operand of type int but was given type bool.			ERROR(70): Unary 'chsign' requires an operand of type int but was given type bool.
-ERROR(72): Unary 'chsign' requires an operand of type int but was given type bool.			ERROR(72): Unary 'chsign' requires an operand of type int but was given type bool.
+ERROR(66): Unary 'not' requires an operand of type bool but was given int.			   |	ERROR(66): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(68): Unary 'not' requires an operand of type bool but was given int.			   |	ERROR(67): The operation 'not' does not work with arrays.
+ERROR(70): Unary 'chsign' requires an operand of type int but was given bool.			   |	ERROR(68): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(72): Unary 'chsign' requires an operand of type int but was given bool.			   |	ERROR(68): The operation 'not' does not work with arrays.
+												   >	ERROR(70): Unary 'chsign' requires an operand of type int but was given type bool.
+												   >	ERROR(72): Unary 'chsign' requires an operand of type int but was given type bool.
 												   >	ERROR(72): The operation 'chsign' does not work with arrays.
 												   >	ERROR(73): The operation 'chsign' does not work with arrays.
 ERROR(76): '>' requires operands of the same type but lhs is type bool and rhs is type int.		ERROR(76): '>' requires operands of the same type but lhs is type bool and rhs is type int.
@@ -79,11 +79,11 @@ ERROR(108): Array 'ba' should be indexed by type int but got type bool.					ERRO
 ERROR(108): Array index is the unindexed array 'ba'.							ERROR(108): Array index is the unindexed array 'ba'.
 ERROR(109): Array 'ba' should be indexed by type int but got type char.					ERROR(109): Array 'ba' should be indexed by type int but got type char.
 ERROR(110): Cannot use function 'main' as a variable.							ERROR(110): Cannot use function 'main' as a variable.
-												   >	ERROR(111): The operation '+' does not work with arrays.
+ERROR(111): The operation '+' does not work with arrays.						ERROR(111): The operation '+' does not work with arrays.
 ERROR(112): Symbol 'a' is not declared.									ERROR(112): Symbol 'a' is not declared.
 ERROR(112): The operation 'sizeof' only works with arrays.					   <	
 ERROR(113): The operation 'sizeof' only works with arrays.						ERROR(113): The operation 'sizeof' only works with arrays.
-ERROR(114): Unary 'chsign' requires an operand of type int but was given type bool.			ERROR(114): Unary 'chsign' requires an operand of type int but was given type bool.
+ERROR(114): Unary 'chsign' requires an operand of type int but was given bool.			   |	ERROR(114): Unary 'chsign' requires an operand of type int but was given type bool.
 ERROR(116): Cannot return an array.								   <	
 ERROR(116): Function 'main' at line 2 is expecting to return type int but returns type bool.		ERROR(116): Function 'main' at line 2 is expecting to return type int but returns type bool.
 WARNING(12): Variable 'i' may be uninitialized when used here.					   |	ERROR(116): Cannot return an array.
@@ -92,4 +92,4 @@ WARNING(37): Variable 'ia' may be uninitialized when used here.					   <
 WARNING(38): Variable 'ba' may be uninitialized when used here.					   <	
 WARNING(10): The variable 'pumpkin' seems not to be used.						WARNING(10): The variable 'pumpkin' seems not to be used.
 Number of warnings: 5										   |	Number of warnings: 6
-Number of errors: 68										   |	Number of errors: 83
+Number of errors: 77										   |	Number of errors: 83

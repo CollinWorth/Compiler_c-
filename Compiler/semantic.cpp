@@ -387,6 +387,31 @@ static void insertNode(TreeNode *t, SymbolTable *st, TreeNode *parent) {
             }
             if (t->child[0] != NULL) { // Has explicit initializer
                 t->isInitialized = true;
+                
+                // Check initializer compatibility
+                if (t->isArray != t->child[0]->isArray) {
+                    char buf[256];
+                    snprintf(buf, sizeof(buf), "Initializer for variable '%s' requires both operands be arrays or not but variable is%s an array and rhs is%s an array.",
+                            t->attr.name,
+                            t->isArray ? "" : " not",
+                            t->child[0]->isArray ? "" : " not");
+                    semanticError(t, buf);
+                }
+                
+                // Check if initializer is constant (simple check for variables)
+                if (t->child[0]->nodekind == ExpK && t->child[0]->subkind.exp == IdK) {
+                    char buf[256];
+                    snprintf(buf, sizeof(buf), "Initializer for variable '%s' is not a constant expression.", t->attr.name);
+                    semanticError(t, buf);
+                }
+                
+                // Check type compatibility
+                if (t->expType != t->child[0]->expType && t->child[0]->expType != UndefinedType) {
+                    char buf[256];
+                    snprintf(buf, sizeof(buf), "Initializer for variable '%s' of type %s is of type %s",
+                            t->attr.name, typeToString(t->expType), typeToString(t->child[0]->expType));
+                    semanticError(t, buf);
+                }
             }
             if (isGlobal && t->subkind.decl == VarK) {
                 t->isInitialized = true; // Global variables are auto-initialized
@@ -513,7 +538,7 @@ static void checkNode(TreeNode *t, SymbolTable *st, TreeNode *parent) {
         }
     }
     
-    // Handle for statements - ADD THIS SECTION (around line 450)
+    // Handle for statements
     if (t->nodekind == StmtK && t->subkind.stmt == ForK) {
         // Check start expression (child[1])
         if (t->child[1]) {
@@ -529,7 +554,7 @@ static void checkNode(TreeNode *t, SymbolTable *st, TreeNode *parent) {
             }
         }
         
-        // Check stop expression - TRY child[2] first, if not then try a different index
+        // Check stop expression - child[2] if it's not the body
         TreeNode* stopExpr = t->child[2];
         if (stopExpr && stopExpr->nodekind != StmtK) { // Make sure it's not the body
             if (stopExpr->isArray) {
@@ -543,21 +568,6 @@ static void checkNode(TreeNode *t, SymbolTable *st, TreeNode *parent) {
                 semanticError(t, buf);
             }
         }
-        
-        // Check step expression if it exists
-        TreeNode* stepExpr = t->child[3];
-        if (stepExpr && stepExpr->nodekind != StmtK) { // Make sure it's not the body
-            if (stepExpr->isArray) {
-                char buf[256];
-                snprintf(buf, sizeof(buf), "Cannot use array in position 3 in range of for statement.");
-                semanticError(t, buf);
-            } else if (stepExpr->expType != Integer && stepExpr->expType != UndefinedType) {
-                char buf[256];
-                snprintf(buf, sizeof(buf), "Expecting type int in position 3 in range of for statement but got type %s.",
-                        typeToString(stepExpr->expType));
-                semanticError(t, buf);
-            }
-        }
     }
     
     // Handle unary operators (check before binary to avoid conflicts)
@@ -566,8 +576,8 @@ static void checkNode(TreeNode *t, SymbolTable *st, TreeNode *parent) {
             case NOT:
                 if (t->child[0] && t->child[0]->expType != Boolean && t->child[0]->expType != UndefinedType) {
                     char buf[256];
-                    snprintf(buf, sizeof(buf), "Unary 'not' requires an operand of type bool but was given type %s.",
-                            typeToString(t->child[0]->expType));  // Added "type"
+                    snprintf(buf, sizeof(buf), "Unary 'not' requires an operand of type bool but was given %s.",
+                            typeToString(t->child[0]->expType));
                     semanticError(t, buf);
                 }
                 t->expType = Boolean;
@@ -576,8 +586,8 @@ static void checkNode(TreeNode *t, SymbolTable *st, TreeNode *parent) {
             case OP_CHSIGN:
                 if (t->child[0] && t->child[0]->expType != Integer && t->child[0]->expType != UndefinedType) {
                     char buf[256];
-                    snprintf(buf, sizeof(buf), "Unary 'chsign' requires an operand of type int but was given type %s.",
-                            typeToString(t->child[0]->expType));  // Added "type"
+                    snprintf(buf, sizeof(buf), "Unary 'chsign' requires an operand of type int but was given %s.",
+                            typeToString(t->child[0]->expType));
                     semanticError(t, buf);
                 }
                 t->expType = Integer;
@@ -586,8 +596,8 @@ static void checkNode(TreeNode *t, SymbolTable *st, TreeNode *parent) {
             case '?':
                 if (t->child[0] && t->child[0]->expType != Integer && t->child[0]->expType != UndefinedType) {
                     char buf[256];
-                    snprintf(buf, sizeof(buf), "Unary '?' requires an operand of type int but was given type %s.",
-                            typeToString(t->child[0]->expType));  // Added "type"
+                    snprintf(buf, sizeof(buf), "Unary '?' requires an operand of type int but was given %s.",
+                            typeToString(t->child[0]->expType));
                     semanticError(t, buf);
                 }
                 if (t->child[0] && t->child[0]->isArray) {
@@ -714,6 +724,12 @@ static void checkNode(TreeNode *t, SymbolTable *st, TreeNode *parent) {
         switch (t->attr.op) {
             case OR:
             case AND:
+                // Check for array operands in logical operations
+                if (t->child[0]->isArray || t->child[1]->isArray) {
+                    char buf[256];
+                    snprintf(buf, sizeof(buf), "The operation '%s' does not work with arrays.", opToString(t->attr.op));
+                    semanticError(t, buf);
+                }
                 if (t->child[0]->expType != Boolean && t->child[0]->expType != UndefinedType) {
                     char buf[256];
                     snprintf(buf, sizeof(buf), "'%s' requires operands of type bool but lhs is of type %s.",
@@ -735,6 +751,15 @@ static void checkNode(TreeNode *t, SymbolTable *st, TreeNode *parent) {
             case LE:
             case GT:
             case GE:
+                // Check array compatibility first
+                if (t->child[0]->isArray != t->child[1]->isArray) {
+                    char buf[256];
+                    snprintf(buf, sizeof(buf), "'%s' requires both operands be arrays or not but lhs is%s an array and rhs is%s an array.",
+                            opToString(t->attr.op), 
+                            t->child[0]->isArray ? "" : " not", 
+                            t->child[1]->isArray ? "" : " not");
+                    semanticError(t, buf);
+                }
                 if (t->child[0]->expType != UndefinedType && t->child[1]->expType != UndefinedType &&
                     t->child[0]->expType != t->child[1]->expType) {
                     char buf[256];
@@ -750,6 +775,12 @@ static void checkNode(TreeNode *t, SymbolTable *st, TreeNode *parent) {
             case '*':
             case '/':
             case '%':
+                // Add array checking first
+                if (t->child[0]->isArray || t->child[1]->isArray) {
+                    char buf[256];
+                    snprintf(buf, sizeof(buf), "The operation '%s' does not work with arrays.", opToString(t->attr.op));
+                    semanticError(t, buf);
+                }
                 if (t->child[0]->expType != Integer && t->child[0]->expType != UndefinedType) {
                     char buf[256];
                     snprintf(buf, sizeof(buf), "'%s' requires operands of type int but lhs is of type %s.",

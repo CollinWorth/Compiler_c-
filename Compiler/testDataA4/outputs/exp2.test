@@ -7,7 +7,7 @@ ERROR(25): 'or' requires operands of type bool but lhs is of type int.
 ERROR(25): 'or' requires operands of type bool but rhs is of type int.
 ERROR(25): 'and' requires operands of type bool but lhs is of type int.
 ERROR(25): ':=' requires operands of the same type but lhs is type int and rhs is type bool.
-ERROR(26): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(26): Unary 'not' requires an operand of type bool but was given int.
 ERROR(26): ':=' requires operands of the same type but lhs is type int and rhs is type bool.
 ERROR(36): Symbol 'x' is not declared.
 ERROR(37): Symbol 'x' is not declared.

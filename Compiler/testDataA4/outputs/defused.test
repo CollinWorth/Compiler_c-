@@ -8,6 +8,7 @@ ERROR(13): Symbol 'u' is not declared.
 ERROR(16): Symbol 'bob' is already declared at line 1.
 ERROR(16): Symbol 'bob' is already declared at line 1.
 ERROR(16): Symbol 'bob' is already declared at line 16.
+ERROR(17): Initializer for variable 'bob' is not a constant expression.
 ERROR(20): Symbol 'bob' is already declared at line 19.
 ERROR(31): Symbol 'bob' is already declared at line 1.
 ERROR(33): Symbol 'bob' is already declared at line 1.
@@ -18,4 +19,4 @@ WARNING(6): The variable 'v' seems not to be used.
 WARNING(6): The variable 'z' seems not to be used.
 WARNING(19): The variable 'bob' seems not to be used.
 Number of warnings: 5
-Number of errors: 11
+Number of errors: 12

@@ -2,6 +2,8 @@ ERROR(SymbolTable): You cannot leave global scope.  Number of scopes: 1.
 ERROR(17): Symbol 'cat' is not declared.
 ERROR(19): Function 'dog' at line 11 is expecting to return type char but returns type int.
 ERROR(22): Symbol 'dog' is already declared at line 11.
+ERROR(31): Initializer for variable 'b' of type int is of type char
+ERROR(33): Initializer for variable 'd' is not a constant expression.
 ERROR(36): Function 'cat' at line 29 is expecting to return type char but return has no value.
 ERROR(39): Symbol 'cat' is already declared at line 29.
 ERROR(45): Function 'ibex' at line 42 is expecting to return type int but returns type bool.
@@ -28,6 +30,7 @@ ERROR(95): Expecting Boolean test condition in while statement but got type int.
 ERROR(96): Expecting Boolean test condition in while statement but got type int.
 ERROR(96): Cannot have a break statement outside of loop.
 ERROR(96): Expecting Boolean test condition in while statement but got type int.
+ERROR(98): The operation '+' does not work with arrays.
 ERROR(98): '+' requires operands of type int but lhs is of type char.
 ERROR(102): '=' requires operands of the same type but lhs is type char and rhs is type bool.
 ERROR(103): '=' requires operands of the same type but lhs is type char and rhs is type int.
@@ -36,9 +39,9 @@ ERROR(106): '+' requires operands of type int but lhs is of type bool.
 ERROR(106): '+' requires operands of type int but rhs is of type char.
 ERROR(108): '*' requires operands of type int but lhs is of type char.
 ERROR(108): '*' requires operands of type int but rhs is of type bool.
-ERROR(110): Unary 'not' requires an operand of type bool but was given type char.
+ERROR(110): Unary 'not' requires an operand of type bool but was given char.
 ERROR(111): '+' requires operands of type int but lhs is of type char.
-ERROR(111): Unary 'not' requires an operand of type bool but was given type int.
+ERROR(111): Unary 'not' requires an operand of type bool but was given int.
 ERROR(114): Cannot index nonarray 'x'.
 ERROR(116): 'and' requires operands of type bool but lhs is of type char.
 ERROR(116): 'and' requires operands of type bool but rhs is of type char.
@@ -73,8 +76,8 @@ ERROR(134): Symbol 'xyzzy' is not declared.
 ERROR(135): Symbol 'meerkat' is not declared.
 ERROR(136): Symbol 'xyzzy' is not declared.
 ERROR(136): 'and' requires operands of type bool but rhs is of type int.
-ERROR(138): Unary 'not' requires an operand of type bool but was given type int.
-ERROR(138): Unary 'chsign' requires an operand of type int but was given type bool.
+ERROR(138): Unary 'not' requires an operand of type bool but was given int.
+ERROR(138): Unary 'chsign' requires an operand of type int but was given bool.
 ERROR(138): Symbol 'uu' is not declared.
 ERROR(138): Symbol 'y' is not declared.
 ERROR(138): '*' requires operands of type int but lhs is of type char.
@@ -96,9 +99,6 @@ ERROR(155): Cannot use function 'ibex' as a variable.
 ERROR(157): Array 'aa' should be indexed by type int but got type char.
 ERROR(158): Array 'aa' should be indexed by type int but got type char.
 ERROR(158): Array index is the unindexed array 'zz'.
-ERROR(159): Expecting type char in parameter 1 of call to 'ox' declared on line 48 but got type bool.
-ERROR(159): Array 'aa' should be indexed by type int but got type void.
-ERROR(160): Array 'aa' should be indexed by type int but got type char.
 WARNING(19): Variable 'b' may be uninitialized when used here.
 WARNING(72): Variable 'x' may be uninitialized when used here.
 WARNING(83): Variable 'b' may be uninitialized when used here.
